@@ -16,6 +16,10 @@ For an explicit component creation/change request, use
 [enqo-component](.agents/skills/enqo-component/SKILL.md). For an audit, use
 [enqo-ds-audit](.agents/skills/enqo-ds-audit/SKILL.md).
 
+Read the current [Figma file map and migration rules](docs/figma.md) before
+choosing library sources. Platform separation is in progress; do not treat the
+historical combined file as already foundations-only or its components as obsolete.
+
 ## Orchestrate a task
 
 Start each task by reading this file and the relevant shared skill. When executing
@@ -86,16 +90,36 @@ and remaining gaps. Check actual instance keys, property values, variable/style
 bindings, and screenshots. Do not claim all states, responsiveness, accessibility,
 production parity, persistence, or cross-agent behavior were tested without evidence.
 
-Audits are read-only unless fixes are explicitly requested. Publishing libraries,
+Audits leave inspected assets and rules unchanged unless fixes are explicitly
+requested. The standing authorization to record proposals below still applies;
+an explicit instruction prohibiting all writes takes precedence. Publishing libraries,
 deleting shared assets, merging branches, and production changes require explicit
 authorization for that action. Do not store credentials here.
 
-## Improve these instructions
+## Improve the harness
 
-After relevant work, identify factual drift or a rule missing for reliable
-execution. Propose the destination file, exact replacement/addition, supporting
-links, and which task it unblocks. State whether it is a factual correction or a
-new decision. After initial repository setup, authorized documentation edits go into a branch/PR; a new decision
-becomes an adopted standard only after explicit human approval. Record approved
-decisions in [decisions](docs/decisions.md); keep the rule in one main location.
-Never promote chat speculation, memory, or generated summaries into standards.
+During every task, consider whether an observed bottleneck makes the system harder
+for agents to use. This includes Figma organization, components, foundations,
+code mappings, instructions, skills, tool access, orchestration, and verification.
+Do not invent an improvement just to produce an entry.
+
+When a concrete problem is found, record or update a proposal in
+[docs/harness-proposals.md](docs/harness-proposals.md). Follow that file's process:
+describe the situation, exact evidence, problem and affected task, proposed change,
+and observable acceptance check. Search existing proposals and add evidence to an
+existing item instead of creating duplicates. Capture the proposal when discovered;
+do not silently fix shared assets or expand the task to implement it.
+
+The user's standing instruction authorizes recording evidence-backed proposals
+through a branch/PR without asking again for each entry. If write access is
+unavailable or the user explicitly prohibits all writes, return the exact proposed
+entry and report that it was not saved.
+Never claim a proposal was recorded in GitHub from an unsent draft.
+
+New proposals start as `proposed`. Adoption and implementation require explicit
+human authorization; a proposal is not a standard or permission to change assets.
+Record approved decisions in [decisions](docs/decisions.md), and keep each adopted
+rule in its main document. Authorized documentation edits after initial setup go
+through a branch/PR. Never promote chat speculation, memory, or generated summaries
+into standards. In the task report, link recorded proposals and any unresolved
+documentation changes; do not claim automatic synchronization.

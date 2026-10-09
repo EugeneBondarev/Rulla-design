@@ -36,6 +36,8 @@ is unavailable, report that missing prerequisite; do not substitute general advi
    applicable modes, layout/text fit, and requested transitions. Inspect a
    screenshot of each materially different output. Report untested interactions
    and persistence failures without claiming completion for them.
-8. Return linked output names, source list, performed checks, remaining gaps, and
-   any exact documentation update proposed. Do not claim Web/Mobile parity from
-   verification of only one platform.
+8. Record observed harness bottlenecks in
+   [harness proposals](../../../docs/harness-proposals.md), following AGENTS.md.
+   Return linked output names, source list, performed checks, remaining gaps, and
+   recorded proposal links or an explicitly unsaved entry. Do not claim
+   Web/Mobile parity from verification of only one platform.

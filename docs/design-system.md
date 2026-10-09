@@ -3,6 +3,12 @@
 The reuse and no-invention policy lives in [AGENTS.md](../AGENTS.md). This file
 contains inspected token evidence, not a speculative catalog of semantic roles.
 
+The approved target file organization and current migration state are in
+[Figma references](figma.md). Shared
+foundations remain in `🟣 Design System`; platform components are moving to the
+Web and Mobile files. This target does not resolve every per-token code mapping
+or make a remaining component in the historical file obsolete.
+
 ## Existing repository tokens
 
 [tokens/typography.json](../tokens/typography.json) was copied byte-for-byte from

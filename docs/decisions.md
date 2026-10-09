@@ -22,6 +22,21 @@ work in dependency order, verify it, and propose needed updates here. This recor
 the user's approval of the repository's role; it does not claim additional tools,
 permissions, automatic context loading, or an execution service were installed.
 
+On 2026-10-09, Evgeny specified the target Figma organization: shared foundations
+in `🟣 Design System`, Web components in `🟣 DS Components • Web`, and Mobile
+components in `🟣 DS Components • Mobile`. He confirmed that migration is still
+in progress and the historical combined file retains components from both
+platforms. The exact source links and transitional rules are maintained in
+[figma.md](figma.md), with current inspection evidence. The two platform files
+are designated agent-first; this is their intended operating model, not proof
+that every component already meets that model.
+
+In the same request, Evgeny authorized all agents to record concrete harness
+improvement proposals in one GitHub file, describing the situation, problem, and
+proposed change. The process and entries live in
+[harness-proposals.md](harness-proposals.md). Recording a proposal is authorized;
+adoption, asset changes, publication, and merging remain separate actions.
+
 No universal scaffold, screen-versus-sheet selection rule, component replacement,
 or global token authority has been approved in this file.
 

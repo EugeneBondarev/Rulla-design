@@ -28,4 +28,6 @@ Resolve this file's repository root three directories up. Read
    keys, code references, checks, and publication state. Do not claim publication
    from a successful local edit.
 6. Propose the exact documentation diff for a verified new fact or missing rule.
+   Record observed harness bottlenecks in
+   [harness proposals](../../../docs/harness-proposals.md), following AGENTS.md.
    Keep proposed conventions separate from human-approved decisions.

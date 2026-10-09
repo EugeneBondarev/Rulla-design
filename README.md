@@ -21,6 +21,7 @@ docs/
   design-system.md
   codebases.md
   decisions.md
+  harness-proposals.md
   starter-review.md
 .agents/skills/
   enqo-flow/SKILL.md
@@ -36,6 +37,12 @@ tokens/typography.json
 [Starter review](docs/starter-review.md) lists the inaccurate or insufficient
 instructions removed. [Scaffolds](docs/scaffolds.md) identifies the verified
 entry nodes and the evidence still missing. Existing typography data is preserved.
+
+[Figma file map](docs/figma.md) records the current shared/Web/Mobile split and
+the rules for working during migration. Every agent records concrete bottlenecks
+and improvements in [harness proposals](docs/harness-proposals.md), using exact
+evidence and the procedure defined there. Recording an idea does not authorize
+implementing it.
 
 ## Start a task
 

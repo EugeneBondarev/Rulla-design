@@ -12,9 +12,10 @@ Resolve this file's repository root three directories up. Read
 [codebases](../../../docs/codebases.md).
 
 1. Identify the requested file/node/code scope. Inspect the real sources using
-   read-only operations. An audit does not authorize edits to any Figma node,
-   document, code, token, or publication state; propose fixes in the report unless
-   implementation is explicitly requested.
+   read-only operations. Leave inspected Figma assets, rules, code, tokens, and
+   publication state unchanged unless fixes are explicitly requested. Record
+   harness proposals under the standing authorization in AGENTS.md; if the user
+   explicitly prohibits all writes, return the proposed entry as unsaved.
 2. Record exact names, source node URLs, keys, properties/variants, bindings,
    publication status, and code paths/commits relevant to each finding. Do not
    treat names, screenshots, search absence, or inaccessible data as proof of
@@ -26,4 +27,6 @@ Resolve this file's repository root three directories up. Read
    correction, and unresolved decision. Include inspected scope and limitations.
 5. For each missing or stale instruction, name its destination file and proposed
    exact text, supporting sources, and whether it needs a new human decision.
+   Record the concrete bottleneck in
+   [harness proposals](../../../docs/harness-proposals.md), following AGENTS.md.
    Do not silently rewrite the standard or claim the correction was applied.
