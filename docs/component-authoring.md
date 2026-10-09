@@ -1,13 +1,10 @@
 # Component authoring and presentation
 
-Use this procedure with [enqo-component](../.agents/skills/enqo-component/SKILL.md)
-only for a direct human request to create or change a design-system component.
-It does not authorize creation during scenario work. Authorization, token coverage,
-and gap reporting remain governed by [AGENTS.md](../AGENTS.md).
-
-Creation must be directly specified in the task; a request to change an existing
-component does not authorize new components. Agents never publish components or
-updates, even when publication is requested. Only a human may perform that action.
+This is the presentation/naming procedure used by
+[enqo-component](../.agents/skills/enqo-component/SKILL.md). Scope, creation, and
+publication permissions are defined in [AGENTS.md](../AGENTS.md).
+Token coverage is defined in [design-system.md](design-system.md); language and
+content previews in [mockup-content.md](mockup-content.md).
 
 ## Exact infrastructure source
 
@@ -82,11 +79,8 @@ preservation are the user-required workflow and must be checked on actual output
 
 ## Minimal description
 
-Write descriptions and explanatory labels in Russian. Keep the header's exact
-code/library component name and technical property/variant names unchanged.
-Follow [mockup-content.md](mockup-content.md) for realistic Russian UI examples
-and visible short/typical/long previews; previews are linked instances, not extra
-masters or variants.
+Apply [mockup-content.md](mockup-content.md) to description language and preview
+content, preserving the exact header/component/property identities.
 
 Use a few short sentences or bullets covering:
 
@@ -109,6 +103,5 @@ keys; header headline; naming reference; description; and token-coverage gaps.
 Verify the component master is inside `Slot`, the header remains linked, and
 source infrastructure is unchanged. Inspect the rendered frame for fitting
 content, readable description, and preserved layout. Report publication separately:
-local creation is not publication. Return the checked assets and exact links for
-human publication; never trigger it or delegate it to another agent. This procedure
-does not authorize migration of existing presentations.
+local creation is not publication. Return checked assets and exact links using the
+[human-only publication boundary](../AGENTS.md#component-publication-is-human-only).

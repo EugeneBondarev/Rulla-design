@@ -11,59 +11,23 @@ preserved: moving the instructions does not rename or migrate those sources.
 
 ## Files
 
-```text
-AGENTS.md
-CLAUDE.md
-GEMINI.md
-docs/
-  figma.md
-  scaffolds.md
-  design-system.md
-  component-authoring.md
-  mockup-content.md
-  codebases.md
-  decisions.md
-  harness-proposals.md
-  token-gaps.md
-  starter-review.md
-.agents/skills/
-  enqo-flow/SKILL.md
-  enqo-component/SKILL.md
-  enqo-ds-audit/SKILL.md
-.claude/skills/
-  enqo-flow/SKILL.md
-  enqo-component/SKILL.md
-  enqo-ds-audit/SKILL.md
-tokens/typography.json
-```
+This is the topic map. Each rule has one authoritative home; read linked topic
+rules rather than using this map as a second instruction set.
 
-[Starter review](docs/starter-review.md) lists the inaccurate or insufficient
-instructions removed. [Scaffolds](docs/scaffolds.md) identifies the verified
-entry nodes and the evidence still missing. Existing typography data is preserved.
-
-[Figma file map](docs/figma.md) records the current shared/Web/Mobile split and
-the rules for working during migration. Every agent records concrete bottlenecks
-and improvements in [harness proposals](docs/harness-proposals.md), using exact
-evidence and the procedure defined there. Recording an idea does not authorize
-implementing it.
-
-[Component authoring](docs/component-authoring.md) defines the exact infrastructure
-template, outer-copy detach exception, linked header, code/library naming, and
-short descriptions for explicitly requested new components.
-
-Design-system changes require a direct human request for that change. Scenario
-work must reuse verified components and cover applicable visual properties with
-existing tokens. Agents report missing or unverified coverage in
-[token gaps](docs/token-gaps.md), without creating replacements or silently fixing
-shared assets. The full authorization and coverage rules are in AGENTS.md.
-
-New components may be created only when directly specified in the task.
-Component publication, including updates, is always performed by a human;
-agents may prepare and check local work but never publish it.
-
-[Russian mockup content](docs/mockup-content.md) requires Russian UI copy and
-descriptions, realistic varied short/typical/long examples, and visible layout
-checks. Exact source component, property, and token names remain unchanged.
+| Group | Home | Contents |
+| --- | --- | --- |
+| Entry | [AGENTS.md](AGENTS.md) | Task routing, evidence standards, authorization, publication boundary, repository upkeep |
+| Figma sources | [docs/figma.md](docs/figma.md) | File roles, migration, library/page inventory, access |
+| Screen entry | [docs/scaffolds.md](docs/scaffolds.md) | Scaffold/sheet identities, APIs, usage and selection gaps |
+| Design system | [docs/design-system.md](docs/design-system.md) | Token coverage requirements and inspected bindings/JSON provenance |
+| Components | [docs/component-authoring.md](docs/component-authoring.md) | Infrastructure template, naming, placement and descriptions |
+| Mockup content | [docs/mockup-content.md](docs/mockup-content.md) | Russian content, realistic variation and layout checks |
+| Code sources | [docs/codebases.md](docs/codebases.md) | Repository/path/commit references and inspected architecture |
+| Findings | [docs/token-gaps.md](docs/token-gaps.md), [docs/harness-proposals.md](docs/harness-proposals.md) | Token deficiencies and broader harness proposals, respectively |
+| Provenance | [docs/decisions.md](docs/decisions.md), [docs/starter-review.md](docs/starter-review.md) | Human decision sources and historical starter review; not competing rulebooks |
+| Workflows | [.agents/skills/](.agents/skills/) | The three task workflows selected by AGENTS.md |
+| Client loading | [CLAUDE.md](CLAUDE.md), [GEMINI.md](GEMINI.md), [.claude/skills/](.claude/skills/) | Imports/adapters; no independent design rules |
+| Data | [tokens/typography.json](tokens/typography.json) | Existing token data; inspected provenance is in design-system.md |
 
 ## Start a task
 

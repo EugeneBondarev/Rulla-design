@@ -1,37 +1,40 @@
 # Design-system evidence
 
-The reuse and no-invention policy lives in [AGENTS.md](../AGENTS.md). This file
-contains inspected token evidence, not a speculative catalog of semantic roles.
+The authorization and no-invention policy lives in [AGENTS.md](../AGENTS.md).
+This file owns token-coverage requirements and inspected token evidence.
 
 Component presentation, code/library naming, minimal descriptions, and the exact
 infrastructure template are defined in [component-authoring.md](component-authoring.md).
 Use it with enqo-component for directly requested component work.
 
-## Verify coverage for the requested output
+## Required token coverage
 
-Before dependent edits, resolve coverage for the applicable properties required
-by [AGENTS.md](../AGENTS.md). For each source component or newly composed layout,
-record its exact node URL and property, component key where applicable, actual
-variable/style name and ID/key, collection, effective mode, aliases, and consuming
-binding. Group properties only when they share the same verified evidence.
+Every applicable visual property must use existing verified design-system tokens:
+colors (fills, strokes, text, icons, surfaces), typography (font family, weight,
+size, line height, letter spacing), spacing (padding and gaps), sizes (including
+applicable minimum/maximum, icon, and control dimensions), corner radii, and effects.
+Hug/Fill and other layout behaviors are not numeric tokens; verify them against
+the chosen source layout.
 
-An inherited binding counts when its source and selected mode are verified. A
-text/effect style needs a verified token mapping for its applicable properties;
-its name alone is insufficient. A hardcoded source value, similar appearance,
-or matching numerical value does not establish token coverage. Do not modify a
-master to fix uncovered properties during scenario work.
+Before dependent edits, resolve each property's exact consuming node URL,
+component key where applicable, variable/style name and ID/key, collection,
+effective mode, aliases, and binding. Group properties only when they share the
+same verified evidence. Preserve verified inherited bindings instead of overriding
+component internals. A style name alone needs its token mapping verified; a raw
+inherited value or matching number does not establish token coverage.
 
-Verify bindings again on the output, including instance overrides and composed
-containers/text. Report checked scope and unresolved properties explicitly.
-Record missing tokens, unknown coverage, missing mappings, and binding limitations
-in [token-gaps.md](token-gaps.md), using its distinct evidence classifications.
-This checklist does not declare a global token inventory or complete coverage.
+If a suitable token, mapping, or supported binding is missing or unverified, record
+it in [token-gaps.md](token-gaps.md) with the correct evidence classification.
+Do not invent a token/name, guess a value, hardcode a temporary replacement, choose
+a token just because its value matches, or repair a shared source without the
+[required authorization](../AGENTS.md#design-system-changes-require-a-direct-human-request).
+Stop the dependent edit and continue independent work. Report tool limitations
+accurately instead of claiming unsupported bindings exist.
 
-The approved target file organization and current migration state are in
-[Figma references](figma.md). Shared
-foundations remain in `🟣 Design System`; platform components are moving to the
-Web and Mobile files. This target does not resolve every per-token code mapping
-or make a remaining component in the historical file obsolete.
+Verify bindings on the output, including instance overrides and composed
+containers/text. Report checked scope and remaining properties; never claim full
+coverage while required gaps remain. This requirement is not a declaration that
+the existing libraries or repository JSON already have complete coverage.
 
 ## Existing repository tokens
 
@@ -77,7 +80,5 @@ with a made-up semantic name or guess its numerical value.
 
 For an explicit DS change, document the changed source asset, exact properties,
 bindings, applicable state behavior, linked usage, code relationship, and observed
-publication status. Scenario composition does not authorize those DS changes.
-New components require a direct creation instruction. Component publication and
-publication of updates are always human-only; agents return checked local assets
-and exact links instead of publishing.
+publication status. Authorization and publication boundaries are defined only in
+[AGENTS.md](../AGENTS.md#design-system-changes-require-a-direct-human-request).

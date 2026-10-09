@@ -2,8 +2,9 @@
 
 Reviewed all 13 Markdown files in the supplied `enqo-agent-starter.zip` and
 replaced the starter's generic directions with the entry points in this repository.
-This is a review of the starter and the inspected sources, not a complete audit
-of every Enqo Figma file or component.
+This is historical review evidence, not an additional rule source or a complete
+audit of every Enqo Figma file/component. Current instructions live in the linked
+authoritative homes.
 
 | Starter statement or omission | Correction | Evidence / destination |
 | --- | --- | --- |

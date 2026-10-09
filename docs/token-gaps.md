@@ -1,9 +1,9 @@
 # Token gaps
 
-Record concrete token deficiencies encountered in an actual task here. The
-[component/token coverage and authorization rules](../AGENTS.md) apply. Recording
-a gap is authorized; creating or changing tokens, styles, components, or their
-bindings in the design system requires a direct human request for that change.
+This file owns the token-finding format, evidence classifications, and lifecycle.
+Apply [token coverage](design-system.md#required-token-coverage),
+[authorization](../AGENTS.md#design-system-changes-require-a-direct-human-request),
+and [record-saving rules](../AGENTS.md#maintain-this-repository).
 
 ## Current state
 
@@ -38,11 +38,8 @@ Existing inspected bindings are in [design-system evidence](design-system.md).
    Use `resolved` only with actual resolution evidence and a check of the affected
    property, mode, and binding. Token creation or other DS repair also needs the
    direct human authorization reference. Keep the original evidence and history.
-6. Save through a branch/PR and report the entry link, blocked action, and specific
-   decision or source needed. If write access is unavailable or all writes are
-   explicitly prohibited, return the entry as `UNSAVED`. An open PR is not a
-   change already present in the default branch. A register entry never grants
-   permission to bypass coverage or change the design system.
+6. Save and report under [repository maintenance](../AGENTS.md#maintain-this-repository),
+   including the entry link, blocked action, and specific decision/source needed.
 
 Use [harness proposals](harness-proposals.md) for systemic improvements; link the
 `TG-NNN` entry there instead of keeping competing token-gap records.

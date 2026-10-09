@@ -5,58 +5,32 @@ description: Create, change, or document an Enqo design-system component only wh
 
 # Enqo component work
 
-Resolve this file's repository root three directories up. Read
-[AGENTS.md](../../../AGENTS.md), [Figma references](../../../docs/figma.md),
+Resolve the shared repository root three directories above this file. Read
+[AGENTS.md](../../../AGENTS.md), [Figma map](../../../docs/figma.md),
 [component authoring](../../../docs/component-authoring.md),
-[Russian mockup content](../../../docs/mockup-content.md),
-[design-system evidence](../../../docs/design-system.md), and the relevant
+[token coverage](../../../docs/design-system.md),
+[mockup content](../../../docs/mockup-content.md), and relevant
 [code references](../../../docs/codebases.md).
 
-1. Identify the direct human component-change request, exact target, and authorized
-   properties. A scenario request or recorded defect is not authorization.
-   For an additional or new component, creation must be directly specified in the task;
-   changing an existing component alone does not authorize new masters or variants.
-   For an existing asset, inspect its source node URL, name, key,
-   properties/variants, bindings,
-   publication status, and linked usage. For a requested new component, label its
-   name as new output; first inspect concrete existing reuse candidates. Resolve
-   the exact name from project code or the platform library using
-   component-authoring.md; do not invent the name or its code correspondence.
-2. Inspect the related code file/symbol at a recorded commit when the request
-   concerns code alignment. Document correspondence or differences with evidence;
-   do not invent props, states, semantic names, or a Code Connect mapping.
-3. State the intended component change and affected uses. Resolve required gaps
-   using AGENTS.md. Existing task authorization is sufficient for its stated
-   edits; expanding to unrelated shared assets needs authorization. Publication
-   is always human-only: never publish, even if the task requests publication.
-4. Apply only the requested changes, using verified existing tokens/styles unless
-   their creation/change was separately included in the request. Preserve native
-   instances, supported slots, layout constraints, and unaffected properties.
-   Resolve all applicable component/token coverage under AGENTS.md. Report and
-   record deficiencies in [token gaps](../../../docs/token-gaps.md); stop edits
-   that need missing coverage. Do not extend component authorization into token,
-   style, or foundation changes that the human did not request.
-   For a requested new component, follow component-authoring.md: copy the exact
-   infrastructure template to a verified destination, detach only its outer copy,
-   verify the `Slot` frame and linked `DS header`, place the actual component/set
-   inside `Slot`, set `Headline#20597:0`, and add the minimal visible and native
-   component description. Do not alter the template or detach nested UI instances.
-   Do not reorganize existing components unless that work was requested.
-   Use Russian UI examples and descriptions. Show realistic short, typical, and
-   long content through linked preview instances under mockup-content.md, without
-   creating extra masters/variants or translating exact code/library identities.
-5. Check the changed properties/variants, bindings, applicable states, and linked
-   usage; inspect the rendered result. Report exact changed node URLs, source
-   keys, code references, checks, and publication state. Do not claim publication
-   from a successful local edit. Include unresolved coverage and token-gap links;
-   inherited raw values and unsupported bindings are not proof of token coverage.
-   For a new component, include presentation-frame, Slot, header, and component
-   source URLs plus naming evidence and description checks from component-authoring.md.
-   Hand the checked local component and exact links to the human for any
-   publication; do not trigger publication through tools or delegate it to agents.
-   Verify and link the rendered content cases and report wrapping/overflow gaps
-   rather than hiding them with shorter text or unauthorized source changes.
-6. Propose the exact documentation diff for a verified new fact or missing rule.
-   Record observed harness bottlenecks in
-   [harness proposals](../../../docs/harness-proposals.md), following AGENTS.md.
-   Keep proposed conventions separate from human-approved decisions.
+1. Identify the direct human request, exact target, and authorized properties;
+   apply the creation and publication boundaries in AGENTS.md. Inspect an existing
+   asset's source URL/name/key, properties/variants, bindings, publication status,
+   and linked usage. For a requested new component, inspect actual reuse candidates
+   and resolve its naming source and destination through component-authoring.md.
+2. When code alignment is requested, inspect the relevant file/symbol at a recorded
+   commit. Describe established correspondence and differences. State the intended
+   change and affected uses; resolve missing prerequisites under AGENTS.md.
+3. Apply only the authorized changes and the token-coverage procedure. For a new
+   component, follow component-authoring.md for the exact infrastructure source,
+   outer-copy detach, Slot/header structure, naming, and descriptions. Apply
+   mockup-content.md to visible content cases; preserve unaffected assets.
+4. Check changed properties/variants, bindings/modes, applicable states, usage, and
+   rendered content cases. For a new component, return the presentation/Slot/header
+   and component URLs, naming evidence, and description checks specified in
+   component-authoring.md. Hand the checked local assets and observed publication
+   state to the human under AGENTS.md; do not infer publication from a local edit.
+5. Return code evidence, checks, and unresolved gaps. Record token deficiencies in
+   [token gaps](../../../docs/token-gaps.md), concrete harness bottlenecks in
+   [proposals](../../../docs/harness-proposals.md), and verified documentation
+   corrections through the repository maintenance process. Link actual saved
+   records; keep proposals distinct from adopted decisions.

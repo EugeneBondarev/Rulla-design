@@ -3,8 +3,9 @@
 This is the shared record for concrete improvements discovered by any agent
 working on the Enqo harness. It covers Figma files/assets, foundations, code
 mappings, instructions, skills, access, orchestration, and verification.
-Recording proposals is authorized by the user. These entries are proposals,
-not adopted rules or authorization to implement them.
+Recording/implementation permissions are defined in
+[AGENTS.md](../AGENTS.md#maintain-this-repository). This file owns the proposal
+format, lifecycle, and evidence entries.
 
 Token-specific deficiencies are recorded in [token-gaps.md](token-gaps.md).
 Link the relevant `TG-NNN` entry here when proposing a systemic improvement;
@@ -23,17 +24,11 @@ do not duplicate its finding or treat a proposal as permission to change the DS.
 3. Start with status `proposed`. Use `approved`, `deferred`, `rejected`, or
    `implemented` only with linked evidence of that decision or completed work.
    Approval is distinct from implementation. Do not invent an owner or approver.
-4. Save changes through a branch/PR and link the entry in the task report. A local
-   draft or an open PR is not yet present in the default branch. If repository
-   write access is unavailable or the user explicitly prohibits all writes,
-   return the exact entry and report it as unsaved.
-5. Implementation requires explicit authorization for the relevant change.
-   New components require a direct creation instruction; component publication
-   and updates are always human-only, never an agent implementation step.
-   After approved work, link the actual output/checks, record adopted decisions
-   in [decisions](decisions.md), and update the relevant source document. Keep
-   the proposal history and outcome instead of turning its original claim into
-   an undocumented standard.
+4. Save and report under [repository maintenance](../AGENTS.md#maintain-this-repository).
+   After authorized implementation, link actual output/checks, record approval
+   provenance in [decisions](decisions.md), and update the rule's authoritative home.
+   Keep the proposal history and outcome; do not turn a proposal into an
+   undocumented standard.
 
 Use ordinary prose under the fields below. Do not pad entries with guessed
 priority, confidence, savings, severity, or speculative benefits. If no concrete

@@ -3,31 +3,17 @@
 ## Start here
 
 [Rulla-design](https://github.com/EugeneBondarev/Rulla-design) is the shared agent
-center and orchestration entry point for Enqo Web and Mobile design work. It holds
-the common instructions, skills, source references, and approved decisions.
-Existing source asset and skill names are preserved. For a screen, sheet, or
-multi-screen scenario, use
-[enqo-flow](.agents/skills/enqo-flow/SKILL.md). Read
-[Figma references](docs/figma.md), [scaffold references](docs/scaffolds.md), and
-[design-system evidence](docs/design-system.md) before editing Figma. Read the
-relevant implementation through [codebases](docs/codebases.md).
+center and orchestration entry point for Enqo Web and Mobile. Read this file and
+choose [enqo-flow](.agents/skills/enqo-flow/SKILL.md) for scenarios,
+[enqo-component](.agents/skills/enqo-component/SKILL.md) for explicit component work,
+or [enqo-ds-audit](.agents/skills/enqo-ds-audit/SKILL.md) for audits.
 
-For both scenario and component work, follow
-[Russian mockup content](docs/mockup-content.md): author Russian UI copy and
-explanations, use varied realistic short/typical/long examples, and inspect their
-layout behavior. Preserve exact technical identifiers; never translate source
-component/property/token names or invent product behavior for the examples.
-
-For an explicit component creation/change request, use
-[enqo-component](.agents/skills/enqo-component/SKILL.md) and
-[component authoring](docs/component-authoring.md), which defines the exact
-infrastructure template, naming sources, placement, and minimal descriptions.
-For an audit, use
-[enqo-ds-audit](.agents/skills/enqo-ds-audit/SKILL.md).
-
-Read the current [Figma file map and migration rules](docs/figma.md) before
-choosing library sources. Platform separation is in progress; do not treat the
-historical combined file as already foundations-only or its components as obsolete.
+Read the relevant sources and topic rules before dependent work:
+[Figma file map](docs/figma.md), [screen entry points](docs/scaffolds.md),
+[token coverage and evidence](docs/design-system.md), [code references](docs/codebases.md),
+[component authoring](docs/component-authoring.md), and
+[Russian mockup content](docs/mockup-content.md). The
+[README file map](README.md#files) assigns each topic one home.
 
 ## Orchestrate a task
 
@@ -127,32 +113,13 @@ mobile modal route or a Flutter class with a Figma component by name. Explain
 screen versus sheet selection using an exact existing screen/route or an approved
 decision; otherwise identify the missing decision.
 
-## Required component and token coverage
+## Design-system coverage
 
-Use verified existing components for UI elements and the verified scaffold,
-slots, and layout rules for composition. An arbitrary frame is not a substitute
-for a missing component. Layout containers and task-specific text are permitted
-as described above, with their visual properties covered by the design system.
-
-Every applicable visual property must use existing verified design-system tokens:
-colors (fills, strokes, text, icons, surfaces), typography (font family, weight,
-size, line height, letter spacing), spacing (padding and gaps), sizes (including
-applicable minimum/maximum, icon, and control dimensions), corner radii, and
-effects. Resolve the actual source, exact identity, selected mode, and binding
-using [design-system evidence](docs/design-system.md). Preserve verified bindings
-inherited from source components rather than overriding their internals.
-Hug/Fill and other layout behaviors are not numeric token values; verify them
-against the chosen source layout instead of inventing a token for them.
-
-A style reference alone does not prove token coverage: verify its token mapping.
-A raw value inherited from a master also does not prove coverage. If a suitable
-token, mapping, or supported binding is missing or cannot be verified, report the
-affected property and record it in [docs/token-gaps.md](docs/token-gaps.md).
-Do not invent a token/name, guess a value, hardcode a temporary replacement,
-select a token solely because its value matches, or repair the source asset
-without a direct human request. Stop the dependent edit and continue independent
-work. Report a binding limitation accurately; never claim an unsupported binding
-exists. Never claim full coverage while required gaps remain unresolved.
+UI composition uses verified existing components, scaffolds, slots, and layout
+rules; an arbitrary frame is not a replacement for a missing component. Applicable
+visual properties must use existing verified tokens under
+[design-system.md](docs/design-system.md#required-token-coverage). Resolve gaps
+before dependent edits and record them in [token-gaps.md](docs/token-gaps.md).
 
 ## Evidence and completion
 
@@ -164,43 +131,45 @@ implementation; neither proves what is deployed.
 Return source links and output links, what changed, structural/visual checks,
 and remaining gaps, including linked token-gap entries. Check actual instance keys,
 property values, variable/style bindings, and screenshots. Do not claim all states,
-responsiveness, accessibility,
-production parity, persistence, or cross-agent behavior were tested without evidence.
+responsiveness, accessibility, production parity, persistence, or cross-agent
+behavior were tested without evidence.
 
 Audits leave inspected assets and rules unchanged unless fixes are explicitly
 requested. The standing authorization to record proposals and token gaps still
 applies; an explicit instruction prohibiting all writes takes precedence. Component
-publication remains human-only. Deleting shared assets, merging branches, and production changes require explicit
-authorization for that action. Do not store credentials here.
+publication follows the boundary above. Deleting shared assets, merging branches,
+and production changes require explicit authorization. Do not store credentials here.
 
-## Improve the harness
+## Maintain this repository
 
-During every task, consider whether an observed bottleneck makes the system harder
-for agents to use. This includes Figma organization, components, foundations,
-code mappings, instructions, skills, tool access, orchestration, and verification.
-Do not invent an improvement just to produce an entry.
+Keep one authoritative home for each rule, using the [README map](README.md#files).
+Edit the existing topic/section first; other files link to it instead of restating
+it. Skills contain task steps and required links, client adapters only load shared
+instructions, and decisions record approval provenance rather than copies of rules.
+Before saving, check affected references and remove stale or conflicting wording.
+If the human's intent is unresolved, stop the dependent change and report the
+conflict rather than inventing precedence.
 
-When a concrete problem is found, record or update a proposal in
-[docs/harness-proposals.md](docs/harness-proposals.md). Follow that file's process:
-describe the situation, exact evidence, problem and affected task, proposed change,
-and observable acceptance check. Search existing proposals and add evidence to an
-existing item instead of creating duplicates. Capture the proposal when discovered;
-do not silently fix shared assets or expand the task to implement it.
+Do not create a file, folder, skill, register, or process for each new chat request.
+Add one only for a distinct recurring need that does not fit an existing home;
+state its scope and entry link, and avoid empty scaffolding or speculative fields.
+Do not merge unrelated topics just to reduce file count, or delete evidence,
+source links, and unresolved findings to make the repository look smaller.
 
-Record token-specific deficiencies in [docs/token-gaps.md](docs/token-gaps.md).
-For a related systemic harness improvement, link that entry from the proposal
-instead of duplicating its evidence or treating the proposal as a token definition.
+During each task, record concrete bottlenecks in
+[harness-proposals.md](docs/harness-proposals.md) and token deficiencies in
+[token-gaps.md](docs/token-gaps.md), following their respective entry formats.
+Update an existing finding instead of duplicating it; link related entries.
+Do not invent findings or silently implement a recorded proposal.
 
-The user's standing instruction authorizes recording evidence-backed proposals
-and token gaps through a branch/PR without asking again for each entry. If write access is
-unavailable or the user explicitly prohibits all writes, return the exact proposed
-entry and report that it was not saved.
-Never claim a proposal was recorded in GitHub from an unsent draft.
+The user's standing instruction authorizes recording these findings through a
+branch/PR without asking for every entry. If access is unavailable or all writes
+are explicitly prohibited, return the exact entry as unsaved. Never claim an
+unsent draft is recorded in GitHub or an open PR is already in the default branch.
+Adoption and implementation need the relevant human authorization; keep approval
+provenance in [decisions.md](docs/decisions.md). Authorized documentation changes
+use a branch/PR.
 
-New proposals start as `proposed`. Adoption and implementation require explicit
-human authorization; a proposal is not a standard or permission to change assets.
-Record approved decisions in [decisions](docs/decisions.md), and keep each adopted
-rule in its main document. Authorized documentation edits after initial setup go
-through a branch/PR. Never promote chat speculation, memory, or generated summaries
-into standards. In the task report, link recorded proposals and any unresolved
+Never promote chat speculation, memory, or generated summaries into standards.
+In the task report, link recorded proposals and any unresolved
 documentation changes; do not claim automatic synchronization.
