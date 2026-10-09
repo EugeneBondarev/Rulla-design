@@ -29,6 +29,8 @@ Resolve the shared repository root three directories above this file. Read
    and component URLs, naming evidence, and description checks specified in
    component-authoring.md. Hand the checked local assets and observed publication
    state to the human under AGENTS.md; do not infer publication from a local edit.
+   Re-read the component's native usage description and verify its agent-handoff
+   check in component-authoring.md against the actual source/API.
 5. Return code evidence, checks, and unresolved gaps. Record token deficiencies in
    [token gaps](../../../docs/token-gaps.md), concrete harness bottlenecks in
    [proposals](../../../docs/harness-proposals.md), and verified documentation

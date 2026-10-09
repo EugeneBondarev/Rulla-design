@@ -18,6 +18,7 @@ was tested. No external approval permalink was supplied for this conversation.
 | Explicit creation task; publication only by a human | [Creation boundary](../AGENTS.md#design-system-changes-require-a-direct-human-request), [publication boundary](../AGENTS.md#component-publication-is-human-only) |
 | Russian mockups with varied realistic text lengths and content density | [Mockup content](mockup-content.md) |
 | Compact predictable structure, clear grouping, no duplicate or conflicting rules | [Repository upkeep](../AGENTS.md#maintain-this-repository), [topic map](../README.md#files) |
+| Components must be understandable and usable by another agent without the original chat | [Component descriptions and handoff check](component-authoring.md#minimal-description) |
 
 The human-only publication instruction supersedes earlier wording permitting
 agent publication with authorization. The original GitLab draft remains separate;

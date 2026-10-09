@@ -73,8 +73,9 @@ preservation are the user-required workflow and must be checked on actual output
    `DS header` and `Slot`. Remove the sample headline from the new copy.
 6. Add the minimal visible description inside `Slot`, next to the component in
    the copied layout, with verified existing typography/color/spacing bindings.
-   Put the same purpose/usage/state text in the actual COMPONENT or COMPONENT_SET's
-   native description. Never write a native description to a frame or instance.
+   Put the relevant usage contract described below in the actual COMPONENT or
+   COMPONENT_SET's native description, accessible without its presentation frame.
+   Never write a native description to a frame or instance.
    Report unsupported description styling/layout instead of guessing values.
 
 ## Minimal description
@@ -82,7 +83,10 @@ preservation are the user-required workflow and must be checked on actual output
 Apply [mockup-content.md](mockup-content.md) to description language and preview
 content, preserving the exact header/component/property identities.
 
-Use a few short sentences or bullets covering:
+Design and document the component for the next agent, who has no original chat
+context. Consider this while building it, not only when writing the final report.
+Keep the description short, but sufficient to explain how to use the actual
+component. Include the following only where applicable:
 
 - What the component does and where it is used. Link exact existing usage nodes
   or code when available. If none exists yet, say so and label intended usage as
@@ -90,18 +94,38 @@ Use a few short sentences or bullets covering:
 - Key supported states, their exact variant/property names, and what changes
   between them. Use inspected code/library behavior or the direct human request;
   never add an imagined standard state checklist.
+- How to configure it: relevant property types, actual defaults/allowed values,
+  supported combinations, and what each choice changes. Explain semantics that
+  are not evident from the exact property name; do not dump every layer or repeat
+  machine-readable metadata without adding useful meaning.
+- How it is structured: relevant nested component sources and exact slot/layer
+  names or node URLs, what content each slot accepts, and which elements an
+  instance may override. Preserve the verified API; describing it does not
+  authorize adding properties, restructuring masters, or new variants.
+- Layout and dependencies: observed resizing/wrapping/truncation behavior,
+  applicable constraints, linked token/mode/binding evidence, and required nested
+  components. Link actual source nodes or existing records instead of copying a
+  token catalog or assuming behavior from appearance.
 - Naming source: exact code symbol/path/commit or library API name/version/URL.
 
-No long specification, empty matrix, invented owner, or speculative behavior is
-required. Report unresolved behavior and propose a concrete rule update through
-[harness proposals](harness-proposals.md) when needed.
+Include an actual usage/preview link when available, and state known limitations
+or unresolved facts explicitly. Keep component-specific descriptions with the
+actual Figma component; do not create a GitHub document per component or rely on
+the task's final chat message as its only documentation. No long specification,
+empty matrix, invented owner, or speculative behavior is required. Report missing
+evidence and needed rule updates through [harness proposals](harness-proposals.md).
 
 ## Verify and report
 
 Return actual presentation-frame, component/set, `Slot`, and header URLs; source
 keys; header headline; naming reference; description; and token-coverage gaps.
 Verify the component master is inside `Slot`, the header remains linked, and
-source infrastructure is unchanged. Inspect the rendered frame for fitting
+source infrastructure is unchanged. Re-read the native description from the
+actual component/set and compare it with inspected properties, slots, bindings,
+and behavior. It must let the next agent locate the source, select supported
+configuration, populate slots, and understand constraints without the original
+chat. Report any unresolved part; do not claim another agent tested it unless
+that trial actually occurred. Inspect the rendered frame for fitting
 content, readable description, and preserved layout. Report publication separately:
 local creation is not publication. Return checked assets and exact links using the
 [human-only publication boundary](../AGENTS.md#component-publication-is-human-only).
