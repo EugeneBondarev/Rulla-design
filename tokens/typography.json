@@ -1,0 +1,282 @@
+{
+  "primitives": {
+    "font": {
+      "family": {
+        "primary": {
+          "value": "Roboto",
+          "type": "fontFamilies"
+        },
+        "code": {
+          "value": "Roboto Mono",
+          "type": "fontFamilies"
+        }
+      },
+      "weight": {
+        "regular": {
+          "value": 400,
+          "type": "fontWeights"
+        },
+        "medium": {
+          "value": 500,
+          "type": "fontWeights"
+        },
+        "semibold": {
+          "value": 600,
+          "type": "fontWeights"
+        }
+      },
+      "size": {
+        "10": {
+          "value": 10,
+          "type": "fontSizes"
+        },
+        "12": {
+          "value": 12,
+          "type": "fontSizes"
+        },
+        "14": {
+          "value": 14,
+          "type": "fontSizes"
+        },
+        "15": {
+          "value": 15,
+          "type": "fontSizes"
+        },
+        "16": {
+          "value": 16,
+          "type": "fontSizes"
+        },
+        "23": {
+          "value": 23,
+          "type": "fontSizes"
+        },
+        "32": {
+          "value": 32,
+          "type": "fontSizes"
+        },
+        "46": {
+          "value": 46,
+          "type": "fontSizes"
+        }
+      },
+      "lineHeight": {
+        "14": {
+          "value": 14,
+          "type": "lineHeights"
+        },
+        "16": {
+          "value": 16,
+          "type": "lineHeights"
+        },
+        "20": {
+          "value": 20,
+          "type": "lineHeights"
+        },
+        "22": {
+          "value": 22,
+          "type": "lineHeights"
+        },
+        "28": {
+          "value": 28,
+          "type": "lineHeights"
+        },
+        "36": {
+          "value": 36,
+          "type": "lineHeights"
+        },
+        "52": {
+          "value": 52,
+          "type": "lineHeights"
+        }
+      },
+      "letterSpacing": {
+        "none": {
+          "value": 0,
+          "type": "letterSpacing"
+        },
+        "wide": {
+          "value": 1,
+          "type": "letterSpacing",
+          "description": "10% of 10px = 1px"
+        }
+      }
+    }
+  },
+  "Typography/Mobile": {
+    "Display": {
+      "M": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.semibold}",
+          "lineHeight": "{primitives.font.lineHeight.52}",
+          "fontSize": "{primitives.font.size.46}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      }
+    },
+    "Heading": {
+      "L": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.semibold}",
+          "lineHeight": "{primitives.font.lineHeight.36}",
+          "fontSize": "{primitives.font.size.32}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      },
+      "M": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.semibold}",
+          "lineHeight": "{primitives.font.lineHeight.28}",
+          "fontSize": "{primitives.font.size.23}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      },
+      "S": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.semibold}",
+          "lineHeight": "{primitives.font.lineHeight.22}",
+          "fontSize": "{primitives.font.size.16}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      }
+    },
+    "Label": {
+      "M": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.medium}",
+          "lineHeight": "{primitives.font.lineHeight.22}",
+          "fontSize": "{primitives.font.size.16}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      },
+      "S": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.medium}",
+          "lineHeight": "{primitives.font.lineHeight.20}",
+          "fontSize": "{primitives.font.size.14}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      },
+      "SSubtle": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.regular}",
+          "lineHeight": "{primitives.font.lineHeight.20}",
+          "fontSize": "{primitives.font.size.14}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      },
+      "XS": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.medium}",
+          "lineHeight": "{primitives.font.lineHeight.16}",
+          "fontSize": "{primitives.font.size.12}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      }
+    },
+    "Body": {
+      "M": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.regular}",
+          "lineHeight": "{primitives.font.lineHeight.22}",
+          "fontSize": "{primitives.font.size.16}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography",
+        "description": "Default Mobile: 16px"
+      },
+      "S": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.regular}",
+          "lineHeight": "{primitives.font.lineHeight.20}",
+          "fontSize": "{primitives.font.size.14}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      },
+      "Code": {
+        "value": {
+          "fontFamily": "{primitives.font.family.code}",
+          "fontWeight": "{primitives.font.weight.regular}",
+          "lineHeight": "{primitives.font.lineHeight.20}",
+          "fontSize": "{primitives.font.size.14}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      }
+    },
+    "Caption": {
+      "M": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.regular}",
+          "lineHeight": "{primitives.font.lineHeight.16}",
+          "fontSize": "{primitives.font.size.12}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      },
+      "S": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.regular}",
+          "lineHeight": "{primitives.font.lineHeight.14}",
+          "fontSize": "{primitives.font.size.10}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography"
+      },
+      "SUppercase": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.regular}",
+          "lineHeight": "{primitives.font.lineHeight.14}",
+          "fontSize": "{primitives.font.size.10}",
+          "letterSpacing": "{primitives.font.letterSpacing.wide}",
+          "textCase": "uppercase"
+        },
+        "type": "typography"
+      }
+    }
+  },
+  "Typography/Web": {
+    "Body": {
+      "M": {
+        "value": {
+          "fontFamily": "{primitives.font.family.primary}",
+          "fontWeight": "{primitives.font.weight.regular}",
+          "lineHeight": "{primitives.font.lineHeight.22}",
+          "fontSize": "{primitives.font.size.15}",
+          "letterSpacing": "{primitives.font.letterSpacing.none}"
+        },
+        "type": "typography",
+        "description": "Web Override: 15px"
+      }
+    }
+  },
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": [
+      "primitives",
+      "Typography/Mobile",
+      "Typography/Web"
+    ]
+  }
+}
