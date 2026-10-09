@@ -2,8 +2,9 @@
 
 Reviewed all 13 Markdown files in the supplied `enqo-agent-starter.zip` and
 replaced the starter's generic directions with the entry points in this repository.
-This is a review of the starter and the inspected sources, not a complete audit
-of every Enqo Figma file or component.
+This is historical review evidence, not an additional rule source or a complete
+audit of every Enqo Figma file/component. Current instructions live in the linked
+authoritative homes.
 
 | Starter statement or omission | Correction | Evidence / destination |
 | --- | --- | --- |
@@ -17,7 +18,7 @@ of every Enqo Figma file or component.
 | No published-versus-edited source distinction. | Sheet is CHANGED; App Shell is CURRENT at inspection. | [scaffolds](scaffolds.md). |
 | enqo-flow described only multi-screen work. | Covers one screen, one sheet, or multiple screens, Web and Mobile. | [enqo-flow](../.agents/skills/enqo-flow/SKILL.md). |
 | enqo-component triggers on almost any mention of states/tokens. | Restricted to explicit DS component work. | [enqo-component](../.agents/skills/enqo-component/SKILL.md). |
-| Audit prohibition only mentions published libraries / production. | Audit is read-only across all assets until fixes are requested. | [enqo-ds-audit](../.agents/skills/enqo-ds-audit/SKILL.md). |
+| Audit prohibition only mentions published libraries / production. | Audit is read-only across all assets until fixes are requested; component publication always remains human-only. | [enqo-ds-audit](../.agents/skills/enqo-ds-audit/SKILL.md). |
 | Skill paths assume the current directory is this repository. | Relative links resolve from each skill's location. | All three skills. |
 | Claude import depends on version and surrounding files. | Add an explicit CLAUDE.md import; keep small skill adapters with matching descriptions. | [CLAUDE.md](../CLAUDE.md), .claude/skills/. |
 | “Knowledge Promotion Candidate” asks for confidence/urgency without improving the rule. | Report the missing fact, blocked action, destination file, exact proposed text, evidence, and decision needed. | [AGENTS.md](../AGENTS.md). |

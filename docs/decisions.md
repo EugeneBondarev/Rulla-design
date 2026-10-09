@@ -1,22 +1,32 @@
-# Approved decisions
+# Decision provenance
 
-The user explicitly requested the following operating rules on 2026-10-09 in the
-Enqo harness setup task: Web and Mobile share instructions; simple scenarios reuse
-existing assets; asset references must be exact; missing evidence must be reported
-and a concrete documentation update proposed. Their implementation is
-[AGENTS.md](../AGENTS.md). This attribution records the source request; it is not
-a claim that the resulting change has already been reviewed or merged.
+These entries record direct instructions from Evgeny in the Enqo harness setup
+conversation, all dated 2026-10-09. They establish approval provenance, not a second
+copy of the operating rules. Implementation is in the linked authoritative homes;
+these decisions do not prove a PR was merged, an asset was published, or a workflow
+was tested. No external approval permalink was supplied for this conversation.
 
-The user subsequently requested moving the same instruction set into
-[EugeneBondarev/Rulla-design](https://github.com/EugeneBondarev/Rulla-design) on
-2026-10-09. This is the instruction repository; existing Figma identities and
-GitLab code sources retain their exact verified names and URLs. The original
-GitLab draft remains separate and is not an adopted competing source of rules.
+| Instruction / source | Authoritative home |
+| --- | --- |
+| Shared Web/Mobile harness; exact source references and missing-evidence reporting | [AGENTS.md](../AGENTS.md) |
+| Move instructions from the Enqo.Design draft to EugeneBondarev/Rulla-design | [Code repository provenance](codebases.md) |
+| “все, отныне и впредь это агентский центр и оркестратор” | [AGENTS.md entry and orchestration](../AGENTS.md#start-here) |
+| Shared foundations plus platform libraries; migration remains in progress | [Figma map](figma.md#file-map-and-migration-state--2026-10-09) |
+| Record concrete improvements, their situation/problem/proposal in GitHub | [Harness proposals](harness-proposals.md) |
+| Direct human DS-change request; mandatory reuse/token coverage and a separate gap file | [Authorization](../AGENTS.md#design-system-changes-require-a-direct-human-request), [coverage](design-system.md#required-token-coverage), [token gaps](token-gaps.md) |
+| Supplied infrastructure template, outer-copy detach, code/library naming and short descriptions | [Component authoring](component-authoring.md) |
+| Explicit creation task; publication only by a human | [Creation boundary](../AGENTS.md#design-system-changes-require-a-direct-human-request), [publication boundary](../AGENTS.md#component-publication-is-human-only) |
+| Russian mockups with varied realistic text lengths and content density | [Mockup content](mockup-content.md) |
+| Compact predictable structure, clear grouping, no duplicate or conflicting rules | [Repository upkeep](../AGENTS.md#maintain-this-repository), [topic map](../README.md#files) |
+| Components must be understandable and usable by another agent without the original chat | [Component descriptions and handoff check](component-authoring.md#minimal-description) |
 
-No universal scaffold, screen-versus-sheet selection rule, component replacement,
-or global token authority has been approved in this file.
+The human-only publication instruction supersedes earlier wording permitting
+agent publication with authorization. The original GitLab draft remains separate;
+it is not a competing source of current rules. No universal scaffold,
+screen-versus-sheet rule, component replacement, or global token authority has
+been approved here.
 
-For a future adopted decision, record the exact decision, platform/scope,
-approver, approval date, linked approval (MR/issue or other accessible record),
-linked Figma/code evidence, and canonical destination document. Keep pending
-proposals beside the relevant gap or in the MR; do not list them as adopted.
+For a future adopted decision, add its date, approver, concise instruction/source,
+approval link when available (otherwise identify the actual source), and home.
+Update the rule in that home instead of copying it into this log. Pending proposals
+belong in harness-proposals.md or the relevant gap; do not call them adopted.

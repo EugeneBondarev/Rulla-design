@@ -1,40 +1,33 @@
 # Rulla-design
 
-Shared instructions for agents working on Enqo Web and Mobile in Figma, with
-source-code references. This repository is the requested home for those rules:
-[EugeneBondarev/Rulla-design](https://github.com/EugeneBondarev/Rulla-design).
-Start with [AGENTS.md](AGENTS.md).
+[Rulla-design](https://github.com/EugeneBondarev/Rulla-design) is the shared agent
+center and orchestration entry point for Enqo Web and Mobile. Start each task with
+[AGENTS.md](AGENTS.md): it routes work to the relevant skill, exact Figma/code
+sources, required checks, and documentation updates. Shared rules, workflows, and
+approved decisions are maintained here.
 
 Existing Figma asset names, Enqo code-repository names, and enqo-* skill IDs are
 preserved: moving the instructions does not rename or migrate those sources.
 
 ## Files
 
-```text
-AGENTS.md
-CLAUDE.md
-GEMINI.md
-docs/
-  figma.md
-  scaffolds.md
-  design-system.md
-  codebases.md
-  decisions.md
-  starter-review.md
-.agents/skills/
-  enqo-flow/SKILL.md
-  enqo-component/SKILL.md
-  enqo-ds-audit/SKILL.md
-.claude/skills/
-  enqo-flow/SKILL.md
-  enqo-component/SKILL.md
-  enqo-ds-audit/SKILL.md
-tokens/typography.json
-```
+This is the topic map. Each rule has one authoritative home; read linked topic
+rules rather than using this map as a second instruction set.
 
-[Starter review](docs/starter-review.md) lists the inaccurate or insufficient
-instructions removed. [Scaffolds](docs/scaffolds.md) identifies the verified
-entry nodes and the evidence still missing. Existing typography data is preserved.
+| Group | Home | Contents |
+| --- | --- | --- |
+| Entry | [AGENTS.md](AGENTS.md) | Task routing, evidence standards, authorization, publication boundary, repository upkeep |
+| Figma sources | [docs/figma.md](docs/figma.md) | File roles, migration, library/page inventory, access |
+| Screen entry | [docs/scaffolds.md](docs/scaffolds.md) | Scaffold/sheet identities, APIs, usage and selection gaps |
+| Design system | [docs/design-system.md](docs/design-system.md) | Token coverage requirements and inspected bindings/JSON provenance |
+| Components | [docs/component-authoring.md](docs/component-authoring.md) | Infrastructure template, naming, placement and descriptions |
+| Mockup content | [docs/mockup-content.md](docs/mockup-content.md) | Russian content, realistic variation and layout checks |
+| Code sources | [docs/codebases.md](docs/codebases.md) | Repository/path/commit references and inspected architecture |
+| Findings | [docs/token-gaps.md](docs/token-gaps.md), [docs/harness-proposals.md](docs/harness-proposals.md) | Token deficiencies and broader harness proposals, respectively |
+| Provenance | [docs/decisions.md](docs/decisions.md), [docs/starter-review.md](docs/starter-review.md) | Human decision sources and historical starter review; not competing rulebooks |
+| Workflows | [.agents/skills/](.agents/skills/) | The three task workflows selected by AGENTS.md |
+| Client loading | [CLAUDE.md](CLAUDE.md), [GEMINI.md](GEMINI.md), [.claude/skills/](.claude/skills/) | Imports/adapters; no independent design rules |
+| Data | [tokens/typography.json](tokens/typography.json) | Existing token data; inspected provenance is in design-system.md |
 
 ## Start a task
 
@@ -88,6 +81,12 @@ Code, and Gemini CLI sessions with the required access:
    and authorized destination per platform. Require linked editable output,
    verified instance keys/bindings, visual inspection, and no new DS assets or
    detached instances. Record which behavior and states were actually checked.
+   Require Russian authored UI content and linked short/typical/long content
+   cases with rendered layout checks, preserving exact technical identifiers.
+4. In a task with a real token deficiency, require a linked token-gap entry with
+   exact target/property/mode and inspected scope, the correct evidence
+   classification, and a stopped dependent edit. Reject invented tokens, temporary
+   hardcoding, unrequested DS repair, and unsupported full-coverage claims.
 
 No fresh-session cross-client or end-to-end composition trial is claimed by this
 initial documentation change. Remaining source gaps are explicit in the docs.
