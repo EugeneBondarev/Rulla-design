@@ -39,6 +39,13 @@ separate scenario-reference file; it is not the Mobile component library.
 
 ## Observed shared foundations and remaining components
 
+The shared `Infra` page also holds the user-designated
+[`DS Container Template`, 20748:37538](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=20748-37538)
+for presenting newly created components. Exact source/header/slot identities and
+the narrow outer-copy detach workflow are maintained in
+[component authoring](component-authoring.md). This infrastructure is distinct
+from product scaffolds; platform separation does not authorize moving its source.
+
 The shared file contains these local variable collections at inspection:
 
 | Exact collection name | Modes | Variable count |

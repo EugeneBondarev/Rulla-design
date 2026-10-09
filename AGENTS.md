@@ -13,7 +13,10 @@ multi-screen scenario, use
 relevant implementation through [codebases](docs/codebases.md).
 
 For an explicit component creation/change request, use
-[enqo-component](.agents/skills/enqo-component/SKILL.md). For an audit, use
+[enqo-component](.agents/skills/enqo-component/SKILL.md) and
+[component authoring](docs/component-authoring.md), which defines the exact
+infrastructure template, naming sources, placement, and minimal descriptions.
+For an audit, use
 [enqo-ds-audit](.agents/skills/enqo-ds-audit/SKILL.md).
 
 Read the current [Figma file map and migration rules](docs/figma.md) before
@@ -77,6 +80,11 @@ Building a scenario, finding a defect, recording a proposal or token gap, and
 requests to improve the resulting screen do not authorize design-system changes.
 Report the needed change with exact references and the requested scope. Existing
 explicit authorization is sufficient for that scope; do not ask for it again.
+
+For an explicitly requested new component, follow
+[component authoring](docs/component-authoring.md). Its only detach exception
+is the new outer `DS Container Template` presentation copy. The header and nested
+UI instances remain linked; this exception never applies to scenario composition.
 
 ## Scenario boundary
 

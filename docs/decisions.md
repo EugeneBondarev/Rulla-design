@@ -46,6 +46,16 @@ record where they occur in a separate file. The operating rules are in
 Recording a gap does not authorize its repair. This records the user's decision,
 not proof that existing Figma assets already have complete token coverage.
 
+On 2026-10-09, Evgeny required new components to be placed in a copy of the exact
+infrastructure template he linked. Only the new outer copy is detached; its
+`Slot` holds the actual component and its header remains linked with the component
+name. Names must come from project code or the platform library (Flutter/Mobile,
+Vuetify/Web); descriptions must briefly explain usage and key supported states.
+The inspected sources and workflow are maintained in
+[component-authoring.md](component-authoring.md). This authorizes that presentation
+procedure during directly requested component creation, not a component-creation
+task now, source-template edits, or migration of existing components.
+
 No universal scaffold, screen-versus-sheet selection rule, component replacement,
 or global token authority has been approved in this file.
 

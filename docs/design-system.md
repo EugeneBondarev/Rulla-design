@@ -3,6 +3,10 @@
 The reuse and no-invention policy lives in [AGENTS.md](../AGENTS.md). This file
 contains inspected token evidence, not a speculative catalog of semantic roles.
 
+Component presentation, code/library naming, minimal descriptions, and the exact
+infrastructure template are defined in [component-authoring.md](component-authoring.md).
+Use it with enqo-component for directly requested component work.
+
 ## Verify coverage for the requested output
 
 Before dependent edits, resolve coverage for the applicable properties required

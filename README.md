@@ -19,6 +19,7 @@ docs/
   figma.md
   scaffolds.md
   design-system.md
+  component-authoring.md
   codebases.md
   decisions.md
   harness-proposals.md
@@ -44,6 +45,10 @@ the rules for working during migration. Every agent records concrete bottlenecks
 and improvements in [harness proposals](docs/harness-proposals.md), using exact
 evidence and the procedure defined there. Recording an idea does not authorize
 implementing it.
+
+[Component authoring](docs/component-authoring.md) defines the exact infrastructure
+template, outer-copy detach exception, linked header, code/library naming, and
+short descriptions for explicitly requested new components.
 
 Design-system changes require a direct human request for that change. Scenario
 work must reuse verified components and cover applicable visual properties with
