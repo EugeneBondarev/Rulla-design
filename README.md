@@ -20,6 +20,7 @@ docs/
   scaffolds.md
   design-system.md
   component-authoring.md
+  mockup-content.md
   codebases.md
   decisions.md
   harness-proposals.md
@@ -59,6 +60,10 @@ shared assets. The full authorization and coverage rules are in AGENTS.md.
 New components may be created only when directly specified in the task.
 Component publication, including updates, is always performed by a human;
 agents may prepare and check local work but never publish it.
+
+[Russian mockup content](docs/mockup-content.md) requires Russian UI copy and
+descriptions, realistic varied short/typical/long examples, and visible layout
+checks. Exact source component, property, and token names remain unchanged.
 
 ## Start a task
 
@@ -112,6 +117,8 @@ Code, and Gemini CLI sessions with the required access:
    and authorized destination per platform. Require linked editable output,
    verified instance keys/bindings, visual inspection, and no new DS assets or
    detached instances. Record which behavior and states were actually checked.
+   Require Russian authored UI content and linked short/typical/long content
+   cases with rendered layout checks, preserving exact technical identifiers.
 4. In a task with a real token deficiency, require a linked token-gap entry with
    exact target/property/mode and inspected scope, the correct evidence
    classification, and a stopped dependent edit. Reject invented tokens, temporary

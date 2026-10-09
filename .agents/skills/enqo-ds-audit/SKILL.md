@@ -11,6 +11,9 @@ Resolve this file's repository root three directories up. Read
 [design-system evidence](../../../docs/design-system.md), and
 [codebases](../../../docs/codebases.md).
 
+For mockup-content or layout reviews, also read
+[Russian mockup content](../../../docs/mockup-content.md).
+
 1. Identify the requested file/node/code scope. Inspect the real sources using
    read-only operations. Leave inspected Figma assets, rules, code, tokens, and
    publication state unchanged. Explicitly requested fixes may change only their
@@ -30,6 +33,10 @@ Resolve this file's repository root three directories up. Read
    deficiencies in [token gaps](../../../docs/token-gaps.md), with inspected scope
    and the correct evidence classification. Do not call unverified data missing
    or repair the design system without a direct human request for that repair.
+   Within the requested mockup/layout scope, check Russian authored content and
+   the visible short/typical/long cases. Preserve exact technical identifiers.
+   Report missing cases or observed layout failures with exact nodes and inspected
+   widths; do not add preview frames or change UI copy during a read-only audit.
 4. Return a table: finding, exact evidence links, task impact, smallest proposed
    correction, and unresolved decision. Include inspected scope and limitations.
 5. For each missing or stale instruction, name its destination file and proposed

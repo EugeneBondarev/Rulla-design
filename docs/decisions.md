@@ -64,6 +64,14 @@ delegated/automated publication. The governing rules live in
 [AGENTS.md](../AGENTS.md); component workflows return local checked assets for a
 human to publish.
 
+On 2026-10-09, Evgeny required Russian as the main language of scenario and
+component mockups, with all authored content in Russian. Scenario content must
+be realistic and varied to expose behavior with short, typical, and long text
+and differing supported content density. The operating rule is maintained in
+[mockup-content.md](mockup-content.md), preserving exact technical identities
+required by earlier naming/source rules. This records the instruction, not a
+claim that existing mockups or new output cases have been inspected or localized.
+
 No universal scaffold, screen-versus-sheet selection rule, component replacement,
 or global token authority has been approved in this file.
 

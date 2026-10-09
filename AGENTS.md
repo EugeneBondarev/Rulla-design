@@ -12,6 +12,12 @@ multi-screen scenario, use
 [design-system evidence](docs/design-system.md) before editing Figma. Read the
 relevant implementation through [codebases](docs/codebases.md).
 
+For both scenario and component work, follow
+[Russian mockup content](docs/mockup-content.md): author Russian UI copy and
+explanations, use varied realistic short/typical/long examples, and inspect their
+layout behavior. Preserve exact technical identifiers; never translate source
+component/property/token names or invent product behavior for the examples.
+
 For an explicit component creation/change request, use
 [enqo-component](.agents/skills/enqo-component/SKILL.md) and
 [component authoring](docs/component-authoring.md), which defines the exact

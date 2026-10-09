@@ -8,6 +8,7 @@ description: Create, change, or document an Enqo design-system component only wh
 Resolve this file's repository root three directories up. Read
 [AGENTS.md](../../../AGENTS.md), [Figma references](../../../docs/figma.md),
 [component authoring](../../../docs/component-authoring.md),
+[Russian mockup content](../../../docs/mockup-content.md),
 [design-system evidence](../../../docs/design-system.md), and the relevant
 [code references](../../../docs/codebases.md).
 
@@ -41,6 +42,9 @@ Resolve this file's repository root three directories up. Read
    inside `Slot`, set `Headline#20597:0`, and add the minimal visible and native
    component description. Do not alter the template or detach nested UI instances.
    Do not reorganize existing components unless that work was requested.
+   Use Russian UI examples and descriptions. Show realistic short, typical, and
+   long content through linked preview instances under mockup-content.md, without
+   creating extra masters/variants or translating exact code/library identities.
 5. Check the changed properties/variants, bindings, applicable states, and linked
    usage; inspect the rendered result. Report exact changed node URLs, source
    keys, code references, checks, and publication state. Do not claim publication
@@ -50,6 +54,8 @@ Resolve this file's repository root three directories up. Read
    source URLs plus naming evidence and description checks from component-authoring.md.
    Hand the checked local component and exact links to the human for any
    publication; do not trigger publication through tools or delegate it to agents.
+   Verify and link the rendered content cases and report wrapping/overflow gaps
+   rather than hiding them with shorter text or unauthorized source changes.
 6. Propose the exact documentation diff for a verified new fact or missing rule.
    Record observed harness bottlenecks in
    [harness proposals](../../../docs/harness-proposals.md), following AGENTS.md.

@@ -8,7 +8,8 @@ description: Compose or refine one Enqo screen, sheet, or multi-screen scenario 
 Resolve this file's repository root three directories up. Read
 [AGENTS.md](../../../AGENTS.md), [Figma references](../../../docs/figma.md),
 [scaffolds](../../../docs/scaffolds.md), and
-[design-system evidence](../../../docs/design-system.md). Use paths relative to
+[design-system evidence](../../../docs/design-system.md) and
+[Russian mockup content](../../../docs/mockup-content.md). Use paths relative to
 this skill, not an unrelated current working directory. If the shared repository
 is unavailable, report that missing prerequisite; do not substitute general advice.
 
@@ -39,6 +40,10 @@ is unavailable, report that missing prerequisite; do not substitute general advi
 5. Compose the authorized screen(s) with native linked instances and supported
    slots/properties. Preserve source bindings and layout constraints. New output
    names and task-specific copy are allowed; they are not existing standards.
+   Author Russian user-facing content and show distinct realistic short, typical,
+   and long cases for the content-bearing layouts under mockup-content.md.
+   Preserve exact technical names and vary content without creating DS variants
+   or inventing unsupported product states.
 6. Derive the state/transition list from the requested scenario, linked references,
    and current implementation. Flag conflicts or requirements that are not
    established. Do not add speculative product behavior to fill a checklist.
@@ -48,6 +53,10 @@ is unavailable, report that missing prerequisite; do not substitute general advi
    and persistence failures without claiming completion for them. Recheck coverage
    on composed containers/text and instance overrides as well as source components;
    do not claim full token coverage with unresolved required properties.
+   Inspect each shown content-length/density case at the required platform widths
+   for wrapping, overflow, alignment, and supported scrolling/truncation. Return
+   exact case/output links and remaining content gaps. Do not hide failures by
+   shortening examples or overriding typography/tokens.
 8. Record observed harness bottlenecks in
    [harness proposals](../../../docs/harness-proposals.md), following AGENTS.md.
    Return linked output names, source list, performed checks, remaining gaps, and

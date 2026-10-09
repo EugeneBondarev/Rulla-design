@@ -82,6 +82,12 @@ preservation are the user-required workflow and must be checked on actual output
 
 ## Minimal description
 
+Write descriptions and explanatory labels in Russian. Keep the header's exact
+code/library component name and technical property/variant names unchanged.
+Follow [mockup-content.md](mockup-content.md) for realistic Russian UI examples
+and visible short/typical/long previews; previews are linked instances, not extra
+masters or variants.
+
 Use a few short sentences or bullets covering:
 
 - What the component does and where it is used. Link exact existing usage nodes
