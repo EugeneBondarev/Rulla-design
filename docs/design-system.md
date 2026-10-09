@@ -3,6 +3,26 @@
 The reuse and no-invention policy lives in [AGENTS.md](../AGENTS.md). This file
 contains inspected token evidence, not a speculative catalog of semantic roles.
 
+## Verify coverage for the requested output
+
+Before dependent edits, resolve coverage for the applicable properties required
+by [AGENTS.md](../AGENTS.md). For each source component or newly composed layout,
+record its exact node URL and property, component key where applicable, actual
+variable/style name and ID/key, collection, effective mode, aliases, and consuming
+binding. Group properties only when they share the same verified evidence.
+
+An inherited binding counts when its source and selected mode are verified. A
+text/effect style needs a verified token mapping for its applicable properties;
+its name alone is insufficient. A hardcoded source value, similar appearance,
+or matching numerical value does not establish token coverage. Do not modify a
+master to fix uncovered properties during scenario work.
+
+Verify bindings again on the output, including instance overrides and composed
+containers/text. Report checked scope and unresolved properties explicitly.
+Record missing tokens, unknown coverage, missing mappings, and binding limitations
+in [token-gaps.md](token-gaps.md), using its distinct evidence classifications.
+This checklist does not declare a global token inventory or complete coverage.
+
 The approved target file organization and current migration state are in
 [Figma references](figma.md). Shared
 foundations remain in `🟣 Design System`; platform components are moving to the

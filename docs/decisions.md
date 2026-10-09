@@ -37,6 +37,15 @@ proposed change. The process and entries live in
 [harness-proposals.md](harness-proposals.md). Recording a proposal is authorized;
 adoption, asset changes, publication, and merging remain separate actions.
 
+On 2026-10-09, Evgeny directly required that agents never change the design system
+without a human request for that specific DS change. Scenario composition must
+use existing components and tokens for applicable colors, typography, spacing,
+sizes, and other visual properties. Agents must report token deficiencies and
+record where they occur in a separate file. The operating rules are in
+[AGENTS.md](../AGENTS.md); the evidence register is [token-gaps.md](token-gaps.md).
+Recording a gap does not authorize its repair. This records the user's decision,
+not proof that existing Figma assets already have complete token coverage.
+
 No universal scaffold, screen-versus-sheet selection rule, component replacement,
 or global token authority has been approved in this file.
 

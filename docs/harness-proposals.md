@@ -6,6 +6,10 @@ mappings, instructions, skills, access, orchestration, and verification.
 Recording proposals is authorized by the user. These entries are proposals,
 not adopted rules or authorization to implement them.
 
+Token-specific deficiencies are recorded in [token-gaps.md](token-gaps.md).
+Link the relevant `TG-NNN` entry here when proposing a systemic improvement;
+do not duplicate its finding or treat a proposal as permission to change the DS.
+
 ## Record a proposal
 
 1. Read existing entries. If the same bottleneck is recorded, add new evidence

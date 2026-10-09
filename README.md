@@ -22,6 +22,7 @@ docs/
   codebases.md
   decisions.md
   harness-proposals.md
+  token-gaps.md
   starter-review.md
 .agents/skills/
   enqo-flow/SKILL.md
@@ -43,6 +44,12 @@ the rules for working during migration. Every agent records concrete bottlenecks
 and improvements in [harness proposals](docs/harness-proposals.md), using exact
 evidence and the procedure defined there. Recording an idea does not authorize
 implementing it.
+
+Design-system changes require a direct human request for that change. Scenario
+work must reuse verified components and cover applicable visual properties with
+existing tokens. Agents report missing or unverified coverage in
+[token gaps](docs/token-gaps.md), without creating replacements or silently fixing
+shared assets. The full authorization and coverage rules are in AGENTS.md.
 
 ## Start a task
 
@@ -96,6 +103,10 @@ Code, and Gemini CLI sessions with the required access:
    and authorized destination per platform. Require linked editable output,
    verified instance keys/bindings, visual inspection, and no new DS assets or
    detached instances. Record which behavior and states were actually checked.
+4. In a task with a real token deficiency, require a linked token-gap entry with
+   exact target/property/mode and inspected scope, the correct evidence
+   classification, and a stopped dependent edit. Reject invented tokens, temporary
+   hardcoding, unrequested DS repair, and unsupported full-coverage claims.
 
 No fresh-session cross-client or end-to-end composition trial is claimed by this
 initial documentation change. Remaining source gaps are explicit in the docs.

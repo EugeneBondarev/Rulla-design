@@ -14,8 +14,8 @@ Resolve this file's repository root three directories up. Read
 1. Identify the requested file/node/code scope. Inspect the real sources using
    read-only operations. Leave inspected Figma assets, rules, code, tokens, and
    publication state unchanged unless fixes are explicitly requested. Record
-   harness proposals under the standing authorization in AGENTS.md; if the user
-   explicitly prohibits all writes, return the proposed entry as unsaved.
+   harness proposals and token gaps under the standing authorization in AGENTS.md;
+   if the user explicitly prohibits all writes, return the entries as unsaved.
 2. Record exact names, source node URLs, keys, properties/variants, bindings,
    publication status, and code paths/commits relevant to each finding. Do not
    treat names, screenshots, search absence, or inaccessible data as proof of
@@ -23,6 +23,11 @@ Resolve this file's repository root three directories up. Read
 3. Compare only established requirements and mappings. Separate observed
    mismatches from hypotheses and unknowns. Identify the actual task affected by
    each gap; do not invent severity, ownership, or policy.
+   Check applicable component and token coverage under AGENTS.md, including raw
+   inherited values, actual bindings/modes, and style-to-token mappings. Record
+   deficiencies in [token gaps](../../../docs/token-gaps.md), with inspected scope
+   and the correct evidence classification. Do not call unverified data missing
+   or repair the design system without a direct human request for that repair.
 4. Return a table: finding, exact evidence links, task impact, smallest proposed
    correction, and unresolved decision. Include inspected scope and limitations.
 5. For each missing or stale instruction, name its destination file and proposed

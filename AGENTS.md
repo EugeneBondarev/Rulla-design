@@ -63,6 +63,21 @@ that repository's own instructions. Do not assume a GitHub link injects context.
    names and product copy; label these as new output, never as existing standards.
    Return their actual URLs after creation.
 
+## Design-system changes require a direct human request
+
+Never change the design system unless a human directly requests that specific
+design-system change. This covers creating, editing, renaming, moving, deleting,
+or publishing shared components/sets/variants and their property definitions;
+variables, collections, modes, aliases, and values; typography/paint/effect styles;
+foundations; and design-system token files or code. Limit edits to the expressly
+requested assets and properties. A component-change request does not authorize
+creating tokens or changing other shared assets unless those changes are included.
+
+Building a scenario, finding a defect, recording a proposal or token gap, and
+requests to improve the resulting screen do not authorize design-system changes.
+Report the needed change with exact references and the requested scope. Existing
+explicit authorization is sufficient for that scope; do not ask for it again.
+
 ## Scenario boundary
 
 An ordinary scenario request means composition from existing, verified assets:
@@ -71,12 +86,42 @@ changes to shared masters. It does not implicitly invoke component creation.
 New screen frames, layout containers, text, and instance overrides are allowed
 within the task, using verified source layout, styles, bindings, and properties.
 If those sources cannot support the task, report the gap instead of manufacturing
-a replacement. A separate explicit DS change request can expand this scope.
+a replacement. Supported instance overrides affect only the authorized output;
+they must not change a master or bypass its supported API. Do not draw lookalike
+components or create local components/styles/tokens to evade this boundary.
+A direct human DS change request can expand only its stated scope.
 
 Choose Web and Mobile sources independently. Do not equate a web surface with a
 mobile modal route or a Flutter class with a Figma component by name. Explain
 screen versus sheet selection using an exact existing screen/route or an approved
 decision; otherwise identify the missing decision.
+
+## Required component and token coverage
+
+Use verified existing components for UI elements and the verified scaffold,
+slots, and layout rules for composition. An arbitrary frame is not a substitute
+for a missing component. Layout containers and task-specific text are permitted
+as described above, with their visual properties covered by the design system.
+
+Every applicable visual property must use existing verified design-system tokens:
+colors (fills, strokes, text, icons, surfaces), typography (font family, weight,
+size, line height, letter spacing), spacing (padding and gaps), sizes (including
+applicable minimum/maximum, icon, and control dimensions), corner radii, and
+effects. Resolve the actual source, exact identity, selected mode, and binding
+using [design-system evidence](docs/design-system.md). Preserve verified bindings
+inherited from source components rather than overriding their internals.
+Hug/Fill and other layout behaviors are not numeric token values; verify them
+against the chosen source layout instead of inventing a token for them.
+
+A style reference alone does not prove token coverage: verify its token mapping.
+A raw value inherited from a master also does not prove coverage. If a suitable
+token, mapping, or supported binding is missing or cannot be verified, report the
+affected property and record it in [docs/token-gaps.md](docs/token-gaps.md).
+Do not invent a token/name, guess a value, hardcode a temporary replacement,
+select a token solely because its value matches, or repair the source asset
+without a direct human request. Stop the dependent edit and continue independent
+work. Report a binding limitation accurately; never claim an unsupported binding
+exists. Never claim full coverage while required gaps remain unresolved.
 
 ## Evidence and completion
 
@@ -86,13 +131,14 @@ canonical status. Figma describes design; code describes that revision's
 implementation; neither proves what is deployed.
 
 Return source links and output links, what changed, structural/visual checks,
-and remaining gaps. Check actual instance keys, property values, variable/style
-bindings, and screenshots. Do not claim all states, responsiveness, accessibility,
+and remaining gaps, including linked token-gap entries. Check actual instance keys,
+property values, variable/style bindings, and screenshots. Do not claim all states,
+responsiveness, accessibility,
 production parity, persistence, or cross-agent behavior were tested without evidence.
 
 Audits leave inspected assets and rules unchanged unless fixes are explicitly
-requested. The standing authorization to record proposals below still applies;
-an explicit instruction prohibiting all writes takes precedence. Publishing libraries,
+requested. The standing authorization to record proposals and token gaps still
+applies; an explicit instruction prohibiting all writes takes precedence. Publishing libraries,
 deleting shared assets, merging branches, and production changes require explicit
 authorization for that action. Do not store credentials here.
 
@@ -110,8 +156,12 @@ and observable acceptance check. Search existing proposals and add evidence to a
 existing item instead of creating duplicates. Capture the proposal when discovered;
 do not silently fix shared assets or expand the task to implement it.
 
+Record token-specific deficiencies in [docs/token-gaps.md](docs/token-gaps.md).
+For a related systemic harness improvement, link that entry from the proposal
+instead of duplicating its evidence or treating the proposal as a token definition.
+
 The user's standing instruction authorizes recording evidence-backed proposals
-through a branch/PR without asking again for each entry. If write access is
+and token gaps through a branch/PR without asking again for each entry. If write access is
 unavailable or the user explicitly prohibits all writes, return the exact proposed
 entry and report that it was not saved.
 Never claim a proposal was recorded in GitHub from an unsent draft.
