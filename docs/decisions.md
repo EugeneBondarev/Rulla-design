@@ -13,6 +13,15 @@ The user subsequently requested moving the same instruction set into
 GitLab code sources retain their exact verified names and URLs. The original
 GitLab draft remains separate and is not an adopted competing source of rules.
 
+On 2026-10-09, Evgeny explicitly designated Rulla-design as the agent center and
+orchestrator in this task: “все, отныне и впредь это агентский центр и оркестратор”.
+The decision applies to the shared Enqo Web/Mobile agent workflows. Its operating
+contract is [Start here and Orchestrate a task](../AGENTS.md): start from the shared
+instructions, select a skill, resolve exact sources and access, execute authorized
+work in dependency order, verify it, and propose needed updates here. This records
+the user's approval of the repository's role; it does not claim additional tools,
+permissions, automatic context loading, or an execution service were installed.
+
 No universal scaffold, screen-versus-sheet selection rule, component replacement,
 or global token authority has been approved in this file.
 

@@ -1,9 +1,10 @@
 # Rulla-design
 
-Shared instructions for agents working on Enqo Web and Mobile in Figma, with
-source-code references. This repository is the requested home for those rules:
-[EugeneBondarev/Rulla-design](https://github.com/EugeneBondarev/Rulla-design).
-Start with [AGENTS.md](AGENTS.md).
+[Rulla-design](https://github.com/EugeneBondarev/Rulla-design) is the shared agent
+center and orchestration entry point for Enqo Web and Mobile. Start each task with
+[AGENTS.md](AGENTS.md): it routes work to the relevant skill, exact Figma/code
+sources, required checks, and documentation updates. Shared rules, workflows, and
+approved decisions are maintained here.
 
 Existing Figma asset names, Enqo code-repository names, and enqo-* skill IDs are
 preserved: moving the instructions does not rename or migrate those sources.

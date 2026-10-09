@@ -2,10 +2,11 @@
 
 ## Start here
 
-[Rulla-design](https://github.com/EugeneBondarev/Rulla-design) is the home of these
-instructions for Enqo Web and Mobile design work. Existing source asset and skill
-names are preserved. For a
-screen, sheet, or multi-screen scenario, use
+[Rulla-design](https://github.com/EugeneBondarev/Rulla-design) is the shared agent
+center and orchestration entry point for Enqo Web and Mobile design work. It holds
+the common instructions, skills, source references, and approved decisions.
+Existing source asset and skill names are preserved. For a screen, sheet, or
+multi-screen scenario, use
 [enqo-flow](.agents/skills/enqo-flow/SKILL.md). Read
 [Figma references](docs/figma.md), [scaffold references](docs/scaffolds.md), and
 [design-system evidence](docs/design-system.md) before editing Figma. Read the
@@ -14,6 +15,23 @@ relevant implementation through [codebases](docs/codebases.md).
 For an explicit component creation/change request, use
 [enqo-component](.agents/skills/enqo-component/SKILL.md). For an audit, use
 [enqo-ds-audit](.agents/skills/enqo-ds-audit/SKILL.md).
+
+## Orchestrate a task
+
+Start each task by reading this file and the relevant shared skill. When executing
+inside another repository, explicitly load these instructions while respecting
+that repository's own instructions. Do not assume a GitHub link injects context.
+
+1. Identify the requested outcome, platform, target Figma nodes or code checkout,
+   and the operations authorized by the task.
+2. Select the skill linked above and resolve its exact Figma/code sources through
+   the docs. Check access to the required tools before dependent work.
+3. Order the work by actual dependencies: source discovery, the requested edits,
+   then structural, visual, or implementation checks appropriate to those edits.
+   Report unresolved prerequisites using the procedure below.
+4. Return evidence and proposed documentation corrections to this repository.
+   Keep shared workflows and approved decisions here; link to the actual Figma
+   assets and implementation repositories instead of duplicating their contents.
 
 ## No invented sources or standards
 
