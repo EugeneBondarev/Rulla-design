@@ -13,7 +13,9 @@ Resolve this file's repository root three directories up. Read
 
 1. Identify the requested file/node/code scope. Inspect the real sources using
    read-only operations. Leave inspected Figma assets, rules, code, tokens, and
-   publication state unchanged unless fixes are explicitly requested. Record
+   publication state unchanged. Explicitly requested fixes may change only their
+   authorized local assets; publication is always human-only. New component
+   creation must be directly specified in the task. Record
    harness proposals and token gaps under the standing authorization in AGENTS.md;
    if the user explicitly prohibits all writes, return the entries as unsaved.
 2. Record exact names, source node URLs, keys, properties/variants, bindings,

@@ -69,8 +69,8 @@ that repository's own instructions. Do not assume a GitHub link injects context.
 ## Design-system changes require a direct human request
 
 Never change the design system unless a human directly requests that specific
-design-system change. This covers creating, editing, renaming, moving, deleting,
-or publishing shared components/sets/variants and their property definitions;
+design-system change. This covers creating, editing, renaming, moving, or deleting
+shared components/sets/variants and their property definitions;
 variables, collections, modes, aliases, and values; typography/paint/effect styles;
 foundations; and design-system token files or code. Limit edits to the expressly
 requested assets and properties. A component-change request does not authorize
@@ -81,10 +81,27 @@ requests to improve the resulting screen do not authorize design-system changes.
 Report the needed change with exact references and the requested scope. Existing
 explicit authorization is sufficient for that scope; do not ask for it again.
 
+Create a component only when its creation is directly specified in the human's
+task. This includes new local or shared masters, component sets, variant
+components, and duplicated masters. A request to change an existing component
+does not authorize additional components unless their creation is specified.
+Scenario composition may create linked instances of existing components; those
+instances are not permission to create new masters.
+
 For an explicitly requested new component, follow
 [component authoring](docs/component-authoring.md). Its only detach exception
 is the new outer `DS Container Template` presentation copy. The header and nested
 UI instances remain linked; this exception never applies to scenario composition.
+
+## Component publication is human-only
+
+Agents must never publish components, component sets, or their updates to a Figma
+library. Only a human may publish them. This is an absolute agent prohibition,
+including when a component task asks for publication. Do not invoke publication
+through a tool, API, UI, script, automation, or another agent. Prepare the requested
+local work and checks, then return exact asset links and observed status for the
+human to publish. Inspecting publication status or importing an existing published
+component for reuse is allowed; neither is a publication action.
 
 ## Scenario boundary
 
@@ -146,8 +163,8 @@ production parity, persistence, or cross-agent behavior were tested without evid
 
 Audits leave inspected assets and rules unchanged unless fixes are explicitly
 requested. The standing authorization to record proposals and token gaps still
-applies; an explicit instruction prohibiting all writes takes precedence. Publishing libraries,
-deleting shared assets, merging branches, and production changes require explicit
+applies; an explicit instruction prohibiting all writes takes precedence. Component
+publication remains human-only. Deleting shared assets, merging branches, and production changes require explicit
 authorization for that action. Do not store credentials here.
 
 ## Improve the harness

@@ -56,6 +56,14 @@ The inspected sources and workflow are maintained in
 procedure during directly requested component creation, not a component-creation
 task now, source-template edits, or migration of existing components.
 
+On 2026-10-09, Evgeny explicitly prohibited component creation unless creation is
+directly specified in the task, and prohibited all agent publication of components:
+only a human may publish them. This supersedes earlier wording allowing agent
+publication with explicit authorization. The prohibition includes updates and
+delegated/automated publication. The governing rules live in
+[AGENTS.md](../AGENTS.md); component workflows return local checked assets for a
+human to publish.
+
 No universal scaffold, screen-versus-sheet selection rule, component replacement,
 or global token authority has been approved in this file.
 

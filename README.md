@@ -56,6 +56,10 @@ existing tokens. Agents report missing or unverified coverage in
 [token gaps](docs/token-gaps.md), without creating replacements or silently fixing
 shared assets. The full authorization and coverage rules are in AGENTS.md.
 
+New components may be created only when directly specified in the task.
+Component publication, including updates, is always performed by a human;
+agents may prepare and check local work but never publish it.
+
 ## Start a task
 
 1. Open Rulla-design as the agent's working directory, on the branch containing

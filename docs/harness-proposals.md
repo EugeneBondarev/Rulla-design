@@ -28,6 +28,8 @@ do not duplicate its finding or treat a proposal as permission to change the DS.
    write access is unavailable or the user explicitly prohibits all writes,
    return the exact entry and report it as unsaved.
 5. Implementation requires explicit authorization for the relevant change.
+   New components require a direct creation instruction; component publication
+   and updates are always human-only, never an agent implementation step.
    After approved work, link the actual output/checks, record adopted decisions
    in [decisions](decisions.md), and update the relevant source document. Keep
    the proposal history and outcome instead of turning its original claim into

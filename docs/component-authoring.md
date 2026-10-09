@@ -5,6 +5,10 @@ only for a direct human request to create or change a design-system component.
 It does not authorize creation during scenario work. Authorization, token coverage,
 and gap reporting remain governed by [AGENTS.md](../AGENTS.md).
 
+Creation must be directly specified in the task; a request to change an existing
+component does not authorize new components. Agents never publish components or
+updates, even when publication is requested. Only a human may perform that action.
+
 ## Exact infrastructure source
 
 Inspected read-only on 2026-10-09 in `🟣 Design System`
@@ -99,5 +103,6 @@ keys; header headline; naming reference; description; and token-coverage gaps.
 Verify the component master is inside `Slot`, the header remains linked, and
 source infrastructure is unchanged. Inspect the rendered frame for fitting
 content, readable description, and preserved layout. Report publication separately:
-local creation is not publication. This procedure does not authorize publication
-or migration of existing presentations.
+local creation is not publication. Return the checked assets and exact links for
+human publication; never trigger it or delegate it to another agent. This procedure
+does not authorize migration of existing presentations.

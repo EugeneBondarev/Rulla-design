@@ -12,8 +12,11 @@ Resolve this file's repository root three directories up. Read
 [code references](../../../docs/codebases.md).
 
 1. Identify the direct human component-change request, exact target, and authorized
-   properties. A scenario request or recorded defect is not authorization. For an
-   existing asset, inspect its source node URL, name, key, properties/variants, bindings,
+   properties. A scenario request or recorded defect is not authorization.
+   For an additional or new component, creation must be directly specified in the task;
+   changing an existing component alone does not authorize new masters or variants.
+   For an existing asset, inspect its source node URL, name, key,
+   properties/variants, bindings,
    publication status, and linked usage. For a requested new component, label its
    name as new output; first inspect concrete existing reuse candidates. Resolve
    the exact name from project code or the platform library using
@@ -23,7 +26,8 @@ Resolve this file's repository root three directories up. Read
    do not invent props, states, semantic names, or a Code Connect mapping.
 3. State the intended component change and affected uses. Resolve required gaps
    using AGENTS.md. Existing task authorization is sufficient for its stated
-   edits; publishing or expanding to unrelated shared assets needs authorization.
+   edits; expanding to unrelated shared assets needs authorization. Publication
+   is always human-only: never publish, even if the task requests publication.
 4. Apply only the requested changes, using verified existing tokens/styles unless
    their creation/change was separately included in the request. Preserve native
    instances, supported slots, layout constraints, and unaffected properties.
@@ -44,6 +48,8 @@ Resolve this file's repository root three directories up. Read
    inherited raw values and unsupported bindings are not proof of token coverage.
    For a new component, include presentation-frame, Slot, header, and component
    source URLs plus naming evidence and description checks from component-authoring.md.
+   Hand the checked local component and exact links to the human for any
+   publication; do not trigger publication through tools or delegate it to agents.
 6. Propose the exact documentation diff for a verified new fact or missing rule.
    Record observed harness bottlenecks in
    [harness proposals](../../../docs/harness-proposals.md), following AGENTS.md.

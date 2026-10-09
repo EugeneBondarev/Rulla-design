@@ -29,6 +29,9 @@ is unavailable, report that missing prerequisite; do not substitute general advi
 4. Apply the missing-evidence procedure in AGENTS.md to unresolved dependencies.
    State the file and exact documentation text needed to unblock the choice.
    Do not create a new DS asset as a workaround or invoke enqo-component silently.
+   New components require a direct creation instruction; ordinary scenario work
+   permits existing-component instances only. Never publish components or updates;
+   publication is exclusively a human action.
    Report and save each token deficiency in
    [token gaps](../../../docs/token-gaps.md), distinguishing confirmed absence,
    unknown evidence, mapping/binding gaps, and tool limitations. Stop the affected

@@ -78,3 +78,6 @@ with a made-up semantic name or guess its numerical value.
 For an explicit DS change, document the changed source asset, exact properties,
 bindings, applicable state behavior, linked usage, code relationship, and observed
 publication status. Scenario composition does not authorize those DS changes.
+New components require a direct creation instruction. Component publication and
+publication of updates are always human-only; agents return checked local assets
+and exact links instead of publishing.
