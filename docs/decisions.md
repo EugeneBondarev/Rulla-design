@@ -33,6 +33,10 @@ key. The rule and inspected controls live in
 [screen entry points](scaffolds.md#mobile-focus-and-keyboard-states), invoked by
 enqo-flow. This request does not authorize adding missing keyboard APIs to the DS.
 
+On 2026-10-13, Evgeny required Corner Smoothing when setting rounded corners in
+component work. The value and verification procedure live in
+[component authoring](component-authoring.md#rounded-corners).
+
 The human-only publication instruction supersedes earlier wording permitting
 agent publication with authorization. The original GitLab draft remains separate;
 it is not a competing source of current rules. No universal cross-platform scaffold,

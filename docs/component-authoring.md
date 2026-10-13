@@ -63,6 +63,29 @@ property through a concrete requirement or verified reuse case. If verified code
 or library behavior cannot support the proposed design, report it before building
 instead of leaving the developer to invent an implementation.
 
+## Rounded corners
+
+Whenever an authorized component build/edit sets a nonzero corner radius, set
+**Corner Smoothing to 60%** on that rounded node. Check every affected rounded
+node, not only the outer container, including individually configured corners.
+If the node already has 60%, preserve it; if missing, zero, or another value,
+set 60% within the authorized edit scope. In the Figma Plugin API this is
+`cornerSmoothing = 0.6`, not `60`.
+This is a Figma requirement, not a claim of an equivalent Flutter/Vuetify API;
+verify implementation support or report a difference under the code-alignment rule.
+
+Keep the corner radius bound to its verified existing token under
+[token coverage](design-system.md#required-token-coverage). Smoothing is a separate
+parameter with this user-specified value; do not replace the radius, drop its
+binding, or invent a smoothing token. This rule does not add rounded corners to
+nodes that should remain square.
+
+Read back the actual radius/binding and `cornerSmoothing` after edits and inspect
+the rendered result. Reuse alone does not authorize changing shared masters,
+detaching nested instances, or altering unrelated nodes to enforce the rule.
+If a required change is unsupported or outside the task scope, report the exact
+node/property gap and needed change through [harness proposals](harness-proposals.md).
+
 ## Exact infrastructure source
 
 Inspected read-only on 2026-10-09 in `🟣 Design System`
