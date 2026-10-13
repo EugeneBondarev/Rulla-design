@@ -5,25 +5,27 @@ description: Inspect Enqo Figma assets, Web or Flutter code, and repository inst
 
 # Enqo design-system audit
 
-Resolve this file's repository root three directories up. Read
-[AGENTS.md](../../../AGENTS.md) and the relevant entries in
-[Figma references](../../../docs/figma.md), [scaffolds](../../../docs/scaffolds.md),
-[design-system evidence](../../../docs/design-system.md), and
-[codebases](../../../docs/codebases.md).
+Resolve the shared repository root three directories above this file. Read
+[AGENTS.md](../../../AGENTS.md) and relevant sources in
+[Figma map](../../../docs/figma.md), [entry points](../../../docs/scaffolds.md),
+[token coverage](../../../docs/design-system.md), and
+[codebases](../../../docs/codebases.md). For component presentation or mockup/layout
+reviews, also read [component authoring](../../../docs/component-authoring.md)
+and [mockup content](../../../docs/mockup-content.md).
 
-1. Identify the requested file/node/code scope. Inspect the real sources using
-   read-only operations. An audit does not authorize edits to any Figma node,
-   document, code, token, or publication state; propose fixes in the report unless
-   implementation is explicitly requested.
-2. Record exact names, source node URLs, keys, properties/variants, bindings,
-   publication status, and code paths/commits relevant to each finding. Do not
-   treat names, screenshots, search absence, or inaccessible data as proof of
-   identity, duplication, deprecation, or missing implementation.
-3. Compare only established requirements and mappings. Separate observed
-   mismatches from hypotheses and unknowns. Identify the actual task affected by
-   each gap; do not invent severity, ownership, or policy.
-4. Return a table: finding, exact evidence links, task impact, smallest proposed
-   correction, and unresolved decision. Include inspected scope and limitations.
-5. For each missing or stale instruction, name its destination file and proposed
-   exact text, supporting sources, and whether it needs a new human decision.
-   Do not silently rewrite the standard or claim the correction was applied.
+1. Identify the exact audit scope. Inspect sources read-only under AGENTS.md;
+   findings do not grant permission to repair assets. Apply its record-saving
+   authorization and any explicit all-writes prohibition.
+2. Capture finding-specific names/node URLs/keys, properties, bindings/modes,
+   publication status, and code paths/commits. Compare only established requirements
+   and mappings; distinguish observations, hypotheses, and unknowns.
+3. Within the requested scope, check applicable token coverage, component
+   presentation, Russian content, and visible content cases against their topic
+   documents. Identify missing cases, unverified evidence, and observed failures
+   with exact nodes/properties/widths. Do not create missing previews during review.
+4. Return a table of findings, evidence, actual task impact, smallest proposed
+   correction, and needed decision, plus inspected scope and limitations.
+5. Record token deficiencies in [token gaps](../../../docs/token-gaps.md) and broader
+   bottlenecks in [proposals](../../../docs/harness-proposals.md). For a missing or
+   stale rule, identify its existing home and exact proposed correction/source;
+   apply repository maintenance in AGENTS.md. Do not report a proposal as applied.
