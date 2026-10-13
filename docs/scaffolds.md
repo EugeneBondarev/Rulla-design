@@ -1,7 +1,8 @@
 # Screen entry points
 
-Inspected 2026-10-09. This register distinguishes verified identities from missing
-usage decisions. No asset here is declared the universal Enqo scaffold.
+Sources inspected 2026-10-09; Mobile scaffold/keyboard/search-field evidence below
+was refreshed 2026-10-12. Observed identities and unresolved decisions are distinct.
+No single scaffold is shared universally across Web and Mobile.
 
 ## Web: App Shell
 
@@ -40,19 +41,21 @@ this uncertainty.
 
 Both sources are on page `Scafold` (exact spelling),
 [22495:10441](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22495-10441),
-in `🟣 DS Components • Mobile`. Inspected 2026-10-09. Publication statuses refer
-to tool-readable source nodes; see the desktop sync warning in [figma.md](figma.md).
+in `🟣 DS Components • Mobile`. Original inspection: 2026-10-09; Scaffold was
+refreshed 2026-10-12. Publication statuses refer to tool-readable source nodes;
+see the desktop sync warning in [figma.md](figma.md).
 
 ### Scaffold/Default
 
 - Exact source name: `Scaffold/Default`; type: `COMPONENT`.
 - Source: [22495:10472](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22495-10472).
 - Component key: `eede9f3c90ffff86d9cb0ce30401b39f6e6e13de`.
-- Publication status: `CURRENT`.
+- Publication status: `CURRENT` on 2026-10-09; `CHANGED` on 2026-10-12.
 - Slot properties: `AppBar#19802:0`, `Body#19802:1`,
   `bottomNavigationBar#19802:2`, `overlay_slot#19971:2`.
 - Boolean properties, all default `false`: `Show OverlayLayer#19971:0`,
-  `Show FAB#20000:1`, `Show In App Notification#20128:1`.
+  `Show FAB#20000:1`, `Show In App Notification#20128:1`;
+  `Show Keyboard#23073:0` verified on 2026-10-12, also default `false`.
 - Linked existing usage: instance `Scaffold/Default`,
   [271:20615](https://www.figma.com/design/jwDivkSTIiXrDEUtFfmsyE?node-id=271-20615),
   resolved to this component key in the scenario-reference file.
@@ -61,7 +64,9 @@ The source description specifies a status bar followed by a context navbar in
 AppBar, with the status bar retained when there is no navbar. The exact child
 component sources and configuration required by a task must still be inspected;
 slot preferred keys alone do not establish those nodes' names or approved usage.
-This register identifies the source, not a universal starting composition.
+Use this source for new Mobile screens under the keyboard rule below; the actual
+AppBar/Body composition remains task-specific. This does not authorize migration
+of existing screens or library edits.
 
 ### Bottom Sheet
 
@@ -77,6 +82,66 @@ This register identifies the source, not a universal starting composition.
 content and phone from tablet behavior. Inspect the requested route and the exact
 Figma usage before choosing these variants. Names do not establish an automatic
 mapping to ModalBottomSheetPage or another Flutter class.
+
+## Mobile: focus and keyboard states
+
+For new Mobile scenario output, assemble each screen/state inside a linked
+`Scaffold/Default` from the source above. Identify which scenario states expect
+software-keyboard input and which field is focused. A field appearing on screen
+alone does not mean the keyboard should be open.
+
+1. In every state expecting keyboard input, select the actual field's supported
+   focus state and show its cursor, with one identifiable active input. Use exact
+   field sources/properties, not renamed arbitrary frames. Enable the scaffold's
+   `Show Keyboard#23073:0` and preserve its linked keyboard. Do not show a keyboard
+   with no focused field, or omit it from a state that requires it.
+2. Select the keyboard for the actual input: text, number/code, phone, email,
+   multiline, or another verified type. Inspect the field/route through
+   [codebases](codebases.md#mobile) and the matching Flutter
+   [keyboardType API](https://api.flutter.dev/flutter/material/TextField/keyboardType.html).
+   Resolve the exact existing Figma source/variant and target iOS/Android layout;
+   neither the default nor a similar name establishes that mapping.
+3. Choose the action by what actually happens on press: search executes a query,
+   next moves to the next real input, done finishes entry, send sends content,
+   or newline inserts a line break when supported. Verify the actual callback or
+   focus transition and Flutter
+   [textInputAction API](https://api.flutter.dev/flutter/material/TextField/textInputAction.html).
+   A label/icon alone does not implement an action; do not leave generic return
+   accidentally when the scenario needs a different action.
+4. Configure through verified instance properties or an established source swap;
+   record values, source keys, and consuming nodes. Respect
+   [platform action support](https://api.flutter.dev/flutter/flutter_test/TextInputAction.html):
+   do not assume identical labels, icons, blue color, position, or action support
+   on iOS and Android. If a layout has no action key, show the verified keyboard
+   and the scenario's actual way to finish input; do not draw a nonexistent key.
+   Apply [Russian content](mockup-content.md) to labels/keyboard locale, preserving
+   technical names. Unsupported/unverified mappings block that dependent choice;
+   they do not authorize DS edits.
+5. Verify keyboard-open layout: focused field/cursor visible, correct input and
+   action configuration, accessible content/CTA, overlap, safe area, and actual
+   resize/scroll behavior. Check applicable next-field/dismissal transitions and
+   keyboard-hidden states that occur in the scenario. Return exact state, field,
+   scaffold, keyboard and action-node URLs plus screenshots and untested behavior.
+   Do not invent extra product states for a checklist.
+
+### Verified controls — 2026-10-12
+
+All sources below are in `🟣 DS Components • Mobile`. This is bounded evidence,
+not a global keyboard inventory or a verified Flutter-to-Figma mapping.
+
+| Role | Exact source and identity | Observed API/state |
+| --- | --- | --- |
+| Keyboard in scaffold | [Keyboard, 23073:13497](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23073-13497) | INSTANCE; hidden by default; `Type=Default`, `Show suggestions#6238:0=false`, `Show accessory bar#6238:6=false` |
+| Keyboard source | [Keyboard, 22398:5664](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22398-5664); key `62b1d904cc961f9335222ce70f9ddb6038aa9027` | COMPONENT_SET, `CURRENT`; `Type`: `Default`, `Numbers and Punctuation`, `Emoji`, `Find`, `Find and Replace`, `Web Form`, `Web`. Source defaults for suggestions/accessory are `true`, unlike the scaffold instance. |
+| Default layout source | [Type=Default, 22398:5774](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22398-5774); key `d3df6b0b5e41744c48fd75d4f028253f07bd7adb` | Nested `Keys`, 22398:5779, uses `_Keyboard - iPhone Layouts` with `Type=Letters - Lowercase`. Inspected default shows Latin letters. |
+| Return key source | [Mode=Light, Type=Return-Prominent, 22398:5040](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22398-5040); key `773d3b36443ab3f7a0747cba6e9ec287eb5c7491` | Used by nested instance `Return`; rendered as a blue glyph key. Parent `_Keys - iPhone`, [22398:5006](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22398-5006), key `c90a32ded84bde54d46f18802f7e3ff3c4ed7b95`. No dedicated semantic action property found in this inspected API. |
+| Search field source | [Search Text Field, 22559:1201](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22559-1201); key `8b88b0fe2ab4cdb9ad242c81ad70bb9cd0f762fe` | `Property 1`: `Default`, `Tap`, `fill_focus`, `long`, `Fill`; visible `Cursor` instances found in [Tap, 22559:1211](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22559-1211) and [fill_focus, 22559:1213](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22559-1213). Inspect the actual field rather than infer focus from a name. |
+
+`Numbers and Punctuation` is not a verified phone, OTP, or number-pad mapping.
+The inspected source page did not establish an Android keyboard or Russian-letter
+layout. Search/Next/Done/Send configuration remains unresolved; do not fake it by
+editing an unrelated key property. See
+[HP-004](harness-proposals.md#hp-004--resolve-mobile-keyboard-configuration).
 
 ## Mobile: unresolved older usage
 

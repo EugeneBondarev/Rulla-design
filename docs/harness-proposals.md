@@ -41,6 +41,7 @@ bottleneck was found, no proposal is required.
 | HP-001 | [Record component replacements during migration](#hp-001--record-component-replacements-during-migration) | proposed | 2026-10-09 |
 | HP-002 | [Add an entry link from Figma to the agent center](#hp-002--add-an-entry-link-from-figma-to-the-agent-center) | proposed | 2026-10-09 |
 | HP-003 | [Require rule loading before Figma writes](#hp-003--require-rule-loading-before-figma-writes) | proposed | 2026-10-09 |
+| HP-004 | [Resolve Mobile keyboard configuration](#hp-004--resolve-mobile-keyboard-configuration) | proposed | 2026-10-12 |
 
 ## HP-001 — Record component replacements during migration
 
@@ -134,3 +135,38 @@ to the clients/tool paths actually configured and tested.
 **Needed decision:** Which client/execution path to configure first and whether
 client instructions alone or a controlled writer is required for that scope.
 No loader, hook, gateway, or new tool permission is installed by this proposal.
+
+## HP-004 — Resolve Mobile keyboard configuration
+
+**Status:** proposed. **Date:** 2026-10-12.
+
+**Situation and evidence:** The user requires focused Mobile inputs with matching
+keyboard type and action. [Inspected controls](scaffolds.md#verified-controls--2026-10-12)
+identify `Scaffold/Default`'s `Show Keyboard#23073:0`, its nested `Keyboard`, and
+the actual source/API. The default is an iPhone letter layout with a blue `Return`
+glyph. Its `Type` options and `_Keys - iPhone` API do not expose a dedicated
+Search/Next/Done/Send semantic action selector in this inspected scope. Numeric,
+phone/OTP, Android, and Russian-letter mappings were not established. This is
+bounded evidence, not a global claim that such assets are absent.
+
+Optional accessory inspection also hit `Component set for node has existing errors`
+when reading instances of [`_Button - Symbol`, 22398:5488](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22398-5488).
+Those property reads remain unverified; they do not invalidate the separately
+verified scaffold visibility control. No source repair was attempted.
+
+**Problem and impact:** An agent can enable the keyboard, but cannot yet resolve
+every required input/OS/action/locale configuration from these recorded sources.
+Guessing variants or altering a generic glyph would claim unsupported behavior.
+
+**Proposed change:** Inspect other existing assets and actual Mobile field code;
+record exact matching sources/configurations where they exist. For a remaining
+gap, propose the smallest source/property or documentation change tied to a
+concrete scenario. DS edits need a direct human request; publication is human-only.
+Do not generate all theoretical combinations or add a library to fill the record.
+
+**Acceptance:** An agent can configure and explain a concrete focused input,
+keyboard type/locale, and action/control using verified sources/properties/code.
+The output matches the platform behavior or reports the specific unresolved gap.
+
+**Needed decision:** Verified per-task mappings and explicit authorization for
+any DS repair discovery shows is necessary. No keyboard asset was changed here.

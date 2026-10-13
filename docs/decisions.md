@@ -27,9 +27,15 @@ custom work, code-aligned composition, and a small reusable API. The rule's home
 [component authoring](component-authoring.md#reuse-and-platform-implementation-first);
 the existing enqo-component skill invokes it.
 
+On 2026-10-12, Evgeny required Mobile scenario screens to use Scaffold and reflect
+the actual focused input/cursor, keyboard visibility/type, and meaningful action
+key. The rule and inspected controls live in
+[screen entry points](scaffolds.md#mobile-focus-and-keyboard-states), invoked by
+enqo-flow. This request does not authorize adding missing keyboard APIs to the DS.
+
 The human-only publication instruction supersedes earlier wording permitting
 agent publication with authorization. The original GitLab draft remains separate;
-it is not a competing source of current rules. No universal scaffold,
+it is not a competing source of current rules. No universal cross-platform scaffold,
 screen-versus-sheet rule, component replacement, or global token authority has
 been approved here.
 

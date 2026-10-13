@@ -26,10 +26,15 @@ not an unrelated working directory. Apply AGENTS.md if a dependency is unavailab
    layout and bindings. Apply mockup-content.md to product copy and visible
    content-length/density cases. Derive states/transitions from the requested
    scenario and actual references/implementation.
+   For Mobile, apply [focus and keyboard states](../../../docs/scaffolds.md#mobile-focus-and-keyboard-states)
+   before building input states: resolve field focus/cursor, scaffold keyboard
+   visibility, input layout, and action configuration from actual sources/code.
 5. Verify actual source keys, properties, bindings/modes, layout and text fit,
    requested transitions, and the content cases at required widths. Inspect a
    screenshot of each materially different output; report untested interactions
    and persistence failures under AGENTS.md.
+   Check Mobile keyboard-state evidence and transitions required by that section;
+   return actual input/keyboard/action nodes with the state links.
 6. Return exact output/case links, source list, checks, and remaining gaps. Record
    concrete harness findings in [proposals](../../../docs/harness-proposals.md)
    using the repository maintenance process. Link saved records or mark drafts
