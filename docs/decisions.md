@@ -1,7 +1,8 @@
 # Decision provenance
 
 These entries record direct instructions from Evgeny in the Enqo harness setup
-conversation, all dated 2026-10-09. They establish approval provenance, not a second
+conversation. The table below records the 2026-10-09 instructions; later decisions
+are dated separately. These entries establish approval provenance, not a second
 copy of the operating rules. Implementation is in the linked authoritative homes;
 these decisions do not prove a PR was merged, an asset was published, or a workflow
 was tested. No external approval permalink was supplied for this conversation.
@@ -19,6 +20,12 @@ was tested. No external approval permalink was supplied for this conversation.
 | Russian mockups with varied realistic text lengths and content density | [Mockup content](mockup-content.md) |
 | Compact predictable structure, clear grouping, no duplicate or conflicting rules | [Repository upkeep](../AGENTS.md#maintain-this-repository), [topic map](../README.md#files) |
 | Components must be understandable and usable by another agent without the original chat | [Component descriptions and handoff check](component-authoring.md#minimal-description) |
+
+On 2026-10-12, Evgeny required mandatory DS reuse checks and designer notification,
+Flutter/Mobile and Vuetify/Web verification, standard solutions before justified
+custom work, code-aligned composition, and a small reusable API. The rule's home is
+[component authoring](component-authoring.md#reuse-and-platform-implementation-first);
+the existing enqo-component skill invokes it.
 
 The human-only publication instruction supersedes earlier wording permitting
 agent publication with authorization. The original GitLab draft remains separate;

@@ -1,10 +1,67 @@
 # Component authoring and presentation
 
-This is the presentation/naming procedure used by
+This is the reuse, implementation, and authoring procedure used by
 [enqo-component](../.agents/skills/enqo-component/SKILL.md). Scope, creation, and
 publication permissions are defined in [AGENTS.md](../AGENTS.md).
 Token coverage is defined in [design-system.md](design-system.md); language and
 content previews in [mockup-content.md](mockup-content.md).
+
+## Reuse and platform implementation first
+
+These checks are mandatory before component construction, even when the task
+initially asks to build a new component. Work separately for each platform.
+
+1. **Check the existing Enqo design system.** Inspect relevant platform and shared
+   sources under [migration rules](figma.md#rules-during-migration), existing usage,
+   variants, properties, and slots. Test candidates against the actual requested
+   behavior, content, and layout. A supported configuration or composition of
+   existing components may already solve the task. If so, tell the designer what
+   exists, with exact source names/node URLs/keys and the applicable configuration;
+   recommend reuse instead of creating a duplicate. Do not duplicate a fitting
+   component merely because the initial task said "build a component".
+2. **Always verify the platform-library approach.** Inspect actual project code
+   and dependencies/version via [code references](codebases.md), then the matching
+   official Flutter API for Mobile or Vuetify API for Web. Entry catalogs:
+   [Flutter widgets](https://docs.flutter.dev/ui/widgets) and
+   [Vuetify components](https://vuetifyjs.com/en/components/all/). Catalogs are
+   discovery links, not evidence of a specific component API or installed version.
+   Record the chosen exact symbol/tag, component-specific API URL, version, and
+   relevant project wrapper/path/commit. Do this for a reused DS component too;
+   a Figma name alone does not establish its implementation.
+3. **Prefer the standard solution when no DS candidate fits.** Check whether a
+   standard library component, its supported configuration, or a simple
+   composition can satisfy the task using existing Enqo tokens. Where a Figma
+   representation is missing, identify that gap rather than claim the library
+   component already exists in Figma. Creation still follows AGENTS.md.
+4. **Use custom work only for an evidenced gap.** If neither DS reuse nor the
+   standard library approach supports the requirement, explain the precise
+   mismatch and smallest custom addition. Return the actual candidates checked
+   and their reasons for rejection. Inaccessible sources or search absence are
+   not proof that nothing exists; stop that decision under AGENTS.md. Custom
+   creation requires the direct creation instruction; this rule grants no new
+   component, token, dependency-installation, or publication permission.
+
+Before writing, report the selected approach and the evidence needed to justify
+it, in a short explanation. Do not create a separate research document or generic
+comparison matrix for every component.
+
+## Match code and keep the API small
+
+Build the Figma component around the verified Flutter/Vuetify implementation:
+functional composition, nested reusable components, slots/content, relevant
+properties, state behavior, sizing, and theme/token usage. Use actual project
+wrappers when they exist. Document differences and unresolved mappings; visual
+similarity does not prove correspondence. Figma layer count need not copy every
+code wrapper, but the supported behavior must be implementable with the cited API.
+
+Keep the smallest composition and property/variant set that meets the task.
+Allow the supported content and layout variation needed for reuse, through actual
+properties/slots rather than duplicated masters for each content example. Do not
+add speculative states, configuration knobs, nested wrappers, abstractions, or
+variant combinations for imagined future use. Explain a custom wrapper or extra
+property through a concrete requirement or verified reuse case. If verified code
+or library behavior cannot support the proposed design, report it before building
+instead of leaving the developer to invent an implementation.
 
 ## Exact infrastructure source
 
@@ -45,6 +102,9 @@ preservation are the user-required workflow and must be checked on actual output
 3. If no name can be verified or sources conflict, report the naming gap and
    needed decision before naming/creating the component. A similar name does not
    establish a Figma/code mapping.
+   For justified custom work with no existing code symbol, propose the intended
+   new code/component name for the naming decision and label it as new. Never
+   present that proposal as an existing Flutter/Vuetify or project component.
 4. Resolve the destination from the [platform file map](figma.md) and actual
    organization. Record exact file, page, and parent section/frame names and URLs
    before writing. "The correct folder" is not a destination. Report an unresolved

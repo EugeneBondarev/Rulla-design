@@ -20,7 +20,7 @@ rules rather than using this map as a second instruction set.
 | Figma sources | [docs/figma.md](docs/figma.md) | File roles, migration, library/page inventory, access |
 | Screen entry | [docs/scaffolds.md](docs/scaffolds.md) | Scaffold/sheet identities, APIs, usage and selection gaps |
 | Design system | [docs/design-system.md](docs/design-system.md) | Token coverage requirements and inspected bindings/JSON provenance |
-| Components | [docs/component-authoring.md](docs/component-authoring.md) | Infrastructure template, naming, placement and descriptions |
+| Components | [docs/component-authoring.md](docs/component-authoring.md) | Reuse selection, code alignment, naming, infrastructure placement and descriptions |
 | Mockup content | [docs/mockup-content.md](docs/mockup-content.md) | Russian content, realistic variation and layout checks |
 | Code sources | [docs/codebases.md](docs/codebases.md) | Repository/path/commit references and inspected architecture |
 | Findings | [docs/token-gaps.md](docs/token-gaps.md), [docs/harness-proposals.md](docs/harness-proposals.md) | Token deficiencies and broader harness proposals, respectively |

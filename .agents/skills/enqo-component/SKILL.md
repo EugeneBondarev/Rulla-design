@@ -15,15 +15,17 @@ Resolve the shared repository root three directories above this file. Read
 1. Identify the direct human request, exact target, and authorized properties;
    apply the creation and publication boundaries in AGENTS.md. Inspect an existing
    asset's source URL/name/key, properties/variants, bindings, publication status,
-   and linked usage. For a requested new component, inspect actual reuse candidates
-   and resolve its naming source and destination through component-authoring.md.
-2. When code alignment is requested, inspect the relevant file/symbol at a recorded
-   commit. Describe established correspondence and differences. State the intended
-   change and affected uses; resolve missing prerequisites under AGENTS.md.
+   and linked usage.
+2. Before construction, follow
+   [reuse and platform checks](../../../docs/component-authoring.md#reuse-and-platform-implementation-first).
+   Report fitting DS assets to the designer; verify the actual Flutter/Vuetify
+   approach and project code/version, then justify reuse, a standard solution,
+   or the smallest custom addition. Resolve naming/destination and prerequisites.
 3. Apply only the authorized changes and the token-coverage procedure. For a new
    component, follow component-authoring.md for the exact infrastructure source,
    outer-copy detach, Slot/header structure, naming, and descriptions. Apply
-   mockup-content.md to visible content cases; preserve unaffected assets.
+   its code-alignment and small-API rules, and mockup-content.md to visible content
+   cases; preserve unaffected assets.
 4. Check changed properties/variants, bindings/modes, applicable states, usage, and
    rendered content cases. For a new component, return the presentation/Slot/header
    and component URLs, naming evidence, and description checks specified in
