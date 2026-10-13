@@ -37,6 +37,12 @@ On 2026-10-13, Evgeny required Corner Smoothing when setting rounded corners in
 component work. The value and verification procedure live in
 [component authoring](component-authoring.md#rounded-corners).
 
+On 2026-10-13, after the component-documentation research in this conversation,
+Evgeny requested incorporating the practices into shared instructions with
+minimal useful text for people and agents and no extra bureaucracy. The format
+and checks live in [minimal description](component-authoring.md#minimal-description);
+the related bottleneck is [HP-006](harness-proposals.md#hp-006--separate-component-captions-from-reuse-guidance).
+
 The human-only publication instruction supersedes earlier wording permitting
 agent publication with authorization. The original GitLab draft remains separate;
 it is not a competing source of current rules. No universal cross-platform scaffold,
