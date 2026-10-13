@@ -162,13 +162,23 @@ During each task, record concrete bottlenecks in
 Update an existing finding instead of duplicating it; link related entries.
 Do not invent findings or silently implement a recorded proposal.
 
-The user's standing instruction authorizes recording these findings through a
-branch/PR without asking for every entry. If access is unavailable or all writes
-are explicitly prohibited, return the exact entry as unsaved. Never claim an
-unsent draft is recorded in GitHub or an open PR is already in the default branch.
-Adoption and implementation need the relevant human authorization; keep approval
-provenance in [decisions.md](docs/decisions.md). Authorized documentation changes
-use a branch/PR.
+The user's standing instruction authorizes adding or updating finding entries
+directly in GitHub `main`, without a PR or per-entry confirmation, in exactly
+`docs/harness-proposals.md` and `docs/token-gaps.md`. This exception covers records,
+not changes to instructions, entry formats, or lifecycle rules in those files.
+Refresh current `main` before saving; resolve concurrent additions and ID collisions
+without overwriting another agent's work or force-pushing. Verify the saved entry
+in `main` and return its actual link. Group findings from one task where practical;
+do not open a PR solely to record a finding.
+
+Recording a proposal is not approval or permission to implement it. Status changes
+still require the evidence specified in each register. Adoption and implementation
+need the relevant human authorization; keep approval provenance in
+[decisions.md](docs/decisions.md). Changes to rules, skills, register formats, or
+other documentation still use a branch/PR; do not bundle them into a direct
+finding commit. If direct saving is unavailable or all writes are explicitly
+prohibited, return the exact entry as unsaved and explain the blocker. Never claim
+an unsent draft is recorded in GitHub or an open PR is already in `main`.
 
 Never promote chat speculation, memory, or generated summaries into standards.
 In the task report, link recorded proposals and any unresolved

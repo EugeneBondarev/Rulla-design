@@ -14,8 +14,8 @@ do not duplicate its finding or treat a proposal as permission to change the DS.
 ## Record a proposal
 
 1. Read existing entries. If the same bottleneck is recorded, add new evidence
-   and update its impact rather than creating a duplicate. After fetching the
-   current branch, choose the next unused `HP-NNN` ID; do not overwrite another
+   and update its impact rather than creating a duplicate. After refreshing
+   `main`, choose the next unused `HP-NNN` ID; do not overwrite another
    agent's additions. Resolve simultaneous changes before pushing.
 2. Record the date and actual task/situation; the observed problem and its impact;
    exact Figma names/node URLs/keys, code paths/commits, or other source links;

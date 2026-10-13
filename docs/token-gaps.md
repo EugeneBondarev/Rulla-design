@@ -18,8 +18,8 @@ Existing inspected bindings are in [design-system evidence](design-system.md).
    task requires them. Record the inspected scope. Inaccessible data or no search
    result does not prove a token is absent.
 2. Read existing entries, update the same affected property/role/platform/mode
-   instead of duplicating it, and choose the next unused `TG-NNN` ID after fetching
-   the current branch. Preserve other agents' additions when resolving changes.
+   instead of duplicating it, and choose the next unused `TG-NNN` ID after refreshing
+   `main`. Preserve other agents' additions when resolving changes.
 3. Classify the evidence separately from the lifecycle status:
    - `confirmed missing`: inspection of the relevant available sources establishes
      that no existing token supports the required property and role in this scope.

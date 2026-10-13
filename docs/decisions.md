@@ -43,6 +43,11 @@ minimal useful text for people and agents and no extra bureaucracy. The format
 and checks live in [minimal description](component-authoring.md#minimal-description);
 the related bottleneck is [HP-006](harness-proposals.md#hp-006--separate-component-captions-from-reuse-guidance).
 
+On 2026-10-13, Evgeny approved removing the PR barrier for recording findings:
+“Да, давай это изменим. Мне кажется, это лишний барьер.” The scoped direct-record
+exception and the remaining PR boundary live in
+[repository maintenance](../AGENTS.md#maintain-this-repository).
+
 The human-only publication instruction supersedes earlier wording permitting
 agent publication with authorization. The original GitLab draft remains separate;
 it is not a competing source of current rules. No universal cross-platform scaffold,
