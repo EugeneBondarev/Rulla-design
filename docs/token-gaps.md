@@ -7,8 +7,8 @@ and [record-saving rules](../AGENTS.md#maintain-this-repository).
 
 ## Current state
 
-No token-gap entries have been recorded yet. This does not establish complete
-coverage: this documentation change did not audit Figma or implementation tokens.
+The bounded mapping gap below does not establish complete coverage of the
+library. TG-001 is reserved in the separate open icon-binding PR #2.
 Existing inspected bindings are in [design-system evidence](design-system.md).
 
 ## Record a gap
@@ -74,3 +74,38 @@ real finding, add a `TG-NNN` section and an index row with a link to that sectio
 
 | ID | Target property and platform/mode | Evidence classification | Status | Date |
 | --- | --- | --- | --- | --- |
+| [TG-002](#tg-002--labelm-font-size-role-binding) | Label/M fontSize binding, Typography Web/Mobile | mapping/binding gap | open | 2026-10-14 |
+
+## TG-002 — Label/M font-size role binding
+
+**Status / classification / date:** open; mapping/binding gap; 2026-10-14.
+
+**Task and impact:** Adding the centered Chat Info AppBar example. Reusing
+Label/M's binding for a font-size role would propagate a line-height token.
+The new example was corrected locally; source-style repair remains outside scope.
+
+**Target and observed state:** Inspected TEXT style Label/M,
+ID `S:3ef9f0b8100b4b76eb418500933cc4d1afc4fd3e,20870:9`,
+key `3ef9f0b8100b4b76eb418500933cc4d1afc4fd3e`. Its fontSize binding points
+to `Font/Line-height/16`, ID
+`VariableID:260056e8a3a92ae84696c55f4ee9c17f8445ba10/20501:171`.
+Existing usage: [AppBar / Настройки профиля](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23055-1094),
+whose visible title uses Label/M. This is bounded style evidence, not an audit of
+all uses.
+
+**Discovery:** The subscribed shared library's Typography collection has the
+correct-role `Font/Size/16`, ID
+`VariableID:b7dfdd4e1f817e79b94c08f6dfe613aaef8198f7/20501:167`,
+key `b7dfdd4e1f817e79b94c08f6dfe613aaef8198f7`; Web mode `19049:0`
+is 15, Mobile mode `19050:1` is 16. A matching raw number alone is not a
+role-correct mapping.
+
+**Needed decision / acceptance:** Authorize the affected source-style repair and
+inspect its consumers and both modes before updating the binding. No new token
+is required or proposed.
+
+**Resolution:** Shared Label/M remains unchanged and open. The
+[new Chat Info example](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23321-1330)
+uses Heading/S and Caption/M. Its title explicitly binds fontSize to
+Font/Size/16, lineHeight to Font/Line-height/22, and the example sets Typography
+to Mobile. The binding, 16px size, and global title centering were read back.
