@@ -109,3 +109,8 @@ supersede the earlier caption-only Auto Layout and spacing instruction.
 On 2026-10-14, Evgeny clarified that the caption gap had been misread. The corrected
 value lives in [screens and captions](scaffolds.md#screens-and-captions); the two
 standalone text layers and equal widths remain unchanged.
+
+On 2026-10-14, Evgeny required horizontal/vertical arrow paths with rounded turns
+and consistent gaps between sequential screens. Routing and bend checks live in
+[scenario connections](scaffolds.md#scenario-connections); layout measurements
+live in [scenario sections](scaffolds.md#scenario-sections).
