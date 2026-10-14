@@ -44,6 +44,7 @@ bottleneck was found, no proposal is required.
 | HP-004 | [Resolve Mobile keyboard configuration](#hp-004--resolve-mobile-keyboard-configuration) | proposed | 2026-10-12 |
 | HP-005 | [Verify icon colors after button state changes](#hp-005--verify-icon-colors-after-button-state-changes) | proposed | 2026-10-13 |
 | HP-006 | [Separate component captions from reuse guidance](#hp-006--separate-component-captions-from-reuse-guidance) | approved | 2026-10-13 |
+| HP-007 | [Resolve Scaffold status-bar ownership](#hp-007--resolve-scaffold-status-bar-ownership) | proposed | 2026-10-13 |
 
 ## HP-001 — Record component replacements during migration
 
@@ -230,3 +231,40 @@ for any AppButton source repair. The new
 [FormattingOptionsSection](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23191-1386)
 already had stale overrides removed locally; selected colors were read back,
 Disabled preview bindings were applied locally, and shared masters were preserved.
+
+## HP-007 — Resolve Scaffold status-bar ownership
+
+**Status:** proposed. **Date:** 2026-10-13.
+
+**Situation and evidence:** Read-only inspection of
+[Scaffold/Default, 22495:10472](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22495-10472),
+key `eede9f3c90ffff86d9cb0ce30401b39f6e6e13de`, returned CHANGED.
+The source has a direct linked
+[Status Bar, 22495:10474](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22495-10474)
+before its separate
+[AppBar slot, 22495:10473](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22495-10473).
+However, its native description instructs putting Status Bar and a context navbar
+inside AppBar and keeping Status Bar there even when no navbar exists.
+[The earlier description-based record](scaffolds.md#scaffolddefault) quotes that
+guidance; it is not a current proof of correct containment.
+
+**Problem and impact:** Following the description literally can duplicate the
+device status bar or reserve its height twice. Slot names alone also do not prove
+exact mapping for each screen: the inspected
+[chat Scaffold](https://git.aimadev.space/platform/Enqo.Mobile/-/blob/d12f3e6819ce70f892bbb2c7df4ee16955b694c6/common/lib/features/chat/presentation/screens/chat_data.dart)
+places buildAppBar() inside body, MessageInputArea in bottomNavigationBar, and
+uses extendBody=true. Its layout therefore needs screen-specific mapping rather
+than an assumption that every top bar occupies Scaffold.appBar.
+
+**Proposed change:** Resolve which level owns Status Bar, document one consistent
+composition, and repair the authorized source description/structure accordingly.
+The observed separate system layer is a fitting candidate; this proposal does
+not adopt it as a new standard or authorize source edits.
+
+**Acceptance:** A linked screen with a context app bar, a screen without it, and
+an applicable keyboard-open state each contain one device status bar, with safe
+areas counted once. Per-screen slot mapping and any body overlap are explicit.
+
+**Needed decision:** The intended Status Bar ownership and direct authorization
+for the precise Figma description/structure change. No Figma nodes, token
+definitions, Flutter code, or library publication were changed in this audit.
