@@ -7,9 +7,9 @@ and [record-saving rules](../AGENTS.md#maintain-this-repository).
 
 ## Current state
 
-No token-gap entries have been recorded yet. This does not establish complete
-coverage: this documentation change did not audit Figma or implementation tokens.
-Existing inspected bindings are in [design-system evidence](design-system.md).
+One bounded Mobile binding gap is recorded below. It does not establish coverage
+of the rest of the library. Existing inspected bindings are in
+[design-system evidence](design-system.md).
 
 ## Record a gap
 
@@ -18,8 +18,8 @@ Existing inspected bindings are in [design-system evidence](design-system.md).
    task requires them. Record the inspected scope. Inaccessible data or no search
    result does not prove a token is absent.
 2. Read existing entries, update the same affected property/role/platform/mode
-   instead of duplicating it, and choose the next unused `TG-NNN` ID after fetching
-   the current branch. Preserve other agents' additions when resolving changes.
+   instead of duplicating it, and choose the next unused `TG-NNN` ID after refreshing
+   `main`. Preserve other agents' additions when resolving changes.
 3. Classify the evidence separately from the lifecycle status:
    - `confirmed missing`: inspection of the relevant available sources establishes
      that no existing token supports the required property and role in this scope.
@@ -74,3 +74,42 @@ real finding, add a `TG-NNN` section and an index row with a link to that sectio
 
 | ID | Target property and platform/mode | Evidence classification | Status | Date |
 | --- | --- | --- | --- | --- |
+| [TG-001](#tg-001--appbutton-disabled-icon-binding) | AppButton S / Secondary Text / Disabled icon fill, Mobile Light | mapping/binding gap | open | 2026-10-13 |
+
+## TG-001 — AppButton disabled icon binding
+
+**Status / classification / date:** open; mapping/binding gap; 2026-10-13.
+
+**Task and impact:** Creating FormattingOptionsSection from the Mobile toolbar.
+The Disabled preview inherited a raw icon color from AppButton. This prevents a
+claim of complete token coverage for arbitrary future Disabled configurations;
+it did not block creating the requested linked component.
+
+**Target:** Mobile [AppButton](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22414-4648),
+set key `216114b019072ecf8bd31dbb24ed3501478374a0`; variant
+[`Type=Secondary Text, Size=S, State=Disabled, Icon only=True`, 22774:5479](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22774-5479).
+Its nested icon 22774:5483 renders vector `I22774:5483;9874:43721` with fill
+RGB 0.753000020980835 / 0.7570000290870667 / 0.8270000219345093 and empty
+`boundVariables`.
+
+**Discovery:** Inspected AppButton sources, linked formatting buttons, and
+Color • Variables in the subscribed shared library. Existing `Icon/Disabled`
+has ID `VariableID:292095bb8532ed67b77c9e4a971ac1dcce04ce68/21006:154`,
+key `292095bb8532ed67b77c9e4a971ac1dcce04ce68`; Light mode `6398:2`
+aliases `VariableID:dad20aa3810422d77ffb6e0dd25068e2c207cc8b/19983:112`.
+The token exists; the consuming source binding is absent. Dark output and
+other AppButton variants were not exhaustively audited.
+
+**Needed change / acceptance:** A direct request to repair the affected AppButton
+source binding, followed by a new icon-swap and Default → Disabled check proving
+the correct token is retained. Publication remains human-only.
+
+**Related records:** [HP-005](harness-proposals.md#hp-005--verify-icon-colors-after-button-state-changes).
+The direct component-creation request authorized the new local output, not
+changes to shared AppButton.
+
+**Resolution:** Shared source remains unresolved and unchanged. Four icon vectors
+in the [new code-block preview, 23191:1478](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23191-1478)
+were explicitly bound to Icon/Disabled; bindings were read back. The new
+[FormattingOptionsSection, 23191:1386](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23191-1386)
+documents this limitation and remains UNPUBLISHED.

@@ -20,7 +20,7 @@ authoritative homes.
 | enqo-component triggers on almost any mention of states/tokens. | Restricted to explicit DS component work. | [enqo-component](../.agents/skills/enqo-component/SKILL.md). |
 | Audit prohibition only mentions published libraries / production. | Audit is read-only across all assets until fixes are requested; component publication always remains human-only. | [enqo-ds-audit](../.agents/skills/enqo-ds-audit/SKILL.md). |
 | Skill paths assume the current directory is this repository. | Relative links resolve from each skill's location. | All three skills. |
-| Claude import depends on version and surrounding files. | Add an explicit CLAUDE.md import; keep small skill adapters with matching descriptions. | [CLAUDE.md](../CLAUDE.md), .claude/skills/. |
+| Claude import depends on version and surrounding files. | Keep an explicit CLAUDE.md import. Initial skill adapters are superseded by direct reads from the shared skill directory. | [CLAUDE.md](../CLAUDE.md), [current client entry points](../README.md#client-entry-points). |
 | “Knowledge Promotion Candidate” asks for confidence/urgency without improving the rule. | Report the missing fact, blocked action, destination file, exact proposed text, evidence, and decision needed. | [AGENTS.md](../AGENTS.md). |
 | Asking the agent what it loaded is the suggested test. | Require evidence-producing read-only trials and then a real composition trial. | [README](../README.md). |
 
