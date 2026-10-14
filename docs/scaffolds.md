@@ -162,6 +162,25 @@ See [HP-001](harness-proposals.md#hp-001--record-component-replacements-during-m
 Do not detach, recreate, delete, or migrate these instances to resolve the gap
 without an authorized change and verified usage impact.
 
+## Scenario sections
+
+Assemble every requested Web or Mobile scenario inside a native Figma `SECTION`
+at the authorized destination. Include the whole flow: screens/states, arrows,
+and any necessary labels. Measure their combined outer bounds and position/resize
+the section to leave **400 px on each side**: left, right, top, and bottom.
+Recalculate these margins after changing the flow. Set section position and size
+from the bounds; do not invent Auto Layout padding properties for a Section.
+
+The section background is **white with fill opacity 70%**. In the Plugin API,
+use a SOLID fill with `color: {r: 1, g: 1, b: 1}` and paint `opacity: 0.7`.
+Keep the section's own `opacity` at `1` (100%); the flow content must not become
+translucent with it. These are user-specified canvas-presentation values, not
+product UI tokens or new design-system assets.
+
+Read back the SECTION type, fill/color/paint opacity and node opacity; measure
+all four margins against the final flow bounds and inspect the result. Return
+the actual section/output links and checked margins with the scenario evidence.
+
 ## Scenario connections
 
 For every Web or Mobile scenario, use the user-designated arrows to show actual

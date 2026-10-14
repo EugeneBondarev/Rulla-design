@@ -51,6 +51,11 @@ Evgeny's follow-up that day specified the arrow-label gap and rounded-bend
 radius/smoothing; the same section owns those values and checks.
 This request does not authorize changes to the Figma legend.
 
+On 2026-10-13, Evgeny required scenarios to be assembled inside native Figma
+Sections with fixed outer margins and a white background whose opacity belongs
+to the fill rather than the section. Values and verification live in
+[scenario sections](scaffolds.md#scenario-sections), invoked by enqo-flow.
+
 The human-only publication instruction supersedes earlier wording permitting
 agent publication with authorization. The original GitLab draft remains separate;
 it is not a competing source of current rules. No universal cross-platform scaffold,
