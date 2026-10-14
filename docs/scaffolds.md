@@ -1,4 +1,4 @@
-# Screen entry points
+# Screen entry points and scenario connections
 
 Sources inspected 2026-10-09; Mobile scaffold/keyboard/search-field evidence below
 was refreshed 2026-10-12. Observed identities and unresolved decisions are distinct.
@@ -161,3 +161,56 @@ remaining question is the migration relationship between old and current keys.
 See [HP-001](harness-proposals.md#hp-001--record-component-replacements-during-migration).
 Do not detach, recreate, delete, or migrate these instances to resolve the gap
 without an authorized change and verified usage impact.
+
+## Scenario connections
+
+For every Web or Mobile scenario, use the user-designated arrows to show actual
+connections between the displayed screens/states. Source: section
+[`Стрелки`, 22172:18563](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18563)
+on page [`Infra`, 20597:159663](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=20597-159663)
+in `🟣 Design System`, inspected read-only on 2026-10-13.
+
+| Exact legend label / vector name | Exact arrow source | Observed appearance | Enqo scenario usage |
+| --- | --- | --- | --- |
+| Tap / Arrow 2 | [22172:18564](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18564) | Purple, solid | Web and Mobile: explicit click/tap action |
+| Gesture / Arrow 5 | [22172:18565](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18565) | Turquoise, solid | Mobile: an actual supported gesture |
+| Haptic Feedback / Arrow 3 | [22172:18566](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18566) | Blue, dotted | Mobile: evidenced tactile feedback |
+| Automatically / Arrow 6 | [22172:18567](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18567) | Pink, dotted | Web and Mobile: an automatic transition |
+
+These sources are four VECTOR nodes, not components or variants. Clone the
+designated vector, preserving its exact stroke color, thickness, dash pattern,
+and arrowhead. Adjust endpoints/path to the actual connection; do not invent
+another arrow style, component key, or publication status. Reopen the sources
+before use. Take the color from the arrow itself: the `Automatically` text label
+currently has a different fill from `Arrow 6`.
+
+For Enqo Web flow documentation use only Tap and Automatically. This is the
+user's platform convention, not a claim that every website lacks gestures.
+For Mobile choose any of the four only when the requested scenario or inspected
+implementation establishes that event. Haptic Feedback marks tactile feedback;
+it does not justify inventing an extra screen or navigation transition.
+
+Make each connection's origin/action, destination, and direction unambiguous.
+Route arrows without obscuring screen content, controls, or captions.
+Add a short Russian label only when the event, condition, or result would otherwise
+be unclear; omit redundant labels on obvious connections. Do not invent actions,
+conditions, timings, or feedback to fill the flow. Missing evidence blocks that
+choice under AGENTS.md. A single state with no connection does not need a fake arrow.
+
+When a label is needed, place it above the relevant arrow segment with a **4 px
+gap** between the bottom of its text box and the nearest visible stroke edge.
+Keep it clear of bends and arrowheads; labels remain optional under the rule above.
+
+For a bent arrow, round each turn with **16 px radius** and **Corner Smoothing
+60%**. Keep the source stroke appearance and endpoint arrowhead; apply rounding
+to the actual path turns, not an enclosing frame. On a VECTOR, rounding vertices
+use `cornerRadius = 16` and the vector uses `cornerSmoothing = 0.6`. Route with
+enough room for the full radius and check both values and the rendered path;
+a round stroke join alone is not this radius. These are explicit annotation values,
+not invented token names or new product-UI corner/spacing defaults.
+
+This legend documents the flow on the canvas; drawn arrows alone do not establish
+configured Figma prototype reactions or working application behavior. Check the
+actual cloned appearance, platform/event selection, endpoints, necessary labels
+and their gap, rounded turns/smoothing where applicable, and readability. Return
+source and output links with the scenario checks.
