@@ -105,3 +105,7 @@ On 2026-10-14, after trying the caption layout, Evgeny requested two equal-width
 text layers without a caption frame and a different gap. The latest structure,
 positioning and checks in [screens and captions](scaffolds.md#screens-and-captions)
 supersede the earlier caption-only Auto Layout and spacing instruction.
+
+On 2026-10-14, Evgeny clarified that the caption gap had been misread. The corrected
+value lives in [screens and captions](scaffolds.md#screens-and-captions); the two
+standalone text layers and equal widths remain unchanged.
