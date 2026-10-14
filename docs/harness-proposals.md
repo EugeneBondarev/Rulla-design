@@ -46,6 +46,33 @@ bottleneck was found, no proposal is required.
 | HP-006 | [Separate component captions from reuse guidance](#hp-006--separate-component-captions-from-reuse-guidance) | approved | 2026-10-13 |
 | HP-007 | [Resolve Scaffold status-bar ownership](#hp-007--resolve-scaffold-status-bar-ownership) | proposed | 2026-10-13 |
 | HP-008 | [Resolve reusable AppBar centerTitle support](#hp-008--resolve-reusable-appbar-centertitle-support) | proposed | 2026-10-14 |
+| HP-009 | [Resolve native connector bend controls](#hp-009--resolve-native-connector-bend-controls) | proposed | 2026-10-14 |
+
+## HP-009 — Resolve native connector bend controls
+
+**Status:** proposed. **Date:** 2026-10-14.
+
+**Situation and evidence:** While updating arrow-origin and integrated-label rules,
+read-only inspection found native CONNECTOR sources in
+[`Стрелки`, 22186:18630](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22186-18630).
+For example, [Tap / Connector line, 22186:18591](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22186-18591)
+is ELBOWED with radius 24 px and a built-in text sublayer. The available Plugin API
+types expose ConnectorNode.cornerRadius as read-only and no cornerSmoothing field.
+No setter was attempted and no Figma nodes were edited.
+
+**Problem and impact:** The existing [bend rule](scaffolds.md#scenario-connections)
+requires values the current connector API does not expose for writing. The latest
+human request changes origins/labels, not that earlier bend requirement. A flow
+cannot be claimed fully compliant by preserving the observed default.
+
+**Proposed change:** Verify whether an available Figma UI/tool can configure the
+required bend values on native connectors. If unsupported, ask for a specific
+bend-rule decision while retaining the integrated label and exact arrow sources.
+
+**Acceptance / needed decision:** A saved native connector demonstrates the adopted
+bend behavior with inspectable evidence, or a human approves the precise rule
+revision after the limitation is verified. No vector substitution, shared-source
+edit, publication or new rule is authorized by recording this proposal.
 
 ## HP-001 — Record component replacements during migration
 
