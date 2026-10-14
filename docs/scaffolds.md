@@ -248,8 +248,9 @@ and `ARROW_EQUILATERAL` end. Configure the copy's actual endpoints, not the lege
 
 1. **Event:** Web uses Tap and Automatically; Mobile may use all four for evidenced
    events. Haptic Feedback describes tactile feedback, not an extra screen.
-   Do not invent actions, conditions, timings or transitions; a state without a
-   transition needs no arrow.
+   Use the fewest arrows needed to understand the requested flow, preserving
+   meaningful branches and outcomes. Do not invent actions, conditions, timings
+   or transitions; a state without a transition needs no arrow.
 2. **Origin:** A click/tap arrow starts at the actual triggering button/hit target
    in the output screen, not the screen edge, shared master or a decorative layer.
    Use `connectorStart.endpointNodeId` for that element where supported and place
@@ -257,13 +258,28 @@ and `ARROW_EQUILATERAL` end. Configure the copy's actual endpoints, not the lege
    automatic transition refers to its initiating state/event, without a fake button.
    If the trigger or attachment is unresolved, report it instead of substituting
    the screen as origin.
-3. **Label:** Add short Russian text only when needed to explain the transition.
-   Use `connector.text.characters` inside the arrow; no separate external text node
-   or gap. Set `connector.text.fontSize = 12` and text fill to the arrow's actual
+3. **Label:** Add short Russian text only when necessary to understand the transition.
+   Put screen context, action and outcome in the [screen Description](#screens-and-captions)
+   when that explains them clearly; use an arrow label for transition-specific
+   information better explained there. Do not repeat the same explanation in both.
+   The integrated label must sit **entirely outside every screen**, never over its UI.
+   Route the connector so its built-in text lands on an outside segment; do not
+   add a separate text node or detach the label to work around its placement.
+   Use `connector.text.characters`. Set `connector.text.fontSize = 12` and text fill
+   to the arrow's actual
    stroke color/opacity, not the adjacent legend label. Load the existing font
    before editing. Read back the result: sources have empty labels, mostly 16 px,
    with black fill; their defaults do not satisfy this rule automatically.
-4. **Bends:** The earlier **16 px radius / 60% smoothing** rule remains. Current
+4. **Routing:** Between screens, route along their outside edges. Any exterior segment
+   parallel to a screen must stay **at least 16 px from its boundary**, measured
+   from the visible stroke edge. Only the short exit from the trigger and entry
+   to the destination may run inside a screen; do not route along or across its UI.
+   Enter the destination from the side giving the shortest clear path to the actual
+   target element. Do not enter at the top and cross the whole screen for a target
+   near the bottom. For a screen-level destination, use the nearest clear edge
+   without inventing a target control. Minimize arrow crossings and overlaps where
+   possible, keeping branches and direction readable when a crossing is unavoidable.
+5. **Bends:** The earlier **16 px radius / 60% smoothing** rule remains. Current
    sources report radius 24 px; the available CONNECTOR API exposes radius as
    read-only and no smoothing field. Report the mismatch under
    [HP-009](harness-proposals.md#hp-009--resolve-native-connector-bend-controls)
@@ -272,7 +288,8 @@ and `ARROW_EQUILATERAL` end. Configure the copy's actual endpoints, not the lege
    to path turns, not a surrounding frame; annotation values are not UI tokens.
 
 Keep destination/direction clear and route arrows without obscuring content.
-Inspect saved endpoints, event/style, label size/color and bends; apply
+Inspect saved endpoints, event/style, label size/color and placement outside screens,
+parallel-segment clearance, entry side, crossings and bends; apply
 [visual completion](../AGENTS.md#visual-completion). Return source, trigger and
 output links. Drawn arrows do not establish prototype reactions, application
 behavior or dynamic attachment by appearance alone.

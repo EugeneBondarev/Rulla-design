@@ -94,3 +94,9 @@ meaningful screen names in Layers and a heading/description above each screen to
 explain the flow's actions and outcomes. Exact styles, bindings and layout checks
 live in [screens and captions](scaffolds.md#screens-and-captions). He authorized
 immediate merge of this update and any other remaining PRs.
+
+On 2026-10-14, Evgeny refined arrow routing: labels outside screens, parallel
+segments clear of screen edges, entry from the side nearest the actual target,
+and minimal arrows, labels and avoidable crossings. The values and checks live in
+[scenario connections](scaffolds.md#scenario-connections); screen explanations
+remain in their existing caption rule rather than being duplicated on arrows.
