@@ -16,12 +16,14 @@ applicable minimum/maximum, icon, and control dimensions), corner radii, and eff
 Hug/Fill and other layout behaviors are not numeric tokens; verify them against
 the chosen source layout.
 
-The user-specified [scenario section](scaffolds.md#scenario-sections) layout/fill
+The user-specified [scenario section](scaffolds.md#scenario-sections) layout/fill,
+[caption positioning](scaffolds.md#screens-and-captions),
 and [scenario arrow](scaffolds.md#scenario-connections) presentation are specific
 canvas-presentation exceptions. Follow their linked values and preserve the actual
 arrow source's color and line appearance. The inspected arrow strokes have no
 variable/style bindings; do not claim these presentation values are token-bound
-or invent tokens/mappings to replace them. This exception does not apply to
+or invent tokens/mappings to replace them. Caption text still uses the verified
+text styles and color bindings specified in its rule. This exception does not apply to
 product UI or other visual properties.
 
 Before dependent edits, resolve each property's exact consuming node URL,
