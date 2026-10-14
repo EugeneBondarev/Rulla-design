@@ -171,6 +171,12 @@ position/resize the section to leave **400 px on each side**: left, right, top, 
 Recalculate these margins after changing the flow. Set section position and size
 from the bounds; do not invent Auto Layout padding properties for a Section.
 
+In a sequence of screens, keep **250 px between adjacent screen roots**, measured
+edge to edge along the sequence direction: right edge to left edge in a row, or
+bottom edge to top edge in a column. Measure screen bounds, not caption bounds or
+screen centers. Recalculate after resizing/rearranging screens; this is a canvas
+layout value, not a product-UI spacing token.
+
 The section background is **white with fill opacity 70%**. In the Plugin API,
 use a SOLID fill with `color: {r: 1, g: 1, b: 1}` and paint `opacity: 0.7`.
 Keep the section's own `opacity` at `1` (100%); the flow content must not become
@@ -178,7 +184,8 @@ translucent with it. These are user-specified canvas-presentation values, not
 product UI tokens or new design-system assets.
 
 Read back the SECTION type, fill/color/paint opacity and node opacity; measure
-all four margins against the final flow bounds and inspect the result. Return
+all four margins against the final flow bounds and the gaps between sequential
+screens; inspect the result. Return
 the actual section/output links and checked margins with the scenario evidence.
 
 ### Screens and captions
@@ -273,7 +280,12 @@ and `ARROW_EQUILATERAL` end. Configure the copy's actual endpoints, not the lege
    stroke color/opacity, not the adjacent legend label. Load the existing font
    before editing. Read back the result: sources have empty labels, mostly 16 px,
    with black fill; their defaults do not satisfy this rule automatically.
-4. **Routing:** Between screens, route along their outside edges. Any exterior segment
+4. **Routing:** Straight path segments go **only left, right, up or down**, never
+   diagonally, including exits and entries inside screens. Use axis-aligned
+   routing (`ELBOWED` for turns); a `STRAIGHT` connector is allowed only when
+   horizontal or vertical. Round turns under the Bends rule below; rounded turn
+   arcs are allowed, diagonal shortcuts or arbitrary curved paths are not.
+   Between screens, route along their outside edges. Any exterior segment
    parallel to a screen must stay **at least 16 px from its boundary**, measured
    from the visible stroke edge. Only the short exit from the trigger and entry
    to the destination may run inside a screen; do not route along or across its UI.
@@ -292,7 +304,8 @@ and `ARROW_EQUILATERAL` end. Configure the copy's actual endpoints, not the lege
 
 Keep destination/direction clear and route arrows without obscuring content.
 Inspect saved endpoints, event/style, label size/color and placement outside screens,
-parallel-segment clearance, entry side, crossings and bends; apply
+horizontal/vertical straight segments, parallel-segment clearance, entry side,
+crossings and rounded bends; apply
 [visual completion](../AGENTS.md#visual-completion). Return source, trigger and
 output links. Drawn arrows do not establish prototype reactions, application
 behavior or dynamic attachment by appearance alone.
