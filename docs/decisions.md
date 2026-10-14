@@ -88,3 +88,9 @@ On 2026-10-14, Evgeny required agents to inspect final Figma screenshots, repair
 visible defects and avoid leaving broken output. The shared procedure lives in
 [visual completion](../AGENTS.md#visual-completion). He also authorized immediate
 merging of this update and the preceding arrow rules.
+
+On 2026-10-14, Evgeny requested screens without extra presentation wrappers,
+meaningful screen names in Layers and a heading/description above each screen to
+explain the flow's actions and outcomes. Exact styles, bindings and layout checks
+live in [screens and captions](scaffolds.md#screens-and-captions). He authorized
+immediate merge of this update and any other remaining PRs.
