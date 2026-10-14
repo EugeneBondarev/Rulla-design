@@ -48,6 +48,19 @@ On 2026-10-13, Evgeny approved removing the PR barrier for recording findings:
 exception and the remaining PR boundary live in
 [repository maintenance](../AGENTS.md#maintain-this-repository).
 
+On 2026-10-13, Evgeny designated the shared Figma arrow legend for every scenario:
+preserve its colors, use the appropriate platform/event type, and label a connection
+only when otherwise unclear. The exact sources and workflow live in
+[scenario connections](scaffolds.md#scenario-connections), invoked by enqo-flow.
+Evgeny's follow-up that day specified the arrow-label gap and rounded-bend
+radius/smoothing; the same section owns those values and checks.
+This request does not authorize changes to the Figma legend.
+
+On 2026-10-13, Evgeny required scenarios to be assembled inside native Figma
+Sections with fixed outer margins and a white background whose opacity belongs
+to the fill rather than the section. Values and verification live in
+[scenario sections](scaffolds.md#scenario-sections), invoked by enqo-flow.
+
 The human-only publication instruction supersedes earlier wording permitting
 agent publication with authorization. The original GitLab draft remains separate;
 it is not a competing source of current rules. No universal cross-platform scaffold,
@@ -58,3 +71,9 @@ For a future adopted decision, add its date, approver, concise instruction/sourc
 approval link when available (otherwise identify the actual source), and home.
 Update the rule in that home instead of copying it into this log. Pending proposals
 belong in harness-proposals.md or the relevant gap; do not call them adopted.
+
+On 2026-10-14, after discussing a single skill directory, Evgeny asked for a clear
+first-file route for Claude. [CLAUDE.md](../CLAUDE.md) retains the shared import and
+explains direct file reading; [AGENTS.md](../AGENTS.md#start-here) owns the task
+router. Shared bodies stay in `.agents/skills/`; the textual Claude adapters are
+removed. This instruction change does not establish a passed Claude session trial.

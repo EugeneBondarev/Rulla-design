@@ -22,10 +22,13 @@ not an unrelated working directory. Apply AGENTS.md if a dependency is unavailab
 3. Resolve blockers before dependent edits under AGENTS.md. Record token findings
    in [token gaps](../../../docs/token-gaps.md). Apply the scenario boundary;
    do not switch to component work as a workaround.
-4. Compose linked instances through supported slots/properties, preserving source
+4. Arrange the requested flow inside a [scenario section](../../../docs/scaffolds.md#scenario-sections).
+   Compose linked instances through supported slots/properties, preserving source
    layout and bindings. Apply mockup-content.md to product copy and visible
    content-length/density cases. Derive states/transitions from the requested
    scenario and actual references/implementation.
+   Connect the displayed states using [scenario arrows](../../../docs/scaffolds.md#scenario-connections)
+   and their platform/label rules.
    For Mobile, apply [focus and keyboard states](../../../docs/scaffolds.md#mobile-focus-and-keyboard-states)
    before building input states: resolve field focus/cursor, scaffold keyboard
    visibility, input layout, and action configuration from actual sources/code.
@@ -33,6 +36,8 @@ not an unrelated working directory. Apply AGENTS.md if a dependency is unavailab
    requested transitions, and the content cases at required widths. Inspect a
    screenshot of each materially different output; report untested interactions
    and persistence failures under AGENTS.md.
+   Verify the section's final margins, fill opacity, and node opacity under its rule.
+   Check the scenario connections against the arrow sources and actual transitions.
    Check Mobile keyboard-state evidence and transitions required by that section;
    return actual input/keyboard/action nodes with the state links.
 6. Return exact output/case links, source list, checks, and remaining gaps. Record
