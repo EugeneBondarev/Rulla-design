@@ -16,6 +16,12 @@ applicable minimum/maximum, icon, and control dimensions), corner radii, and eff
 Hug/Fill and other layout behaviors are not numeric tokens; verify them against
 the chosen source layout.
 
+The user-designated [scenario arrows](scaffolds.md#scenario-connections) are a
+specific canvas-annotation exception: preserve the actual source vector's color
+and line appearance. Their inspected strokes have no variable/style bindings;
+do not claim they are token-bound or create tokens to replace the approved legend.
+This exception does not apply to product UI or other visual properties.
+
 Before dependent edits, resolve each property's exact consuming node URL,
 component key where applicable, variable/style name and ID/key, collection,
 effective mode, aliases, and binding. Group properties only when they share the

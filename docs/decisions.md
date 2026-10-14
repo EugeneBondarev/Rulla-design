@@ -43,6 +43,12 @@ minimal useful text for people and agents and no extra bureaucracy. The format
 and checks live in [minimal description](component-authoring.md#minimal-description);
 the related bottleneck is [HP-006](harness-proposals.md#hp-006--separate-component-captions-from-reuse-guidance).
 
+On 2026-10-13, Evgeny designated the shared Figma arrow legend for every scenario:
+preserve its colors, use the appropriate platform/event type, and label a connection
+only when otherwise unclear. The exact sources and workflow live in
+[scenario connections](scaffolds.md#scenario-connections), invoked by enqo-flow.
+This request does not authorize changes to the Figma legend.
+
 The human-only publication instruction supersedes earlier wording permitting
 agent publication with authorization. The original GitLab draft remains separate;
 it is not a competing source of current rules. No universal cross-platform scaffold,
