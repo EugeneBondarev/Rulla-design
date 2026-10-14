@@ -190,16 +190,20 @@ rule does not remove frames needed by its actual UI. Name that output root in
 Layers with a meaningful Russian screen/state title, matching its visible heading;
 do not rename the shared source component or leave generic names such as `Frame 1`.
 
-Above every screen, place two separate text nodes in a small vertical Auto Layout
-containing **only the caption**, aligned with the screen:
+Above every screen, place **two standalone TEXT nodes directly in the Section**,
+with equal widths and aligned left edges. Do not wrap them in a frame, Auto Layout
+or group; no caption container/name should appear above the screen:
 
 - **Heading:** the screen/state title; `Heading/M`, **23 px**, `Text/Primary`.
 - **Description:** 1–2 short Russian sentences explaining what happens here:
   the relevant user action, its result or the next step; `Body/S`, **14 px**,
   `Text/Secondary`. Use only behavior established by the task and inspected flow.
 
-Keep **4 px between Heading and Description**, bound to the verified spacing
-variable below. This gap is within the caption, not between an arrow and its label.
+Keep **104 px vertically between the bottom of the Heading text box and the top
+of the Description text box**. After text changes, remeasure heights and reposition
+the Description to retain that gap. This replaces the previous 4 px caption gap;
+it is a human-specified canvas-positioning value, not a new spacing token or an
+arrow-label gap. Do not reuse the former 4 px binding for it.
 Use the actual text styles and color bindings; do not reproduce them with raw
 values. Preserve the style's line height (28 px / 20 px at inspection): 23 / 14 px
 are font sizes, not fixed text-box heights. Let descriptions wrap/grow without
@@ -216,11 +220,11 @@ of `🟣 Design System`:
 | Description style | `Body/S`; style ID `S:29dfcda6ed86475b1d655095a936d3b2c93df1cf,`; key `29dfcda6ed86475b1d655095a936d3b2c93df1cf` | [Body/S binding, 19157:76157](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=19157-76157); font-size binding `Font/Size/14`, ID `VariableID:19050:44840`, key `aae06dc5a17ca8947b4ab553a9098e173b6440f3`; Typography Web/Mobile both 14 |
 | Heading color | `Text/Primary`; ID `VariableID:6398:328840`; key `b7a5e3d3d3dc9a518e501eca2b4dc6774668d368` | Bound on [Роли, 19157:76156](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=19157-76156); Color • Variables, Light/Dark |
 | Description color | `Text/Secondary`; ID `VariableID:6418:328925`; key `1dc4ec8b32c1284387cdd9d1073df22f7b45e4ed` | Binding evidence: [Name, 18884:188](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=18884-188); Color • Variables, Light/Dark |
-| Caption gap | `🛑 1`; ID `VariableID:19079:44680`; key `fed8a3b63d3345d39fb59a12ae0aff284a605e6e` | Spacing • Aliases, Web `19079:0` / Mobile `20501:0` both 4; variable values inspected, no existing caption usage claimed |
 
 Reopen these assets and resolve local/imported IDs and effective modes before use.
-Read back output names, text-style identities, color/spacing bindings, actual
-sizes and wrapping. Include captions in the Section's final flow bounds and the
+Read back output names, direct Section parents, equal text widths, the measured
+gap, text-style identities, color bindings, actual sizes and wrapping.
+Include captions in the Section's final flow bounds and the
 [visual completion check](../AGENTS.md#visual-completion); return their node links.
 
 ## Scenario connections
