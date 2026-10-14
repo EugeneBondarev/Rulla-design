@@ -43,36 +43,7 @@ bottleneck was found, no proposal is required.
 | HP-003 | [Require rule loading before Figma writes](#hp-003--require-rule-loading-before-figma-writes) | proposed | 2026-10-09 |
 | HP-004 | [Resolve Mobile keyboard configuration](#hp-004--resolve-mobile-keyboard-configuration) | proposed | 2026-10-12 |
 | HP-005 | [Verify icon colors after button state changes](#hp-005--verify-icon-colors-after-button-state-changes) | proposed | 2026-10-13 |
-
-## HP-005 — Verify icon colors after button state changes
-
-**Status:** proposed. **Date:** 2026-10-13.
-
-**Situation and evidence:** The existing [FormattingOptions Row, 23160:1384](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23160-1384)
-contains AppButton instances whose icon vector fills have direct Icon/Secondary
-overrides. Cloning these buttons and changing Type to Primary or State to Disabled
-initially retained the gray icon fill. The inspected Primary source
-[22774:5347](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22774-5347)
-instead has a white token-bound icon. The Disabled source has the separate
-[TG-001](token-gaps.md#tg-001--appbutton-disabled-icon-binding) binding gap.
-
-**Problem and impact:** Correct variant/property values do not prove the correct
-rendered icon color. Copied overrides can silently survive state changes.
-
-**Proposed change:** Add a scoped check of the visible icon paint and binding
-after icon swaps and state/type changes; preserve intended overrides and remove
-stale ones only within the authorized output. Shared-source repair requires its
-own direct authorization.
-
-**Acceptance:** A fresh linked instance can show Default, selected Primary, and
-Disabled with the inspected colors/bindings; any inherited raw source fill is
-reported rather than described as token coverage.
-
-**Needed decision:** Adoption of this shared workflow check and explicit scope
-for any AppButton source repair. The new
-[FormattingOptionsSection](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23191-1386)
-already had stale overrides removed locally; selected colors were read back,
-Disabled preview bindings were applied locally, and shared masters were preserved.
+| HP-006 | [Separate component captions from reuse guidance](#hp-006--separate-component-captions-from-reuse-guidance) | approved | 2026-10-13 |
 
 ## HP-001 — Record component replacements during migration
 
@@ -201,3 +172,61 @@ The output matches the platform behavior or reports the specific unresolved gap.
 
 **Needed decision:** Verified per-task mappings and explicit authorization for
 any DS repair discovery shows is necessary. No keyboard asset was changed here.
+
+## HP-006 — Separate component captions from reuse guidance
+
+**Status:** approved for the documentation change by Evgeny's 2026-10-13 request
+in this conversation; [decision provenance](decisions.md). **Date:** 2026-10-13.
+
+**Situation and evidence:** The user showed a `FormattingOptionsSection` caption
+listing button counts and pixel measurements. At inspected main commit
+`1071a6dc6d16ad429d1666d40d96192a113b3401`,
+[component-authoring.md](https://github.com/EugeneBondarev/Rulla-design/blob/1071a6dc6d16ad429d1666d40d96192a113b3401/docs/component-authoring.md#minimal-description)
+grouped visible text and reuse details. It did not require measurement captions;
+the inference is that the grouping encouraged excessive text.
+
+**Problem and impact:** Captions can repeat inspectable geometry rather than help
+people and agents choose and use components.
+
+**Proposed change:** Clarify the existing [description format](component-authoring.md#minimal-description)
+and its skill check; no separate per-component documents.
+
+**Acceptance:** In the next authorized component task, inspect the caption,
+native Description/links, and preview labels against the real API. They explain
+use, important choices, and known limits without incidental measurement lists.
+No fresh-session behavioral trial is claimed by this documentation change.
+
+**Needed decision:** The instruction change is authorized; existing Figma
+descriptions require their own explicit edit scope. Adoption in main depends on
+merging the documentation PR. HP-005 is recorded below; its originating
+[icon-binding PR](https://github.com/EugeneBondarev/Rulla-design/pull/2) preserves the change history.
+
+## HP-005 — Verify icon colors after button state changes
+
+**Status:** proposed. **Date:** 2026-10-13.
+
+**Situation and evidence:** The existing [FormattingOptions Row, 23160:1384](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23160-1384)
+contains AppButton instances whose icon vector fills have direct Icon/Secondary
+overrides. Cloning these buttons and changing Type to Primary or State to Disabled
+initially retained the gray icon fill. The inspected Primary source
+[22774:5347](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22774-5347)
+instead has a white token-bound icon. The Disabled source has the separate
+[TG-001](token-gaps.md#tg-001--appbutton-disabled-icon-binding) binding gap.
+
+**Problem and impact:** Correct variant/property values do not prove the correct
+rendered icon color. Copied overrides can silently survive state changes.
+
+**Proposed change:** Add a scoped check of the visible icon paint and binding
+after icon swaps and state/type changes; preserve intended overrides and remove
+stale ones only within the authorized output. Shared-source repair requires its
+own direct authorization.
+
+**Acceptance:** A fresh linked instance can show Default, selected Primary, and
+Disabled with the inspected colors/bindings; any inherited raw source fill is
+reported rather than described as token coverage.
+
+**Needed decision:** Adoption of this shared workflow check and explicit scope
+for any AppButton source repair. The new
+[FormattingOptionsSection](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23191-1386)
+already had stale overrides removed locally; selected colors were read back,
+Disabled preview bindings were applied locally, and shared masters were preserved.

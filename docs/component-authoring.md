@@ -154,49 +154,84 @@ preservation are the user-required workflow and must be checked on actual output
    name. Keep the header linked and its master unchanged. Use that name for the
    new component/set and presentation frame; preserve infrastructure child names
    `DS header` and `Slot`. Remove the sample headline from the new copy.
-6. Add the minimal visible description inside `Slot`, next to the component in
-   the copied layout, with verified existing typography/color/spacing bindings.
-   Put the relevant usage contract described below in the actual COMPONENT or
-   COMPONENT_SET's native description, accessible without its presentation frame.
-   Never write a native description to a frame or instance.
-   Report unsupported description styling/layout instead of guessing values.
+6. Follow [minimal description](#minimal-description) for the visible caption
+   inside `Slot`, the actual COMPONENT or COMPONENT_SET's native description,
+   and preview labels. Use verified existing typography/color/spacing bindings
+   for visible text. Never write a native component description to a frame or
+   instance. Report unsupported styling/layout instead of guessing values.
 
 ## Minimal description
 
 Apply [mockup-content.md](mockup-content.md) to description language and preview
 content, preserving the exact header/component/property identities.
 
-Design and document the component for the next agent, who has no original chat
-context. Consider this while building it, not only when writing the final report.
-Keep the description short, but sufficient to explain how to use the actual
-component. Include the following only where applicable:
+Write for a person or agent who has no original chat. Include text only if it
+helps them find, choose, configure, or safely reuse the actual component. This
+local format follows [Figma's description guidance](https://help.figma.com/hc/en-us/articles/7938814091287-Add-descriptions-to-styles-components-and-variables)
+and adapts [Storybook's agent documentation guidance](https://storybook.js.org/docs/ai/best-practices);
+it does not require another documentation tool.
 
-- What the component does and where it is used. Link exact existing usage nodes
-  or code when available. If none exists yet, say so and label intended usage as
-  proposed; do not invent a screen reference.
-- Key supported states, their exact variant/property names, and what changes
-  between them. Use inspected code/library behavior or the direct human request;
-  never add an imagined standard state checklist.
-- How to configure it: relevant property types, actual defaults/allowed values,
-  supported combinations, and what each choice changes. Explain semantics that
-  are not evident from the exact property name; do not dump every layer or repeat
-  machine-readable metadata without adding useful meaning.
-- How it is structured: relevant nested component sources and exact slot/layer
-  names or node URLs, what content each slot accepts, and which elements an
-  instance may override. Preserve the verified API; describing it does not
-  authorize adding properties, restructuring masters, or new variants.
-- Layout and dependencies: observed resizing/wrapping/truncation behavior,
-  applicable constraints, linked token/mode/binding evidence, and required nested
-  components. Link actual source nodes or existing records instead of copying a
-  token catalog or assuming behavior from appearance.
-- Naming source: exact code symbol/path/commit or library API name/version/URL.
+### Visible caption
 
-Include an actual usage/preview link when available, and state known limitations
-or unresolved facts explicitly. Keep component-specific descriptions with the
-actual Figma component; do not create a GitHub document per component or rely on
-the task's final chat message as its only documentation. No long specification,
-empty matrix, invented owner, or speculative behavior is required. Report missing
-evidence and needed rule updates through [harness proposals](harness-proposals.md).
+Inside `Slot`, use 1–2 short sentences: purpose, usage context, and a key behavior
+only when useful. The caption may reuse the native description's opening. Keep
+the full usage instructions and source references off the presentation frame.
+
+Do not list component counts, icon sizes, paddings, gaps, radii, or layer anatomy
+merely because they can be measured. Geometry and tokens belong in actual layout
+properties and bindings. Mention a number only when it explains a meaningful
+usage constraint or the task explicitly asks for specifications.
+
+### Native description and links
+
+Use the actual main component/set's Description as the reusable entry point,
+accessible from instances and Assets. Start with purpose and context in natural
+Russian, helping both selection and Figma search; preserve technical names.
+Describe common use at set level; variant descriptions add only their relevant
+differences instead of repeating the set description.
+
+The minimum is purpose/context and the rule-entry link:
+`Перед работой с компонентом прочитай правила: https://github.com/EugeneBondarev/Rulla-design/blob/main/AGENTS.md`.
+Add only the following details needed for this component, in short prose or
+bullets; this is not a mandatory form:
+
+- **Choice and behavior:** when to use it, an exact linked alternative when the
+  distinction matters, and key supported state changes with real property/variant
+  names. Never invent standard states.
+- **Configuration and limits:** non-obvious property meanings, combinations,
+  exact slots/accepted content, allowed overrides, and relevant resizing behavior.
+  Include interaction/accessibility expectations when applicable and evidenced;
+  a visual example does not prove keyboard or assistive-technology behavior.
+- **References and gaps:** exact usage/preview links when available and the
+  verified naming/implementation reference from [name and destination](#name-and-destination).
+  Link existing sources for longer evidence, using Figma's documentation link
+  where supported. Say when usage or mapping is unverified; distinguish intended
+  design behavior, implementation, and tested behavior.
+
+Do not dump property types/defaults/value lists, nested-layer inventories, or
+token tables already inspectable in the asset unless explaining a necessary
+choice. Real properties, slots, instance links, and bindings remain the source
+of structural data; prose does not replace them or authorize changing the API.
+Report required missing evidence under AGENTS.md and link applicable gaps; do
+not guess facts or hide a limitation to keep the description short.
+
+### Examples
+
+Show the main use and materially different supported behavior needed by the task.
+Each preview explains one use or change. Use a short Russian label and add a
+sentence only for behavior that is not visible. For example, `Выбран жирный текст`
+explains the case better than `Пример 2`; this is wording guidance, not a new
+state or property name.
+
+Use linked instances with actual property values and the existing
+[content-variation checks](mockup-content.md#show-content-variation). Do not create
+new masters/variants, every theoretical combination, or repeated measurements for
+documentation. Link real output nodes; label illustrative usage as such rather
+than claiming an existing product screen or implemented behavior.
+
+Keep component-specific text with the Figma component and previews. No GitHub
+page per component, long specification, empty sections, mandatory matrix, or
+invented owner. Shared rules stay here; the final chat is not the only documentation.
 
 ## Verify and report
 
@@ -205,10 +240,17 @@ keys; header headline; naming reference; description; and token-coverage gaps.
 Verify the component master is inside `Slot`, the header remains linked, and
 source infrastructure is unchanged. Re-read the native description from the
 actual component/set and compare it with inspected properties, slots, bindings,
-and behavior. It must let the next agent locate the source, select supported
-configuration, populate slots, and understand constraints without the original
+and behavior. Check that captions/preview labels explain use rather than repeat
+measurements and that rule/source/preview links resolve. Verify what the available
+tool actually returns; visible board text or a link alone does not prove an agent
+received its content. The description and inspectable metadata must let the next
+agent locate the source, select supported configuration, populate slots, and
+understand constraints without the original
 chat. Report any unresolved part; do not claim another agent tested it unless
 that trial actually occurred. Inspect the rendered frame for fitting
 content, readable description, and preserved layout. Report publication separately:
 local creation is not publication. Return checked assets and exact links using the
 [human-only publication boundary](../AGENTS.md#component-publication-is-human-only).
+For an update, give the human a brief summary of changed behavior and any required
+instance migration. This complements the description; it grants no publication
+permission and does not require a separate release document.
