@@ -184,24 +184,29 @@ the actual section/output links and checked margins with the scenario evidence.
 ## Scenario connections
 
 For every Web or Mobile scenario, use the user-designated arrows to show actual
-connections between the displayed screens/states. Source: section
-[`Стрелки`, 22172:18563](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18563)
+connections between the displayed screens/states. Current integrated-label source:
+section [`Стрелки`, 22186:18630](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22186-18630)
 on page [`Infra`, 20597:159663](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=20597-159663)
-in `🟣 Design System`, inspected read-only on 2026-10-13.
+in `🟣 Design System`, inspected read-only on 2026-10-14. The earlier
+[`Стрелки`, 22172:18563](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18563)
+still contains four standalone vectors; it is historical appearance evidence,
+not the source for the current integrated-label workflow.
 
-| Exact legend label / vector name | Exact arrow source | Observed appearance | Enqo scenario usage |
+| Exact adjacent legend label | Current `Connector line` source | Earlier vector source | Enqo scenario usage |
 | --- | --- | --- | --- |
-| Tap / Arrow 2 | [22172:18564](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18564) | Purple, solid | Web and Mobile: explicit click/tap action |
-| Gesture / Arrow 5 | [22172:18565](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18565) | Turquoise, solid | Mobile: an actual supported gesture |
-| Haptic Feedback / Arrow 3 | [22172:18566](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18566) | Blue, dotted | Mobile: evidenced tactile feedback |
-| Automatically / Arrow 6 | [22172:18567](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18567) | Pink, dotted | Web and Mobile: an automatic transition |
+| Tap | [22186:18591](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22186-18591), purple, solid | [Arrow 2, 22172:18564](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18564) | Web and Mobile: explicit click/tap action |
+| Gesture | [22190:21282](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22190-21282), turquoise, solid | [Arrow 5, 22172:18565](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18565) | Mobile: an actual supported gesture |
+| Haptic Feedback | [22190:21287](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22190-21287), blue, dotted | [Arrow 3, 22172:18566](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18566) | Mobile: evidenced tactile feedback |
+| Automatically | [22190:21292](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22190-21292), pink, dotted | [Arrow 6, 22172:18567](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22172-18567) | Web and Mobile: an automatic transition |
 
-These sources are four VECTOR nodes, not components or variants. Clone the
-designated vector, preserving its exact stroke color, thickness, dash pattern,
-and arrowhead. Adjust endpoints/path to the actual connection; do not invent
-another arrow style, component key, or publication status. Reopen the sources
-before use. Take the color from the arrow itself: the `Automatically` text label
-currently has a different fill from `Arrow 6`.
+The current arrows are native **CONNECTOR** nodes, not COMPONENT/COMPONENT_SET
+assets. Their built-in label is `connector.text`; there is no component key or
+TEXT component-property name to invent. Clone the exact connector above and
+preserve its stroke paint, thickness, dash pattern and endpoint caps. Reopen it
+before use and set endpoints for the actual output instead of retaining source
+legend endpoints. Each inspected connector has a 1 px stroke, `CIRCLE_FILLED`
+start and `ARROW_EQUILATERAL` end. Take label color from that connector's stroke,
+not from the adjacent legend text: the Automatically legend text differs.
 
 For Enqo Web flow documentation use only Tap and Automatically. This is the
 user's platform convention, not a claim that every website lacks gestures.
@@ -209,27 +214,47 @@ For Mobile choose any of the four only when the requested scenario or inspected
 implementation establishes that event. Haptic Feedback marks tactile feedback;
 it does not justify inventing an extra screen or navigation transition.
 
-Make each connection's origin/action, destination, and direction unambiguous.
-Route arrows without obscuring screen content, controls, or captions.
+For a click/tap transition, start the arrow at the **actual button or hit target
+that triggers it**, not at the source screen's outer edge. Resolve that element's
+exact output node and bind `connectorStart.endpointNodeId` to it where supported;
+place the starting point on its boundary. Do not attach to the shared component
+master or a nearby decorative layer. Check that the shown element really triggers
+the depicted transition. If attachment is unsupported or the trigger is unknown,
+report the exact gap rather than silently starting from the screen instead.
+
+For a gesture, use its actual interaction surface. Automatic transitions do not
+require a fabricated button: identify their actual initiating state/event.
+Make destination and direction unambiguous. Route the rest of the arrow without
+obscuring screen content, controls, or captions.
 Add a short Russian label only when the event, condition, or result would otherwise
 be unclear; omit redundant labels on obvious connections. Do not invent actions,
 conditions, timings, or feedback to fill the flow. Missing evidence blocks that
 choice under AGENTS.md. A single state with no connection does not need a fake arrow.
 
-When a label is needed, place it above the relevant arrow segment with a **4 px
-gap** between the bottom of its text box and the nearest visible stroke edge.
-Keep it clear of bends and arrowheads; labels remain optional under the rule above.
+When a label is needed, put it **inside the arrow's built-in label**, using
+`connector.text.characters`; do not create a separate text node above it. Set
+`connector.text.fontSize = 12` and its visible text fill to the arrow's actual
+stroke paint/color and opacity. Load the existing label font before text edits.
+Keep labels optional under the rule above; leave the built-in text empty when
+unnecessary. Read back size and paint instead of assuming the source defaults
+comply: inspected labels were empty, most were 16 px, and their fill was black.
+Label placement is handled by the connector; there is no external gap rule.
 
 For a bent arrow, round each turn with **16 px radius** and **Corner Smoothing
-60%**. Keep the source stroke appearance and endpoint arrowhead; apply rounding
-to the actual path turns, not an enclosing frame. On a VECTOR, rounding vertices
-use `cornerRadius = 16` and the vector uses `cornerSmoothing = 0.6`. Route with
-enough room for the full radius and check both values and the rendered path;
-a round stroke join alone is not this radius. These are explicit annotation values,
-not invented token names or new product-UI corner/spacing defaults.
+60%**. This earlier human requirement has not been replaced. Apply rounding to
+actual path turns, not an enclosing frame, and check the rendered path. On the
+current CONNECTOR sources the inspected radius is 24 px; the available Plugin API
+exposes `cornerRadius` as read-only and no `cornerSmoothing` property. Do not apply
+VECTOR setters to a CONNECTOR, claim the requested rounding passed, or redraw it
+as a standalone vector to bypass the integrated-label rule. Report this unresolved
+source/tool mismatch under [HP-009](harness-proposals.md#hp-009--resolve-native-connector-bend-controls)
+and resolve the dependent bend configuration before treating the flow as complete.
+These values concern canvas annotations, not product-UI token defaults.
 
 This legend documents the flow on the canvas; drawn arrows alone do not establish
 configured Figma prototype reactions or working application behavior. Check the
-actual cloned appearance, platform/event selection, endpoints, necessary labels
-and their gap, rounded turns/smoothing where applicable, and readability. Return
-source and output links with the scenario checks.
+actual cloned appearance, platform/event selection, click/tap origin element,
+destination, necessary integrated labels with their actual size/color,
+rounded turns/smoothing where applicable, and readability. Return source,
+trigger-element and output links with the scenario checks. Canvas arrows alone
+do not prove that a connector is dynamically attached; inspect the saved endpoints.

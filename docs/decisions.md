@@ -77,3 +77,9 @@ first-file route for Claude. [CLAUDE.md](../CLAUDE.md) retains the shared import
 explains direct file reading; [AGENTS.md](../AGENTS.md#start-here) owns the task
 router. Shared bodies stay in `.agents/skills/`; the textual Claude adapters are
 removed. This instruction change does not establish a passed Claude session trial.
+
+On 2026-10-14, Evgeny requested click/tap arrows to originate at the actual trigger
+element and replaced external arrow labels with integrated labels. The current
+sources, text formatting and endpoint checks live in
+[scenario connections](scaffolds.md#scenario-connections). This supersedes the
+earlier external-label placement instruction; the bend requirement is unchanged.
