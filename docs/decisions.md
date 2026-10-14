@@ -47,6 +47,8 @@ On 2026-10-13, Evgeny designated the shared Figma arrow legend for every scenari
 preserve its colors, use the appropriate platform/event type, and label a connection
 only when otherwise unclear. The exact sources and workflow live in
 [scenario connections](scaffolds.md#scenario-connections), invoked by enqo-flow.
+Evgeny's follow-up that day specified the arrow-label gap and rounded-bend
+radius/smoothing; the same section owns those values and checks.
 This request does not authorize changes to the Figma legend.
 
 The human-only publication instruction supersedes earlier wording permitting

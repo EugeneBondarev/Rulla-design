@@ -197,7 +197,20 @@ be unclear; omit redundant labels on obvious connections. Do not invent actions,
 conditions, timings, or feedback to fill the flow. Missing evidence blocks that
 choice under AGENTS.md. A single state with no connection does not need a fake arrow.
 
+When a label is needed, place it above the relevant arrow segment with a **4 px
+gap** between the bottom of its text box and the nearest visible stroke edge.
+Keep it clear of bends and arrowheads; labels remain optional under the rule above.
+
+For a bent arrow, round each turn with **16 px radius** and **Corner Smoothing
+60%**. Keep the source stroke appearance and endpoint arrowhead; apply rounding
+to the actual path turns, not an enclosing frame. On a VECTOR, rounding vertices
+use `cornerRadius = 16` and the vector uses `cornerSmoothing = 0.6`. Route with
+enough room for the full radius and check both values and the rendered path;
+a round stroke join alone is not this radius. These are explicit annotation values,
+not invented token names or new product-UI corner/spacing defaults.
+
 This legend documents the flow on the canvas; drawn arrows alone do not establish
 configured Figma prototype reactions or working application behavior. Check the
-actual cloned appearance, platform/event selection, endpoints, necessary labels,
-and readability. Return source and output links with the scenario checks.
+actual cloned appearance, platform/event selection, endpoints, necessary labels
+and their gap, rounded turns/smoothing where applicable, and readability. Return
+source and output links with the scenario checks.
