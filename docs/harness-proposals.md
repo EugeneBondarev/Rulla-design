@@ -228,7 +228,15 @@ documented long-title collision behavior. Sliver expansion is separate scope.
 **Current scoped result:** The authorized
 [Chat Info example](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23321-1330)
 remains linked to AppBar. Its two side slots are balanced and its two title lines
-are centered; bar/text centers match at widths 393 and 320. This local slot/text
-configuration is not a new shared centerTitle property. AppBar, AppTile, AppButton
-masters and publication were unchanged. The separate typography finding is
+are centered. Two additional authorized Examples show
+[back only](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23336-1348)
+and [back plus search and menu](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23336-1387).
+Both title lines match the full bar center at widths 393 and 320, including after
+reopening the saved instance. Local title-content insets compensate for the
+different side widths; these examples do not add a shared centerTitle property
+or promise automatic compensation after replacing the action composition.
+Native slot positioning/size overrides were rejected or did not persist through
+the API, so the final examples use supported content overrides and retain their
+AppBar link. AppBar, AppTile, AppButton masters and publication were unchanged.
+The separate typography finding is
 [TG-002](token-gaps.md#tg-002--labelm-font-size-role-binding).
