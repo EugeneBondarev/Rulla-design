@@ -66,3 +66,9 @@ For a future adopted decision, add its date, approver, concise instruction/sourc
 approval link when available (otherwise identify the actual source), and home.
 Update the rule in that home instead of copying it into this log. Pending proposals
 belong in harness-proposals.md or the relevant gap; do not call them adopted.
+
+On 2026-10-14, after discussing a single skill directory, Evgeny asked for a clear
+first-file route for Claude. [CLAUDE.md](../CLAUDE.md) retains the shared import and
+explains direct file reading; [AGENTS.md](../AGENTS.md#start-here) owns the task
+router. Shared bodies stay in `.agents/skills/`; the textual Claude adapters are
+removed. This instruction change does not establish a passed Claude session trial.
