@@ -247,8 +247,9 @@ received its content. The description and inspectable metadata must let the next
 agent locate the source, select supported configuration, populate slots, and
 understand constraints without the original
 chat. Report any unresolved part; do not claim another agent tested it unless
-that trial actually occurred. Inspect the rendered frame for fitting
-content, readable description, and preserved layout. Report publication separately:
+that trial actually occurred. Apply the mandatory
+[visual completion check](../AGENTS.md#visual-completion) to the component and
+previews. Report publication separately:
 local creation is not publication. Return checked assets and exact links using the
 [human-only publication boundary](../AGENTS.md#component-publication-is-human-only).
 For an update, give the human a brief summary of changed behavior and any required

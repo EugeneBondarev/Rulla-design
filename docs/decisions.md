@@ -83,3 +83,8 @@ element and replaced external arrow labels with integrated labels. The current
 sources, text formatting and endpoint checks live in
 [scenario connections](scaffolds.md#scenario-connections). This supersedes the
 earlier external-label placement instruction; the bend requirement is unchanged.
+
+On 2026-10-14, Evgeny required agents to inspect final Figma screenshots, repair
+visible defects and avoid leaving broken output. The shared procedure lives in
+[visual completion](../AGENTS.md#visual-completion). He also authorized immediate
+merging of this update and the preceding arrow rules.

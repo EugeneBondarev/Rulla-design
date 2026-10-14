@@ -142,7 +142,8 @@ implementation; neither proves what is deployed.
 
 Return source links and output links, what changed, structural/visual checks,
 and remaining gaps, including linked token-gap entries. Check actual instance keys,
-property values, variable/style bindings, and screenshots. Do not claim all states,
+property values, variable/style bindings, and the [visual completion check](#visual-completion).
+Do not claim all states,
 responsiveness, accessibility, production parity, persistence, or cross-agent
 behavior were tested without evidence.
 
@@ -151,6 +152,24 @@ requested. The standing authorization to record proposals and token gaps still
 applies; an explicit instruction prohibiting all writes takes precedence. Component
 publication follows the boundary above. Deleting shared assets, merging branches,
 and production changes require explicit authorization. Do not store credentials here.
+
+## Visual completion
+
+Before a Figma edit, preserve enough of the current state to undo your own changes.
+Before finishing, **capture and visually inspect a screenshot of the final output**:
+every affected screen/component and materially different state at the task's required
+sizes. Taking a screenshot or checking node properties alone is not a visual review.
+Check clipping, overlap, text wrapping, alignment, spacing, missing content and
+controls, plus arrow paths and labels where present.
+
+Fix visible defects within the authorized scope, then capture and inspect the
+changed result again. Do not leave your output broken or claim completion: if a
+repair is blocked, undo your own failing changes to the last verified state and
+report the exact blocker. Preserve other people's and concurrent work; if a safe
+rollback or screenshot is unavailable, stop and explicitly report the output as
+unverified or still broken. Do not hide defects by deleting content, detaching
+instances, guessing tokens, or changing shared sources outside the request.
+Return the checked node links, screenshot evidence and any remaining limitations.
 
 ## Maintain this repository
 
