@@ -45,6 +45,7 @@ bottleneck was found, no proposal is required.
 | HP-005 | [Verify icon colors after button state changes](#hp-005--verify-icon-colors-after-button-state-changes) | proposed | 2026-10-13 |
 | HP-006 | [Separate component captions from reuse guidance](#hp-006--separate-component-captions-from-reuse-guidance) | approved | 2026-10-13 |
 | HP-007 | [Resolve Scaffold status-bar ownership](#hp-007--resolve-scaffold-status-bar-ownership) | proposed | 2026-10-13 |
+| HP-008 | [Resolve reusable AppBar centerTitle support](#hp-008--resolve-reusable-appbar-centertitle-support) | proposed | 2026-10-14 |
 
 ## HP-001 — Record component replacements during migration
 
@@ -268,3 +269,43 @@ areas counted once. Per-screen slot mapping and any body overlap are explicit.
 **Needed decision:** The intended Status Bar ownership and direct authorization
 for the precise Figma description/structure change. No Figma nodes, token
 definitions, Flutter code, or library publication were changed in this audit.
+
+## HP-008 — Resolve reusable AppBar centerTitle support
+
+**Status:** proposed. **Date:** 2026-10-14. Related Scaffold finding: [HP-007](#hp-007--resolve-scaffold-status-bar-ownership).
+
+**Situation and evidence:** The user requested a Chat Info bar in Examples.
+[GroupChatInfoScreen](https://git.aimadev.space/platform/Enqo.Mobile/-/blob/d12f3e6819ce70f892bbb2c7df4ee16955b694c6/common/lib/features/user_info/presentation/screen/group_chat_info_screen.dart)
+uses SliverAppBar with centerTitle=true, a two-line title, AppBackButton, and
+GroupChannelDetailsMenu. The inspected Figma
+[AppBar source](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23046-1005),
+key `898a36982101519ca69372908acece2f75b66673`, exposes slots and visibility
+controls but no centerTitle property.
+
+**Problem and impact:** Centering the title in the remaining space alone does
+not guarantee alignment to the full bar when leading/actions widths differ.
+A single configured example does not establish general centerTitle behavior.
+
+**Proposed change:** Inspect actual centered usages and resolve a small supported
+API/layout solution for global centering, including asymmetric actions and long
+titles. Any shared-master/property change requires a direct human request.
+
+**Acceptance:** A linked instance centers a fitting title against the whole bar
+with one leading action and varying trailing content, and reproduces the
+documented long-title collision behavior. Sliver expansion is separate scope.
+
+**Current scoped result:** The authorized
+[Chat Info example](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23321-1330)
+remains linked to AppBar. Its two side slots are balanced and its two title lines
+are centered. Two additional authorized Examples show
+[back only](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23336-1348)
+and [back plus search and menu](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23336-1387).
+Both title lines match the full bar center at widths 393 and 320, including after
+reopening the saved instance. Local title-content insets compensate for the
+different side widths; these examples do not add a shared centerTitle property
+or promise automatic compensation after replacing the action composition.
+Native slot positioning/size overrides were rejected or did not persist through
+the API, so the final examples use supported content overrides and retain their
+AppBar link. AppBar, AppTile, AppButton masters and publication were unchanged.
+The separate typography finding is
+[TG-002](token-gaps.md#tg-002--labelm-font-size-role-binding).
