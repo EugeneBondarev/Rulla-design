@@ -14,8 +14,8 @@ do not duplicate its finding or treat a proposal as permission to change the DS.
 ## Record a proposal
 
 1. Read existing entries. If the same bottleneck is recorded, add new evidence
-   and update its impact rather than creating a duplicate. After fetching the
-   current branch, choose the next unused `HP-NNN` ID; do not overwrite another
+   and update its impact rather than creating a duplicate. After refreshing
+   `main`, choose the next unused `HP-NNN` ID; do not overwrite another
    agent's additions. Resolve simultaneous changes before pushing.
 2. Record the date and actual task/situation; the observed problem and its impact;
    exact Figma names/node URLs/keys, code paths/commits, or other source links;
@@ -42,7 +42,9 @@ bottleneck was found, no proposal is required.
 | HP-002 | [Add an entry link from Figma to the agent center](#hp-002--add-an-entry-link-from-figma-to-the-agent-center) | proposed | 2026-10-09 |
 | HP-003 | [Require rule loading before Figma writes](#hp-003--require-rule-loading-before-figma-writes) | proposed | 2026-10-09 |
 | HP-004 | [Resolve Mobile keyboard configuration](#hp-004--resolve-mobile-keyboard-configuration) | proposed | 2026-10-12 |
+| HP-005 | [Verify icon colors after button state changes](#hp-005--verify-icon-colors-after-button-state-changes) | proposed | 2026-10-13 |
 | HP-006 | [Separate component captions from reuse guidance](#hp-006--separate-component-captions-from-reuse-guidance) | approved | 2026-10-13 |
+| HP-007 | [Resolve Scaffold status-bar ownership](#hp-007--resolve-scaffold-status-bar-ownership) | proposed | 2026-10-13 |
 | HP-008 | [Resolve reusable AppBar centerTitle support](#hp-008--resolve-reusable-appbar-centertitle-support) | proposed | 2026-10-14 |
 
 ## HP-001 — Record component replacements during migration
@@ -198,12 +200,79 @@ No fresh-session behavioral trial is claimed by this documentation change.
 
 **Needed decision:** The instruction change is authorized; existing Figma
 descriptions require their own explicit edit scope. Adoption in main depends on
-merging the documentation PR. HP-005 is reserved in the separate open
-[icon-binding proposal](https://github.com/EugeneBondarev/Rulla-design/pull/2).
+merging the documentation PR. HP-005 is recorded below; its originating
+[icon-binding PR](https://github.com/EugeneBondarev/Rulla-design/pull/2) preserves the change history.
+
+## HP-005 — Verify icon colors after button state changes
+
+**Status:** proposed. **Date:** 2026-10-13.
+
+**Situation and evidence:** The existing [FormattingOptions Row, 23160:1384](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23160-1384)
+contains AppButton instances whose icon vector fills have direct Icon/Secondary
+overrides. Cloning these buttons and changing Type to Primary or State to Disabled
+initially retained the gray icon fill. The inspected Primary source
+[22774:5347](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22774-5347)
+instead has a white token-bound icon. The Disabled source has the separate
+[TG-001](token-gaps.md#tg-001--appbutton-disabled-icon-binding) binding gap.
+
+**Problem and impact:** Correct variant/property values do not prove the correct
+rendered icon color. Copied overrides can silently survive state changes.
+
+**Proposed change:** Add a scoped check of the visible icon paint and binding
+after icon swaps and state/type changes; preserve intended overrides and remove
+stale ones only within the authorized output. Shared-source repair requires its
+own direct authorization.
+
+**Acceptance:** A fresh linked instance can show Default, selected Primary, and
+Disabled with the inspected colors/bindings; any inherited raw source fill is
+reported rather than described as token coverage.
+
+**Needed decision:** Adoption of this shared workflow check and explicit scope
+for any AppButton source repair. The new
+[FormattingOptionsSection](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23191-1386)
+already had stale overrides removed locally; selected colors were read back,
+Disabled preview bindings were applied locally, and shared masters were preserved.
+
+## HP-007 — Resolve Scaffold status-bar ownership
+
+**Status:** proposed. **Date:** 2026-10-13.
+
+**Situation and evidence:** Read-only inspection of
+[Scaffold/Default, 22495:10472](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22495-10472),
+key `eede9f3c90ffff86d9cb0ce30401b39f6e6e13de`, returned CHANGED.
+The source has a direct linked
+[Status Bar, 22495:10474](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22495-10474)
+before its separate
+[AppBar slot, 22495:10473](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22495-10473).
+However, its native description instructs putting Status Bar and a context navbar
+inside AppBar and keeping Status Bar there even when no navbar exists.
+[The earlier description-based record](scaffolds.md#scaffolddefault) quotes that
+guidance; it is not a current proof of correct containment.
+
+**Problem and impact:** Following the description literally can duplicate the
+device status bar or reserve its height twice. Slot names alone also do not prove
+exact mapping for each screen: the inspected
+[chat Scaffold](https://git.aimadev.space/platform/Enqo.Mobile/-/blob/d12f3e6819ce70f892bbb2c7df4ee16955b694c6/common/lib/features/chat/presentation/screens/chat_data.dart)
+places buildAppBar() inside body, MessageInputArea in bottomNavigationBar, and
+uses extendBody=true. Its layout therefore needs screen-specific mapping rather
+than an assumption that every top bar occupies Scaffold.appBar.
+
+**Proposed change:** Resolve which level owns Status Bar, document one consistent
+composition, and repair the authorized source description/structure accordingly.
+The observed separate system layer is a fitting candidate; this proposal does
+not adopt it as a new standard or authorize source edits.
+
+**Acceptance:** A linked screen with a context app bar, a screen without it, and
+an applicable keyboard-open state each contain one device status bar, with safe
+areas counted once. Per-screen slot mapping and any body overlap are explicit.
+
+**Needed decision:** The intended Status Bar ownership and direct authorization
+for the precise Figma description/structure change. No Figma nodes, token
+definitions, Flutter code, or library publication were changed in this audit.
 
 ## HP-008 — Resolve reusable AppBar centerTitle support
 
-**Status:** proposed. **Date:** 2026-10-14. HP-007 is reserved in open PR #5.
+**Status:** proposed. **Date:** 2026-10-14. Related Scaffold finding: [HP-007](#hp-007--resolve-scaffold-status-bar-ownership).
 
 **Situation and evidence:** The user requested a Chat Info bar in Examples.
 [GroupChatInfoScreen](https://git.aimadev.space/platform/Enqo.Mobile/-/blob/d12f3e6819ce70f892bbb2c7df4ee16955b694c6/common/lib/features/user_info/presentation/screen/group_chat_info_screen.dart)

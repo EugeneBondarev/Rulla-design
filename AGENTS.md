@@ -3,12 +3,24 @@
 ## Start here
 
 [Rulla-design](https://github.com/EugeneBondarev/Rulla-design) is the shared agent
-center and orchestration entry point for Enqo Web and Mobile. Read this file and
-choose [enqo-flow](.agents/skills/enqo-flow/SKILL.md) for scenarios,
-[enqo-component](.agents/skills/enqo-component/SKILL.md) for explicit component work,
-or [enqo-ds-audit](.agents/skills/enqo-ds-audit/SKILL.md) for audits.
+center and orchestration entry point for Enqo Web and Mobile. Read this file first,
+then choose the requested task below and **read that full SKILL.md before acting**.
+All shared skill bodies live in the single `.agents/skills/` directory.
 
-Read the relevant sources and topic rules before dependent work:
+| Requested work | Exact workflow file to read |
+| --- | --- |
+| One screen, sheet, or scenario; Web, Mobile, or both | [enqo-flow](.agents/skills/enqo-flow/SKILL.md) |
+| Explicit component creation, change, or documentation | [enqo-component](.agents/skills/enqo-component/SKILL.md) |
+| Design-system/source review or audit | [enqo-ds-audit](.agents/skills/enqo-ds-audit/SKILL.md) |
+
+Load the selected file with a file reader or GitHub file fetch; a name or link
+does not load its contents. Native skill registration is not required to read
+and follow this workflow. Resolve the paths above from this repository root;
+resolve links inside SKILL.md from that file's directory. Remote reads must use
+the same selected repository revision. If a required file cannot be read, report
+the missing prerequisite under the evidence rules below; do not improvise.
+
+The selected skill specifies which topic rules to read before dependent work:
 [Figma file map](docs/figma.md), [screen entry points](docs/scaffolds.md),
 [token coverage and evidence](docs/design-system.md), [code references](docs/codebases.md),
 [component authoring](docs/component-authoring.md), and
@@ -23,7 +35,7 @@ that repository's own instructions. Do not assume a GitHub link injects context.
 
 1. Identify the requested outcome, platform, target Figma nodes or code checkout,
    and the operations authorized by the task.
-2. Select the skill linked above and resolve its exact Figma/code sources through
+2. Read the selected skill file above and resolve its exact Figma/code sources through
    the docs. Check access to the required tools before dependent work.
 3. Order the work by actual dependencies: source discovery, the requested edits,
    then structural, visual, or implementation checks appropriate to those edits.
@@ -144,7 +156,7 @@ and production changes require explicit authorization. Do not store credentials 
 
 Keep one authoritative home for each rule, using the [README map](README.md#files).
 Edit the existing topic/section first; other files link to it instead of restating
-it. Skills contain task steps and required links, client adapters only load shared
+it. Skills contain task steps and required links, client entry files load shared
 instructions, and decisions record approval provenance rather than copies of rules.
 Before saving, check affected references and remove stale or conflicting wording.
 If the human's intent is unresolved, stop the dependent change and report the
@@ -162,13 +174,23 @@ During each task, record concrete bottlenecks in
 Update an existing finding instead of duplicating it; link related entries.
 Do not invent findings or silently implement a recorded proposal.
 
-The user's standing instruction authorizes recording these findings through a
-branch/PR without asking for every entry. If access is unavailable or all writes
-are explicitly prohibited, return the exact entry as unsaved. Never claim an
-unsent draft is recorded in GitHub or an open PR is already in the default branch.
-Adoption and implementation need the relevant human authorization; keep approval
-provenance in [decisions.md](docs/decisions.md). Authorized documentation changes
-use a branch/PR.
+The user's standing instruction authorizes adding or updating finding entries
+directly in GitHub `main`, without a PR or per-entry confirmation, in exactly
+`docs/harness-proposals.md` and `docs/token-gaps.md`. This exception covers records,
+not changes to instructions, entry formats, or lifecycle rules in those files.
+Refresh current `main` before saving; resolve concurrent additions and ID collisions
+without overwriting another agent's work or force-pushing. Verify the saved entry
+in `main` and return its actual link. Group findings from one task where practical;
+do not open a PR solely to record a finding.
+
+Recording a proposal is not approval or permission to implement it. Status changes
+still require the evidence specified in each register. Adoption and implementation
+need the relevant human authorization; keep approval provenance in
+[decisions.md](docs/decisions.md). Changes to rules, skills, register formats, or
+other documentation still use a branch/PR; do not bundle them into a direct
+finding commit. If direct saving is unavailable or all writes are explicitly
+prohibited, return the exact entry as unsaved and explain the blocker. Never claim
+an unsent draft is recorded in GitHub or an open PR is already in `main`.
 
 Never promote chat speculation, memory, or generated summaries into standards.
 In the task report, link recorded proposals and any unresolved
