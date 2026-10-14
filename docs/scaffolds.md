@@ -199,11 +199,10 @@ or group; no caption container/name should appear above the screen:
   the relevant user action, its result or the next step; `Body/S`, **14 px**,
   `Text/Secondary`. Use only behavior established by the task and inspected flow.
 
-Keep **104 px vertically between the bottom of the Heading text box and the top
+Keep **4 px vertically between the bottom of the Heading text box and the top
 of the Description text box**. After text changes, remeasure heights and reposition
-the Description to retain that gap. This replaces the previous 4 px caption gap;
-it is a human-specified canvas-positioning value, not a new spacing token or an
-arrow-label gap. Do not reuse the former 4 px binding for it.
+the Description to retain that gap. This is a human-specified canvas-positioning
+value within the caption, not an arrow-label gap or a new spacing token.
 Use the actual text styles and color bindings; do not reproduce them with raw
 values. Preserve the style's line height (28 px / 20 px at inspection): 23 / 14 px
 are font sizes, not fixed text-box heights. Let descriptions wrap/grow without
