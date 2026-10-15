@@ -19,7 +19,7 @@ rules rather than using this map as a second instruction set.
 | --- | --- | --- |
 | Entry | [AGENTS.md](AGENTS.md) | Task routing, evidence standards, authorization, publication boundary, repository upkeep |
 | Figma sources | [docs/figma.md](docs/figma.md) | File roles, migration, library/page inventory, access |
-| Screens and flows | [docs/scaffolds.md](docs/scaffolds.md) | Scaffold/sheet identities, APIs, selection gaps, Mobile keyboard states, scenario Sections and arrows |
+| Screens and flows | [docs/scaffolds.md](docs/scaffolds.md) | Scaffold/sheet identities, APIs, selection gaps, Mobile keyboard/haptic rules, scenario Sections and arrows |
 | Design system | [docs/design-system.md](docs/design-system.md) | Token coverage requirements and inspected bindings/JSON provenance |
 | Components | [docs/component-authoring.md](docs/component-authoring.md) | Reuse selection, code alignment, naming, infrastructure placement and descriptions |
 | Mockup content | [docs/mockup-content.md](docs/mockup-content.md) | Russian content, realistic variation and layout checks |

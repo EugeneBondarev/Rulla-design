@@ -114,3 +114,9 @@ On 2026-10-14, Evgeny required horizontal/vertical arrow paths with rounded turn
 and consistent gaps between sequential screens. Routing and bend checks live in
 [scenario connections](scaffolds.md#scenario-connections); layout measurements
 live in [scenario sections](scaffolds.md#scenario-sections).
+
+On 2026-10-15, Evgeny required Apple HIG review for Mobile haptics, selection from
+the product types shown in his Haptic Test screenshot, and arrow annotations of
+the exact feedback and moment. The procedure and inventory live in
+[Mobile haptic feedback](scaffolds.md#mobile-haptic-feedback); implementation evidence
+is linked from [code references](codebases.md#mobile-haptic-sources--2026-10-15).

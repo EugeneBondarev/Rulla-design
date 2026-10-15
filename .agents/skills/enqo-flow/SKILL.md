@@ -19,6 +19,8 @@ not an unrelated working directory. Apply AGENTS.md if a dependency is unavailab
    route and component code. Resolve component source keys/properties/publication
    status, token/style bindings and modes, and the inspected code commit. Use
    this evidence to explain the screen/sheet choice; return the compact source list.
+   For Mobile, perform the [haptic review](../../../docs/scaffolds.md#mobile-haptic-feedback)
+   against Apple HIG, the product inventory and actual event call sites before composition.
 3. Resolve blockers before dependent edits under AGENTS.md. Record token findings
    in [token gaps](../../../docs/token-gaps.md). Apply the scenario boundary;
    do not switch to component work as a workaround.
@@ -38,6 +40,8 @@ not an unrelated working directory. Apply AGENTS.md if a dependency is unavailab
    and persistence failures under AGENTS.md.
    Verify the section's final margins, fill opacity, and node opacity under its rule.
    Check the scenario connections against the arrow sources and actual transitions.
+   For Mobile, verify each haptic marker's exact type, trigger/timing and existing
+   versus proposed status under the linked haptic rule; report untested device output.
    Check Mobile keyboard-state evidence and transitions required by that section;
    return actual input/keyboard/action nodes with the state links.
 6. Return exact output/case links, source list, checks, and remaining gaps. Record

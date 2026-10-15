@@ -58,6 +58,34 @@ master/detail layout on tablets. It is not a generic screen scaffold.
 whether this shell applies. Presentation classes do not identify a Figma
 component, and a bottom-sheet content component does not define navigation.
 
+### Mobile haptic sources — 2026-10-15
+
+Read-only inspection of the local Enqo.Mobile checkout at
+`21d282885ab186f61298c66eb3414f62e12f5b9c`; relevant debug source and lockfile match
+that commit. Other working-tree changes were preserved. These are source facts,
+not deployment or tactile device-test evidence.
+
+- [HapticTestScreen](https://git.aimadev.space/platform/Enqo.Mobile/-/blob/21d282885ab186f61298c66eb3414f62e12f5b9c/common/lib/features/debug/presentation/screens/haptic_test_screen.dart)
+  wires the five Flutter buttons and iterates `HapticsType.values`, calling
+  `Haptics.vibrate(hapticsType)`. Its list matches the user's Haptic Test screenshot.
+- [pubspec.lock](https://git.aimadev.space/platform/Enqo.Mobile/-/blob/21d282885ab186f61298c66eb3414f62e12f5b9c/pubspec.lock)
+  pins the AlexeyKatsuro/haptic_feedback fork to `v0.6.0`, version `0.6.0`, resolved
+  commit `0dea497e9fa2165a0319d87dee1a9ea5c163653a`.
+- Fork [enum](https://github.com/AlexeyKatsuro/haptic_feedback/blob/0dea497e9fa2165a0319d87dee1a9ea5c163653a/lib/src/haptics_type.dart),
+  [dispatch](https://github.com/AlexeyKatsuro/haptic_feedback/blob/0dea497e9fa2165a0319d87dee1a9ea5c163653a/lib/src/haptics.dart)
+  and [iOS implementation](https://github.com/AlexeyKatsuro/haptic_feedback/blob/0dea497e9fa2165a0319d87dee1a9ea5c163653a/ios/Classes/HapticFeedbackPlugin.swift)
+  verify the enum choices and their UIKit notification/impact/selection mappings.
+  Older-iOS fallbacks in that source are not proof of identical effects everywhere.
+- Official Flutter [HapticFeedback API](https://api.flutter.dev/flutter/services/HapticFeedback-class.html),
+  [selectionClick](https://api.flutter.dev/flutter/services/HapticFeedback/selectionClick.html)
+  and [vibrate](https://api.flutter.dev/flutter/services/HapticFeedback/vibrate.html)
+  describe platform behavior. A newer API page may list methods outside the
+  product's verified inventory; do not add them to the allowed choices by inference.
+
+The inventory and selection/annotation procedure have one home in
+[Mobile haptic feedback](scaffolds.md#mobile-haptic-feedback). Refresh dependency
+and call-site evidence before applying it to a concrete scenario.
+
 ## Access
 
 Open Rulla-design as the task workspace. Read sibling code repositories only after
