@@ -279,6 +279,17 @@ paint after changing Type/State; a correct public Icon property alone is not
 acceptance evidence. Shared AppButton mapping repair still requires explicit
 scope. No shared-rule adoption is claimed by recording this evidence.
 
+**Additional Web evidence — 2026-10-15:** In the refreshed
+[Voice Input scenario](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=21944-32721),
+swapping the filled-state Send instance to the verified Primary/Default source
+[22007:138708](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22007-138708)
+retained the earlier disabled icon paint. The source uses \`Icon/On primary color\`
+(\`VariableID:6505:398555\`); the swapped instance retained
+\`VariableID:6975:163151\`. The two authorized scenario instances, including
+[Text ready](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22268-4242),
+now use the existing source paint. Masters were unchanged. This extends HP-005's
+state-change verification evidence to Web; it authorizes no shared Button repair.
+
 ## HP-007 — Resolve Scaffold status-bar ownership
 
 **Status:** proposed. **Date:** 2026-10-13.
