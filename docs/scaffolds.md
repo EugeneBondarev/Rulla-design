@@ -143,6 +143,69 @@ layout. Search/Next/Done/Send configuration remains unresolved; do not fake it b
 editing an unrelated key property. See
 [HP-004](harness-proposals.md#hp-004--resolve-mobile-keyboard-configuration).
 
+## Mobile: haptic feedback
+
+For every Mobile scenario, **review the current Apple
+[Playing haptics HIG](https://developer.apple.com/design/human-interface-guidelines/playing-haptics)**
+before composition. Review real actions, value changes and outcomes, including
+non-navigation events; decide where haptics are justified and select only from
+the product choices below. This rule does not apply to Web.
+
+Use Apple's iOS Notification, Impact and Selection meanings. Keep feedback brief,
+consistent and synchronized with the event; do not add it to every tap. Check
+whether the actual control already supplies system feedback to avoid a second
+pulse. Respect muted/unsupported haptics and keep the interaction understandable
+without vibration. HIG guidance does not make every action a mandatory haptic.
+For Android, verify the actual platform mapping before claiming the same effect.
+
+### Product choices and meaning
+
+The user's Haptic Test screenshot supplied on 2026-10-15 matches the inspected
+[debug screen and locked fork](codebases.md#mobile-haptic-sources--2026-10-15).
+This is a supported-choice inventory, not proof of every product call site or
+device behavior. Keep the provider in the type identity; do not silently exchange
+the two providers because their names are similar.
+
+| Meaning / moment | Exact available choice |
+| --- | --- |
+| Successful completion, after the result is known | Fork `success`: `HapticsType.success` |
+| A warning occurs | Fork `warning`: `HapticsType.warning` |
+| An error occurs | Fork `error`: `HapticsType.error` |
+| A control changes between discrete values | Flutter `Selection Click`: `HapticFeedback.selectionClick()`; or fork `selection`: `HapticsType.selection` |
+| Physical impact / snapping, matched to the visual metaphor | Flutter `Light Impact`, `Medium Impact`, `Heavy Impact`: `HapticFeedback.lightImpact()`, `HapticFeedback.mediumImpact()`, `HapticFeedback.heavyImpact()`; or fork `light`, `medium`, `heavy`: `HapticsType.light`, `HapticsType.medium`, `HapticsType.heavy` |
+| Hard/inflexible or soft/flexible physical interaction | Fork `rigid`, `soft`: `HapticsType.rigid`, `HapticsType.soft` |
+| Default system vibration, only for a specifically justified use | Flutter `Vibrate`: `HapticFeedback.vibrate()`; not a replacement for notification, selection or impact semantics |
+
+Fork calls use `Haptics.vibrate(HapticsType.success)` for success, with the chosen
+verified enum member for other types. Apple meanings above are selection criteria,
+not instructions to add a pulse to every matching event. Do not use impact weight
+as notification severity, or invent custom patterns, durations, intensity values,
+new types or a fallback vibration. Missing mappings are gaps to report.
+
+### Annotate and verify
+
+Mark each justified haptic event with the blue dotted **Haptic Feedback** connector
+from [scenario connections](#scenario-connections), tied to its actual trigger or
+result element. It represents feedback, not navigation; it needs no extra screen.
+Its integrated label is mandatory: **exact type plus precise event/moment**, in
+short Russian prose preserving technical names. For example,
+`HapticsType.success — после успешного завершения` illustrates the format, not an
+approved product event. Apply the existing label styling and outside-screen rules.
+
+Inspect the real call site, control defaults and dependency revision for the
+requested scenario. Distinguish existing code behavior from HIG-based design
+intent; if the intended call is absent or unverified, label it `Предлагается` and
+report that code/verification gap. A debug test button proves availability, not
+that a business action already triggers it. Do not silently change code or shared
+components to match the annotation.
+
+Before finishing, check type/meaning, exact trigger and timing, absence of duplicate
+system feedback, and marker legibility under [visual completion](../AGENTS.md#visual-completion).
+Return event-node links and a short HIG rationale with the code reference or
+proposal status; explain an intentionally haptic-free flow without drawing a fake
+marker. Screenshots cannot verify tactile output: claim device validation only
+after an actual test, and report unsupported/off behavior and untested platforms.
+
 ## Mobile: unresolved older usage
 
 In the scenario-reference file, instance `Scaffold`,
@@ -257,7 +320,8 @@ dash pattern and endpoint caps. Sources have a 1 px stroke, `CIRCLE_FILLED` star
 and `ARROW_EQUILATERAL` end. Configure the copy's actual endpoints, not the legend's.
 
 1. **Event:** Web uses Tap and Automatically; Mobile may use all four for evidenced
-   events. Haptic Feedback describes tactile feedback, not an extra screen.
+   events. Haptic Feedback describes tactile feedback, not an extra screen;
+   follow the [Mobile haptic review](#mobile-haptic-feedback) for its selection.
    Use the fewest arrows needed to understand the requested flow, preserving
    meaningful branches and outcomes. Do not invent actions, conditions, timings
    or transitions; a state without a transition needs no arrow.
@@ -269,6 +333,7 @@ and `ARROW_EQUILATERAL` end. Configure the copy's actual endpoints, not the lege
    If the trigger or attachment is unresolved, report it instead of substituting
    the screen as origin.
 3. **Label:** Add short Russian text only when necessary to understand the transition.
+   Haptic markers follow the specific [annotation rule](#annotate-and-verify) above.
    Put screen context, action and outcome in the [screen Description](#screens-and-captions)
    when that explains them clearly; use an arrow label for transition-specific
    information better explained there. Do not repeat the same explanation in both.
