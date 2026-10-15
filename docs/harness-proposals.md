@@ -47,6 +47,7 @@ bottleneck was found, no proposal is required.
 | HP-007 | [Resolve Scaffold status-bar ownership](#hp-007--resolve-scaffold-status-bar-ownership) | proposed | 2026-10-13 |
 | HP-008 | [Resolve reusable AppBar centerTitle support](#hp-008--resolve-reusable-appbar-centertitle-support) | proposed | 2026-10-14 |
 | HP-009 | [Resolve native connector bend controls](#hp-009--resolve-native-connector-bend-controls) | proposed | 2026-10-14 |
+| HP-010 | [Resolve shared Button property-read errors](#hp-010--resolve-shared-button-property-read-errors) | proposed | 2026-10-15 |
 
 ## HP-009 — Resolve native connector bend controls
 
@@ -336,3 +337,37 @@ the API, so the final examples use supported content overrides and retain their
 AppBar link. AppBar, AppTile, AppButton masters and publication were unchanged.
 The separate typography finding is
 [TG-002](token-gaps.md#tg-002--labelm-font-size-role-binding).
+
+## HP-010 — Resolve shared Button property-read errors
+
+**Status:** proposed. **Date:** 2026-10-15.
+
+**Situation and evidence:** Documentation-only work on
+[Messaging Input](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=3280-128473)
+and [QuillInput](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=22012-2392)
+encountered `Component set for node has existing errors` when reading
+componentProperties on existing nested toolbar buttons. For example, Bold
+instance `I22010:144190;22012:2178` resolves to
+[Button variant 1500:106417](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=1500-106417),
+key `4e1062cdbafdd567f868e3bbdab4a3d23a5abf19`, in
+[Button, 6979:212369](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=6979-212369),
+set key `a1b7ebbf565a8e7d7e7aaa3bf24f47a05975d4d3`.
+The error existed before presentation edits and remained afterward. Source keys,
+geometry, content, bindings, and readable properties matched before/after checks.
+The underlying cause has not been established.
+
+**Problem and impact:** An agent can inspect the toolbar and source links but
+cannot verify or safely rely on every nested button property through this API.
+Screenshots do not prove the property API is healthy. This is separate from the
+Mobile accessory observation in HP-004.
+
+**Proposed change:** Inspect this exact Button source in the editor and API,
+identify the invalid configuration or tool incompatibility, and propose the
+smallest evidenced repair. Preserve variant keys and instance overrides;
+do not rebuild or detach the buttons as a workaround.
+
+**Acceptance / needed decision:** The cited Bold instance and affected toolbar
+buttons return their properties without the error, with source links and visual
+states preserved. Shared Button repair needs a direct human request;
+publication remains human-only. This record authorizes no source repair.
+
