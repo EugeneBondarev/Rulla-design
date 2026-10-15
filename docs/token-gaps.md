@@ -76,6 +76,7 @@ real finding, add a `TG-NNN` section and an index row with a link to that sectio
 | --- | --- | --- | --- | --- |
 | [TG-001](#tg-001--appbutton-disabled-icon-binding) | AppButton S / Secondary Text / Disabled icon fill, Mobile Light | mapping/binding gap | open | 2026-10-13 |
 | [TG-002](#tg-002--labelm-font-size-role-binding) | Label/M fontSize binding, Typography Web/Mobile | mapping/binding gap | open | 2026-10-14 |
+| [TG-003](#tg-003--message-input-radius-20) | InputEditorSection corner radius 20, Mobile | confirmed missing | open | 2026-10-15 |
 
 ## TG-001 — AppButton disabled icon binding
 
@@ -148,3 +149,35 @@ is required or proposed.
 uses Heading/S and Caption/M. Its title explicitly binds fontSize to
 Font/Size/16, lineHeight to Font/Line-height/22, and the example sets Typography
 to Mobile. The binding, 16px size, and global title centering were read back.
+
+
+## TG-003 — Message Input radius 20
+
+**Status / classification / date:** open; confirmed missing within the inspected
+radius collections; 2026-10-15.
+
+**Task and impact:** The designer directly requested 20px corners on the new
+white InputEditorSection. The visible change is applied locally; it cannot be
+represented by an existing verified radius binding in the inspected sources.
+No variable was created or modified.
+
+**Target / observed state:** Mobile
+[InputEditorSection](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23424-12427),
+key `d7d34bbf763993443a724c865b20d5a48022c4bf`, all six variants. The corner
+radius is raw 20, with Corner Smoothing 0.6. The previous binding was `24`, key
+`6148787bd9885eedd5633c00ad86383cb0f95523`, in Radius • Primitives.
+
+**Discovery:** Inspected the shared 🟣 Design System file through Plugin API,
+Radius • Primitives collection `VariableCollectionId:19528:12576`: values
+0, 4, 8, 12, 16, 24, full (9999), single mode `19528:2`. No value 20 exists there.
+The inspected Numbers • Aliases legacy radius roles resolve to 0, 4, 8, 12, 16,
+24, and 32. Search `Radius 20` also returns `20`, key
+`f277b5a3a01b4688fe522cc8453cd9412ad9fc9e`, in Size • Primitives; matching that
+number does not establish a radius role, so it was not substituted.
+
+**Needed decision / acceptance:** Authorize a radius token or an approved mapping
+for 20px if this value is adopted. Then bind the affected four corners in all
+six variants and verify 20px and 60% smoothing. Current local raw geometry is the
+requested design result, not a claim of token coverage.
+
+**Resolution:** Unresolved. The component Description records this limitation.

@@ -261,6 +261,24 @@ for any AppButton source repair. The new
 already had stale overrides removed locally; selected colors were read back,
 Disabled preview bindings were applied locally, and shared masters were preserved.
 
+
+**Additional evidence, 2026-10-15:** In
+[VoiceInputSection](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=23423-12122),
+switching the linked AppButtons from Secondary to Tonal kept the public
+`Icon#22774:6` values for close (`22495:9383`) and stop (`23396:22352`), but both
+visible glyphs became `more_horizontal` (`22495:9373`). The inspected
+[Tonal / S / Default / Icon only source, 22782:1266](https://www.figma.com/design/8YfQ8OljtPhKsdbCxytn6Y?node-id=22782-1266)
+has empty componentPropertyReferences on its nested Icon. This is a component
+property mapping gap in addition to the paint-override issue above. The scoped
+VoiceInputSection fix swaps the nested linked icon instances to the intended
+sources and binds their vector fills to existing Icon/Primary. Shared AppButton
+masters remain unchanged. Final rendered buttons show close and stop correctly.
+
+**Proposed check extension:** Verify the rendered icon source as well as its
+paint after changing Type/State; a correct public Icon property alone is not
+acceptance evidence. Shared AppButton mapping repair still requires explicit
+scope. No shared-rule adoption is claimed by recording this evidence.
+
 ## HP-007 — Resolve Scaffold status-bar ownership
 
 **Status:** proposed. **Date:** 2026-10-13.
