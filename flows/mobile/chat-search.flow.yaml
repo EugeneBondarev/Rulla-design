@@ -1,0 +1,529 @@
+# Пилот: сначала читать read_first. Поля и идентификаторы этого файла ещё не общий стандарт.
+format_version: 0.1-pilot
+id: mobile.chat_search
+title: Поиск чатов и сообщений
+status: pilot_for_review
+platform: mobile
+read_first:
+- Это проверяемая текстовая модель показанного дизайна, а не исполняемый автомат или подтверждение реализации.
+- Идентификаторы событий/эффектов ниже введены для пилота; они не являются именами существующих Dart-методов.
+- views — снимки интерфейса, не отдельные Flutter routes. Состояния чатов, сообщений, страницы и клавиатуры независимы.
+- snapshot содержит примеры данных и UI, а не полное присваивание состояния при переходе. pending_view — визуальный ориентир;
+  клавиатуру/фокус менять только по явно заданному эффекту. Промежуточные снимки для остальных комбинаций не определены.
+- Для смысла сначала читать views → effects → transitions → open_questions → acceptance_cases. visual_evidence — только
+  трассировка.
+- null означает неизвестное/неприменимое по пояснению поля; unknown — не установлено. Нельзя заполнять их догадками.
+- При конфликте с новой Figma или кодом обновить доказательства и сообщить о расхождении; не считать этот снимок автоматически
+  актуальным.
+source:
+  section: {name: Поиск чатов и сообщений, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86304'}
+  page: {name: Search chat and messages, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-84528'}
+  inspected_at: '2026-10-16T18:53:37Z'
+  figma_version_id: null
+  version_note: API-чтение и визуальная проверка текущего полотна; неизменяемая версия Figma не получена.
+  evidence_status: observed_design
+  implementation_status: not_verified
+  approval_scope: Человек запросил пробный документ для проверки формата; утверждение всех продуктовых решений не установлено.
+state_axes:
+  query: Текущий запрос; query_example в views — тестовые данные, не обязательная последовательность запросов.
+  chats:
+  - unfiltered
+  - loading
+  - results
+  - empty
+  - error
+  - unknown
+  messages:
+  - not_shown
+  - loading
+  - results
+  - empty
+  - error
+  - unknown
+  pagination:
+  - none
+  - loading
+  - error
+  - unknown
+  keyboard: Видимость в конкретном макете; false не устанавливает отсутствие фокуса.
+  note: results означает непустые данные. pagination=none означает, что макет не изображает подгрузку, а не конец списка.
+views:
+  home:
+    title: 01 · Главная — поиск
+    figma: {name: Исходный экран · справочно, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86336'}
+    description: Нажмите поиск, чтобы открыть поле ввода запроса.
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86971
+    snapshot: {query_example: null, chats: unfiltered, messages: not_shown, pagination: none, keyboard: false}
+  search_empty:
+    title: 02 · Поиск — без запроса
+    figma: {name: 02 · Поиск — без запроса, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86368'}
+    description: 'Пустой запрос: обычный список чатов. Поле в фокусе.'
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86973
+    snapshot: {query_example: '', chats: unfiltered, messages: not_shown, pagination: none, keyboard: true, focus: search_field}
+  search_loading:
+    title: 03 · Поиск — загрузка
+    figma: {name: 03 · Поиск — загрузка, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86406'}
+    description: Введён «мак». Чаты и сообщения загружаются; пустую выдачу пока не показываем.
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86975
+    snapshot: {query_example: мак, chats: loading, messages: loading, pagination: none, keyboard: true}
+  results_keyboard:
+    title: 04 · Чаты и сообщения
+    figma: {name: 04 · Чаты и сообщения, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86438'}
+    description: Превью содержит найденное сообщение, а не последнее сообщение чата.
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86977
+    snapshot: {query_example: мак, chats: results, messages: results, pagination: none, keyboard: true}
+  chat_at_message:
+    title: 05 · Чат — найденное сообщение
+    figma: {name: Scaffold/Default, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-87051'}
+    description: Чат открыт у найденного сообщения. Совпавшее сообщение (целиком) подсвечивается на 1,5 секунды.
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86979
+    snapshot: {query_example: null, chats: unknown, messages: unknown, pagination: none, keyboard: false}
+  results:
+    title: 06 · Выдача — клавиатура скрыта
+    figma: {name: 06 · Выдача — клавиатура скрыта, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86470'}
+    description: Прокрутка скрывает клавиатуру. Чаты и сообщения идут одним списком.
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86983
+    snapshot: {query_example: мак, chats: results, messages: results, pagination: none, keyboard: false}
+  chats_only:
+    title: 07 · Найдены только чаты
+    figma: {name: 07 · Найдены только чаты, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86502'}
+    description: 'Запрос «макеты мобильного»: найдены только чаты. Пустой блок сообщений скрыт.'
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86985
+    snapshot: {query_example: макеты мобильного, chats: results, messages: empty, pagination: none, keyboard: false}
+  messages_only:
+    title: 08 · Найдены только сообщения
+    figma: {name: 08 · Найдены только сообщения, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86532'}
+    description: 'Запрос «обновила»: найдены только сообщения. Тап открывает чат у совпадения.'
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86987
+    snapshot: {query_example: обновила, chats: empty, messages: results, pagination: none, keyboard: false}
+  no_results:
+    title: 09 · Ничего не найдено
+    figma: {name: 09 · Ничего не найдено, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86686'}
+    description: Запрос «квартальный отчёт» не дал совпадений. Его можно изменить или очистить.
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86989
+    snapshot: {query_example: квартальный отчёт, chats: empty, messages: empty, pagination: none, keyboard: false}
+  search_error:
+    title: 10 · Ошибка поиска
+    figma: {name: 10 · Ошибка поиска, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86842'}
+    description: Оба поиска не загрузились. «Повторить» сохраняет запрос и запускает поиск заново.
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86993
+    snapshot: {query_example: мак, chats: error, messages: error, pagination: none, keyboard: false}
+  messages_error:
+    title: 11 · Чаты доступны, сообщения — ошибка
+    figma: {name: '11 · Чаты доступны, сообщения — ошибка', url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86873'}
+    description: Чаты сохраняются в выдаче. «Повторить» перезапрашивает только сообщения.
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86981
+    snapshot: {query_example: мак, chats: results, messages: error, pagination: none, keyboard: false}
+  page_loading:
+    title: 12 · Подгрузка сообщений
+    figma: {name: 12 · Подгрузка сообщений, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86907'}
+    description: Найденные элементы остаются. Шиммеры добавляются в конец блока сообщений.
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86995
+    snapshot: {query_example: мак, chats: results, messages: results, pagination: loading, keyboard: false}
+  page_error:
+    title: 13 · Ошибка подгрузки
+    figma: {name: 13 · Ошибка подгрузки, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86942'}
+    description: Результаты сохраняются. «Повторить» загружает только неудачную страницу.
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86997
+    snapshot: {query_example: мак, chats: results, messages: results, pagination: error, keyboard: false}
+  chat_unanchored:
+    title: 14 · Чат — по названию
+    figma: {name: 14 · Чат — по названию, url: 'https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86968'}
+    description: Тап по названию открывает обычный чат без привязки к найденному сообщению.
+    description_source: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86991
+    snapshot: {query_example: null, chats: unknown, messages: unknown, pagination: none, keyboard: false}
+triggers:
+  open_search:
+    name: Chip
+    url: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=I6064-86336%3B19802-21765%3B6064-86331%3B22271-8703%3B22410-4906%3B6064-86326
+  query_field:
+    name: Search Text Field
+    url: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=I6064-86368%3B22495-10480%3B6064-86347%3B19989-23642%3B6064-86346%3B23100-4652
+  clear_query:
+    name: close
+    url: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=I6064-86438%3B22495-10480%3B6064-86417%3B19989-23642%3B6064-86416%3B23100-19937%3B22559-1214%3B22559-1210
+  message_result:
+    name: ChannelTile / совпадение — Дизайн продукта
+    url: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=I6064-86438%3B22495-10480%3B6064-86417%3B19989-23642%3B6064-86416%3B23100-22726%3B23100-17792%3B6064-86413
+  chat_result:
+    name: ChannelSearchTile / Макеты
+    url: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=I6064-86470%3B22495-10480%3B6064-86449%3B19989-23642%3B6064-86448%3B23100-22726%3B23100-16821%3B23079-18122%3B6064-86446
+  retry_search:
+    name: AppButton / Повторить
+    url: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=I6064-86842%3B22495-10480%3B6064-86841%3B22495-10492%3B6064-86840%3B23100-22726%3B23100-18472%3B6064-86839
+  retry_messages:
+    name: AppButton / Повторить
+    url: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=I6064-86873%3B22495-10480%3B6064-86852%3B19989-23642%3B6064-86851%3B23100-22726%3B23100-17792%3B6064-86847%3B17387-62979
+  retry_page:
+    name: AppButton / Повторить
+    url: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=I6064-86942%3B22495-10480%3B6064-86921%3B19989-23642%3B6064-86920%3B23100-22726%3B23100-17792%3B6064-86916%3B17387-62979
+trigger_note: Это проверенные локальные элементы примера. Для close указан glyph; полный hit target не проверен. Повторения
+  строк связывать по данным, не по этому единственному node ID.
+effects:
+  open_search: {ui: 'Открыть поиск с пустым запросом, обычным списком чатов, фокусом в поле и клавиатурой.'}
+  search_both:
+    request_scopes:
+    - chats
+    - messages
+    arguments:
+    - query
+    request_start_policy: null
+    pending_view: search_loading
+    question: Q01
+  clear_query:
+    set: {query: ''}
+    destination_view: search_empty
+    in_flight_policy: null
+    question: Q02
+  hide_keyboard:
+    set: {keyboard: false}
+    focus_after: null
+    question: Q06
+  retry_both:
+    request_scopes:
+    - chats
+    - messages
+    preserve:
+    - query
+    pending_view: search_loading
+  retry_messages:
+    request_scopes:
+    - messages
+    preserve:
+    - query
+    - chat_results
+    pending_view: null
+    question: Q04
+  load_next_messages:
+    request_scopes:
+    - messages_next_page
+    preserve:
+    - chat_results
+    - message_results
+    pending_view: page_loading
+    page_key: null
+    question: Q05
+  retry_message_page:
+    request_scopes:
+    - messages_failed_page
+    preserve:
+    - chat_results
+    - message_results
+    pending_view: page_loading
+    page_key: null
+    question: Q05
+  open_message:
+    destination_view: chat_at_message
+    data_needed:
+    - selected_chat_identity
+    - selected_message_identity
+    position: Найденное сообщение
+    highlight: {target: whole_message, duration_ms: 1500, starts_at: null}
+    question: Q09
+  open_chat:
+    destination_view: chat_unanchored
+    data_needed:
+    - selected_chat_identity
+    message_anchor: null
+    note: Обычное открытие чата; отсутствие якоря подтверждено подписью. Начальная позиция обычного чата не уточнена.
+transition_semantics:
+  atomic: Событие и показанное изменение UI; не означает подтверждённую реализацию.
+  request_result: Показанный результат запроса. guard описывает только условие этого примера.
+  summarized: 'Стрелка пропускает промежуточную работу: to достигается только после указанного результата, не сразу по
+    нажатию.'
+  example: Смена демонстрационного запроса и итог выдачи; не обязательный шаг пользовательского пути.
+  ambiguous: Смысл частично понятен, но источник/момент события не установлен. Не реализовывать буквально до ответа на
+    question.
+  unlisted: Непоказанные переходы не запрещены и не разрешены этим документом; их поведение неизвестно.
+transitions:
+- id: open_search
+  from: home
+  event: tap_search
+  to: search_empty
+  kind: atomic
+  figma_connectors:
+  - 6064:86998
+  trigger: open_search
+  effects:
+  - open_search
+- id: enter_query
+  from: search_empty
+  event: query_changed
+  to: search_loading
+  kind: atomic
+  figma_connectors:
+  - 6064:86314
+  trigger: query_field
+  example_query: мак
+  effects:
+  - search_both
+  question: Q01
+- id: both_results
+  from: search_loading
+  event: both_searches_succeeded
+  to: results_keyboard
+  kind: request_result
+  figma_connectors:
+  - 6064:86313
+  guard: {chats: results, messages: results}
+- id: open_message
+  from: results_keyboard
+  event: tap_message_result
+  to: chat_at_message
+  kind: atomic
+  figma_connectors:
+  - 6064:86312
+  trigger: message_result
+  effects:
+  - open_message
+- id: hide_keyboard
+  from: results_keyboard
+  event: scroll_results
+  to: results
+  kind: atomic
+  figma_connectors:
+  - 6064:86471
+  effects:
+  - hide_keyboard
+- id: clear_query
+  from: results_keyboard
+  event: tap_clear
+  to: search_empty
+  kind: atomic
+  figma_connectors:
+  - 6064:87003
+  - 6064:86999
+  trigger: clear_query
+  effects:
+  - clear_query
+- id: query_chats_only
+  from: results
+  event: query_changed
+  to: chats_only
+  kind: example
+  figma_connectors:
+  - 6064:86311
+  example_query: макеты мобильного
+  effects:
+  - search_both
+  completion_guard: {chats: results, messages: empty}
+  question: Q03
+- id: query_messages_only
+  from: chats_only
+  event: query_changed
+  to: messages_only
+  kind: example
+  figma_connectors:
+  - 6064:86310
+  example_query: обновила
+  effects:
+  - search_both
+  completion_guard: {chats: empty, messages: results}
+  question: Q03
+- id: query_no_results
+  from: messages_only
+  event: query_changed
+  to: no_results
+  kind: example
+  figma_connectors:
+  - 6064:86309
+  example_query: квартальный отчёт
+  effects:
+  - search_both
+  completion_guard: {chats: empty, messages: empty}
+  question: Q03
+- id: both_failed
+  from: search_loading
+  event: both_searches_failed
+  to: search_error
+  kind: request_result
+  figma_connectors:
+  - 6064:87000
+- id: retry_search
+  from: search_error
+  event: tap_retry
+  to: search_loading
+  kind: atomic
+  figma_connectors:
+  - 6064:87001
+  trigger: retry_search
+  effects:
+  - retry_both
+- id: messages_failed
+  from: results
+  event: messages_request_failed
+  to: messages_error
+  kind: ambiguous
+  figma_connectors:
+  - 6064:86308
+  question: Q03
+  note: На полотне стрелка идёт от уже готовой выдачи 06. Не установлено, какой новый запрос завершился ошибкой; не вводить
+    самопроизвольную ошибку готовых данных.
+- id: retry_messages
+  from: messages_error
+  event: tap_retry
+  to: results
+  kind: summarized
+  figma_connectors:
+  - 6064:86307
+  trigger: retry_messages
+  effects:
+  - retry_messages
+  completion_guard: {messages: results}
+  question: Q04
+- id: next_page
+  from: results
+  event: scroll_for_more
+  to: page_loading
+  kind: atomic
+  figma_connectors:
+  - 6064:86908
+  effects:
+  - load_next_messages
+  question: Q05
+- id: page_failed
+  from: page_loading
+  event: messages_page_failed
+  to: page_error
+  kind: request_result
+  figma_connectors:
+  - 6064:86306
+- id: retry_page
+  from: page_error
+  event: tap_retry
+  to: page_loading
+  kind: atomic
+  figma_connectors:
+  - 6064:86305
+  trigger: retry_page
+  effects:
+  - retry_message_page
+- id: open_chat
+  from: results
+  event: tap_chat_result
+  to: chat_unanchored
+  kind: atomic
+  figma_connectors:
+  - 6064:87002
+  - 6064:86969
+  trigger: chat_result
+  effects:
+  - open_chat
+caption_only_behavior:
+- source_view: messages_only
+  event: tap_message_result
+  effects:
+  - open_message
+  to: chat_at_message
+  note: Указано подписью 08; отдельная стрелка от 08 не нарисована.
+- source_view: no_results
+  event: edit_or_clear_query
+  note: Подпись 09 разрешает изменить/очистить запрос; промежуточные состояния и результат нового поиска не показаны.
+open_questions:
+  Q01: 'Когда отправлять запрос: каждое изменение, debounce, минимальная длина, кнопка клавиатуры? Числовые параметры и поведение
+    Action Button в подписях не определены.'
+  Q02: Как отменять/игнорировать старые ответы при смене/очистке запроса и закрытии поиска? Правило для гонок не задано.
+  Q03: Как показывать один завершённый и один ожидающий запрос; обратную частичную ошибку (чаты — ошибка, сообщения доступны)?
+    Откуда фактически приходит ошибка в 11? Карта эти случаи не определяет.
+  Q04: Что видно во время повторного поиска только сообщений; что делать при пустом/ошибочном повторном ответе? Стрелка
+    11 → 06 изображает только успешный непустой итог.
+  Q05: Каковы page key, размер страницы, порог запуска, конец списка, защита от повторного запуска, результат успешной
+    подгрузки и устранение дубликатов? В карте показана только загрузка и ошибка страницы.
+  Q06: 'Что происходит по Back/закрытию sheet и возврату из чата: запрос, результаты, scroll offset, фокус и клавиатура?
+    Скрытие клавиатуры не доказывает снятие фокуса.'
+  Q07: Haptic-аннотаций в 19 прочитанных стрелках нет. Это не решение отключить haptic; типы/моменты для этого сценария
+    требуют отдельного разбора.
+  Q08: Какой API выполняет поиск сообщений по всем чатам и каков его ответ? Найденный messagesSearchPageFetcher ограничен
+    ChatParams.channelId; его нельзя объявлять реализацией глобального поиска.
+  Q09: С какого события отсчитывать 1500 мс подсветки, что делать с удалённым/недоступным сообщением и как передать его
+    якорь в маршрут? В карте задана длительность, но не эти детали.
+implementation_references:
+  commit: 21d282885ab186f61298c66eb3414f62e12f5b9c
+  scope: Прочитан коммит локального checkout; непроверенные изменения рабочего дерева исключены. Это точки исследования,
+    не готовое соответствие карте.
+  channel_search:
+    url: https://git.aimadev.space/platform/Enqo.Mobile/-/blob/21d282885ab186f61298c66eb3414f62e12f5b9c/common/lib/features/home/presentation/controllers/all_channels_search_controller.dart
+    symbols:
+    - AllChannelsSearchController.change
+    - allChannelsSearchPagerFetcher
+    - allChannelsSearchPagingData
+    observed: Riverpod хранит строку запроса; fetcher получает getAllChannelsPagingSource(query, types).
+  message_search:
+    url: https://git.aimadev.space/platform/Enqo.Mobile/-/blob/21d282885ab186f61298c66eb3414f62e12f5b9c/common/lib/features/chat/presentation/controllers/messages_search_controller.dart
+    symbols:
+    - MessagesSearchQueryController
+    - messagesSearchPageFetcher
+    observed: Поиск внутри конкретного channelId/threadId; pageSize=100 относится только к этому коду, не к глобальному
+      поиску из карты.
+    mapping_status: not_equivalent_to_global_search
+  routes:
+    url: https://git.aimadev.space/platform/Enqo.Mobile/-/blob/21d282885ab186f61298c66eb3414f62e12f5b9c/common/lib/core/services/router/router.dart
+    symbols:
+    - AllChannelsSearchRoute.buildPage
+    - ChatRoute.build
+    observed: Поиск чатов открывает ModalBottomSheetPage.draggable. ChatRoute читает pivot из $extra; нет подтверждения
+      1500 мс подсветки или готовой привязки этого сценария.
+acceptance_cases:
+- id: A01
+  transitions:
+  - open_search
+  - enter_query
+  expect: {empty_query_view: search_empty, during_request: search_loading, empty_results_before_response: false}
+- id: A02
+  transitions:
+  - both_results
+  expect: {view: results_keyboard, message_preview: matched_message_not_latest_chat_message}
+- id: A03
+  transitions:
+  - hide_keyboard
+  expect: {view: results, keyboard: false, list: chats_and_messages_in_one_list}
+- id: A04
+  transitions:
+  - query_chats_only
+  - query_messages_only
+  - query_no_results
+  mode: independent_fixtures
+  expect: {hidden_empty_sections: true, empty_view_only_when_both_empty: no_results}
+- id: A05
+  transitions:
+  - both_failed
+  - retry_search
+  expect_effect: retry_both
+- id: A06
+  given_view: messages_error
+  transitions:
+  - retry_messages
+  expect_effect: retry_messages
+  question: Q04
+- id: A07
+  transitions:
+  - next_page
+  - page_failed
+  - retry_page
+  expect_effect: retry_message_page
+  expect: {existing_results_remain: true, loading_indicator: shimmers_at_message_list_end}
+- id: A08
+  transitions:
+  - open_message
+  expect_effect: open_message
+  question: Q09
+- id: A09
+  transitions:
+  - open_chat
+  expect_effect: open_chat
+- id: A10
+  transitions:
+  - clear_query
+  expect_effect: clear_query
+  question: Q02
+validation_scope: Проверочные случаи — требования к будущей проверке Flutter, не результаты запуска приложения. UI-снимок
+  не доказывает запросы, навигацию, таймер или haptic.
+visual_evidence:
+  mapping_method: Прочитаны текущие IDs, подписи, геометрия и endpoints; визуально сопоставлены с картой. Имена стрелок
+    содержат старые IDs и не используются как текущие ссылки.
+  connector_url_prefix: https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=
+  connector_id_rule: В figma_connectors используются текущие IDs; для URL заменить двоеточие дефисом и добавить connector_url_prefix.
+  coverage: {screen_instances: 14, connector_nodes: 19, logical_connections: 17}
+  split_connectors: Выходные отрезки 6064:87002 и 6064:87003 принадлежат open_chat и clear_query; это не отдельные события.
+  missing_bindings: У ряда connector endpoints указан ID секции с координатой. Привязки triggers проверены отдельно;
+    автоматический экспорт полноценной машины по endpoints невозможен.

@@ -461,3 +461,13 @@ a parseable document is not proof of correct code. Figma remains the visual
 reference. No flow file, schema, generator, skill rule, Figma edit, or application
 code change is implemented by this research entry.
 
+**Pilot follow-up, 2026-10-16:** The user explicitly requested a trial document
+for this map. [chat-search.flow.yaml](../flows/mobile/chat-search.flow.yaml)
+records all 14 screen instances, 17 logical connections covering 19 connector
+nodes, separately identified trigger instances, code-entry references, 10
+acceptance cases, and unresolved behavior. It distinguishes compressed
+request/result arrows and demonstration queries from immediate transitions.
+Creating the trial does not adopt a global format or establish the acceptance
+criterion above: independent-agent comprehension and Flutter behavior remain
+to be tested. Shared workflow rules and Figma were not changed.
+
