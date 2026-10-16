@@ -48,6 +48,7 @@ bottleneck was found, no proposal is required.
 | HP-008 | [Resolve reusable AppBar centerTitle support](#hp-008--resolve-reusable-appbar-centertitle-support) | proposed | 2026-10-14 |
 | HP-009 | [Resolve native connector bend controls](#hp-009--resolve-native-connector-bend-controls) | proposed | 2026-10-14 |
 | HP-010 | [Resolve shared Button property-read errors](#hp-010--resolve-shared-button-property-read-errors) | proposed | 2026-10-15 |
+| HP-011 | [Pilot a machine-readable scenario contract](#hp-011--pilot-a-machine-readable-scenario-contract) | proposed | 2026-10-16 |
 
 ## HP-009 — Resolve native connector bend controls
 
@@ -399,4 +400,64 @@ do not rebuild or detach the buttons as a workaround.
 buttons return their properties without the error, with source links and visual
 states preserved. Shared Button repair needs a direct human request;
 publication remains human-only. This record authorizes no source repair.
+
+## HP-011 — Pilot a machine-readable scenario contract
+
+**Status:** proposed. **Date:** 2026-10-16.
+
+**Situation and evidence:** The user requested research into a machine-readable
+companion to the visual flow for Flutter implementation agents. Read-only
+inspection of [Поиск чатов и сообщений, 6064:86304](https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86304)
+found 14 screen instances and 19 native connectors. Captions specify partial
+search failures, preserving results during pagination, retrying only the failed
+request/page, and highlighting an opened message for 1.5 seconds. These are
+observed design statements, not evidence of approval or implemented behavior.
+For example, [Описание · 11 · Чаты доступны, сообщения — ошибка, 6064:86981](https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86981)
+says retry requests only messages. Connector [6064:86307](https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86307)
+has the exact name `Flow · Tap · Повторить поиск сообщений · 23242:8499 → 23100:21105`,
+but both endpointNodeId values reference the enclosing section with coordinates.
+The corresponding current screen instances are [6064:86873](https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86873)
+and [6064:86470](https://www.figma.com/design/V1EKgtI2h6sOnE5MW9ZvoH?node-id=6064-86470);
+names embedded in arrows are not reliable current endpoint mappings.
+
+**Problem and impact:** A rendered map or raw node dump cannot alone establish
+events, conditions, independent request states, retry scope, or API semantics.
+Treating every illustrated state as a route or inferring links from obsolete IDs
+can produce an incorrect implementation. Request timing, stale-response handling,
+and back-navigation state preservation are not resolved by the inspected captions.
+
+**Proposed change:** Pilot one versioned YAML scenario contract in Rulla-design,
+with stable semantic IDs, exact Figma node links, inspection/version evidence,
+states, events and trigger references, conditions, effects, outcomes, and a few
+acceptance cases. Distinguish design evidence, approved intent, implementation
+references, proposals, and unknowns. Keep unknown APIs/timing as explicit open
+questions; do not invent routes, methods, or values. Separate screen presentation
+from request, focus/keyboard, and pagination state; record haptics as effects.
+Use one shared schema for structure and a separate small reference/graph check
+if the pilot is adopted. JSON Schema alone does not establish behavioral coverage.
+The agent should maintain the model and visual map together, cross-checking
+semantic bindings rather than reconstructing behavior from arrow geometry.
+Store each behavior rule once; generated diagrams/test outlines are derived views.
+
+The existing [AllChannelsSearchController](https://git.aimadev.space/platform/Enqo.Mobile/-/blob/21d282885ab186f61298c66eb3414f62e12f5b9c/common/lib/features/home/presentation/controllers/all_channels_search_controller.dart)
+and [router](https://git.aimadev.space/platform/Enqo.Mobile/-/blob/21d282885ab186f61298c66eb3414f62e12f5b9c/common/lib/core/services/router/router.dart)
+use Riverpod and go_router. This supports adapting the contract to existing Dart
+code without prescribing a new runtime; it does not prove implementation of the
+combined chat/message search shown in Figma.
+
+**Research references:** [Tinder's Android payment-flow case study](https://medium.com/tinder/scaling-out-tinder-android-payment-flow-using-state-machine-e14ef0591b6),
+[Square Workflow](https://square.github.io/workflow/),
+[Koordinates/Stately case study](https://stately.ai/blog/2023-11-28-koordinates-and-stately-case-study),
+and [Stately's Figma-state integration](https://stately.ai/docs/figma)
+support modeling states/events/effects and linking visuals. They do not establish
+an industry-standard Figma-to-Flutter contract. The YAML format above is a proposal.
+
+**Acceptance / needed decision:** Agree the minimal format and pilot scope. A
+fresh implementation agent can explain the partial-failure retry, pagination
+retry, and message-opening behavior from the contract without reading arrows,
+trace each statement to evidence, and report unresolved decisions. Validate
+references and concrete acceptance cases against the implemented Flutter flow;
+a parseable document is not proof of correct code. Figma remains the visual
+reference. No flow file, schema, generator, skill rule, Figma edit, or application
+code change is implemented by this research entry.
 
