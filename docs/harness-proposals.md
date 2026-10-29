@@ -213,6 +213,38 @@ a local disabled push URL alone is not a server-side permission boundary.
 Periodic or pre-task refreshing, a restricted credential and a permanent sandbox
 were not configured by this capability check. Existing working copies were preserved.
 
+**Local sandbox setup, 2026-10-29:** Following the user's direct request to
+set this up on their Mac, created `Sandbox/Enqo.Mobile`,
+`Sandbox/Enqo.Platform.WebClient`, and `Sandbox/Rulla-design` under
+`/Users/bond/Projects/Enqo/Claude Sandbox/Repo`. The local updater is
+`.sandbox/update.py`, with explicit source URLs/branches in `.sandbox/config.json`.
+A user-level launch agent `com.enqo.source-sandbox` refreshes them every 900 seconds
+and at login. Its first real background run exited 0; all three download results
+were successful. `Sandbox/STATUS.md` and `.sandbox/status.json` expose the last
+check, source commits and failures. This is periodic freshness, not real-time sync.
+The existing root `AGENTS.md` did not exist; a local bootstrap plus Claude/Gemini
+imports now directs agents to refresh before code work and load the downloaded
+canonical rules. These are instructions, not a verified lifecycle hook or a Figma
+write gate. No runtime hook was installed or trusted by this setup.
+
+The updater uses existing Git read access, detached clean download copies and a
+local disabled push URL. It never invokes push, commits, dependency installation,
+application code, repository hooks, submodule initialization or LFS downloading.
+LFS assets can therefore remain pointers. It preserves local edits, extra/ignored
+files, changed branches and local commits by refusing that copy's update. Remote
+history replacement can refresh only its marked clean managed copies. A local
+push guard is not a substitute for a server-restricted credential; no credential
+scope or GitLab permission was changed. Each task should record commits and read
+pinned objects to avoid mixing revisions during a background refresh.
+
+Eight local-fixture tests passed, covering refresh, dirty/untracked/ignored-file
+preservation, local commits, unmanaged directories, offline failure, hook
+non-execution and rewritten remote history. Four pre-existing checkouts' HEADs,
+branches, status and 25 dirty-file hashes matched their pre-install inventory.
+The tool's SHA-256 at installation is `255464ffa267ebd42323199169b3d47475c9088662f8d3842dadad95676e9c53`.
+This implements only local source refreshing and bootstrap guidance; HP-003's
+broader controlled rule-loading/write-enforcement proposal remains proposed.
+
 ## HP-004 — Resolve Mobile keyboard configuration
 
 **Status:** proposed. **Date:** 2026-10-12.
