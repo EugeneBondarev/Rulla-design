@@ -199,6 +199,20 @@ making current-code claims, and a stale or dirty checkout cannot silently supply
 current implementation evidence. This is a proposed clarification; no updater,
 new rule, working-file refresh, or pilot code remapping was implemented here.
 
+**Read-only sandbox feasibility check, 2026-10-29:** Fresh isolated downloads
+of Mobile `develop` at `e11e38be2b51d252fcf07e60e4815bda2588cc18` and Web
+`develop` at `982ef3fbc00016874b20fe27cd0ad190406a7d7f` succeeded with the existing
+Git connection on this Mac; a second remote-head read matched both copies.
+Source files were read from Git objects. No application, package install, GitLab
+write or production-data operation was run. This proves download access through
+that connection, not the human's exact GitLab role or an absence of write access.
+A local download-only sandbox therefore needs no project-setting changes.
+An optional credential restricted to `read_repository` can enforce repository
+read-only access ([GitLab scopes](https://docs.gitlab.com/user/project/deploy_tokens/#scope));
+a local disabled push URL alone is not a server-side permission boundary.
+Periodic or pre-task refreshing, a restricted credential and a permanent sandbox
+were not configured by this capability check. Existing working copies were preserved.
+
 ## HP-004 — Resolve Mobile keyboard configuration
 
 **Status:** proposed. **Date:** 2026-10-12.
