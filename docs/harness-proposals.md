@@ -49,6 +49,7 @@ bottleneck was found, no proposal is required.
 | HP-009 | [Resolve native connector bend controls](#hp-009--resolve-native-connector-bend-controls) | proposed | 2026-10-14 |
 | HP-010 | [Resolve shared Button property-read errors](#hp-010--resolve-shared-button-property-read-errors) | proposed | 2026-10-15 |
 | HP-011 | [Pilot a machine-readable scenario contract](#hp-011--pilot-a-machine-readable-scenario-contract) | proposed | 2026-10-16 |
+| HP-012 | [Verify mobile preview density and font readiness](#hp-012--verify-mobile-preview-density-and-font-readiness) | proposed | 2026-10-29 |
 
 ## HP-009 — Resolve native connector bend controls
 
@@ -554,3 +555,54 @@ Creating the trial does not adopt a global format or establish the acceptance
 criterion above: independent-agent comprehension and Flutter behavior remain
 to be tested. Shared workflow rules and Figma were not changed.
 
+## HP-012 — Verify mobile preview density and font readiness
+
+**Status:** proposed. **Date:** 2026-10-29.
+
+**Situation and evidence:** While adding source-backed Flutter specimens to the
+local Rulla Storybook, desktop-host defaults changed the presentation of the
+mobile components. The inspected Mobile source is
+[`e11e38be2b51d252fcf07e60e4815bda2588cc18`](https://git.aimadev.space/platform/Enqo.Mobile/-/commit/e11e38be2b51d252fcf07e60e4815bda2588cc18);
+the task loaded shared rules at
+[`9fd2a443de0f0d4e9642e660f2907ed19ad2bf41`](https://github.com/EugeneBondarev/Rulla-design/commit/9fd2a443de0f0d4e9642e660f2907ed19ad2bf41).
+[`DefaultButtonStyle.visualDensity`](https://git.aimadev.space/platform/Enqo.Mobile/-/blob/e11e38be2b51d252fcf07e60e4815bda2588cc18/packages/ui_kit/lib/src/widgets/buttons/app_button_themes.dart)
+inherits the Material theme. In a macOS-hosted specimen, the M button measured
+32 px high instead of its mobile 40 px minimum. The preview also started before
+its bundled Google Fonts had finished loading; this was a first-paint readiness
+gap, not evidence of a missing typeface or a product token defect.
+
+**Problem and impact:** Compiling the original widget is insufficient to
+establish mobile visual fidelity. Host-dependent density and asynchronous font
+loading can make a browser specimen look different and lead to incorrect
+changes to an otherwise unchanged component.
+
+**Completed local mitigation:** The authorized Storybook experiment now uses
+`sites/rula-storybook/mobile-preview/lib/preview_theme.dart` under
+`/Users/bond/Projects/Enqo/Claude Sandbox/Repo`. It preloads the bundled fonts and
+awaits `GoogleFonts.pendingFonts()`, applies `VisualDensity.standard` and an
+explicit Android target to the mobile preview theme, and supplies the product's
+default text style. Product widget and token source files remain unchanged.
+Eight local regression tests in
+`sites/rula-storybook/mobile-preview/test/preview_theme_test.dart` passed:
+font readiness, the macOS 32-to-40 px density regression, and L/M/S specimens
+with and without an icon. Measured plain heights were 48/40/32 px and icon
+heights 48/44/32 px; every tested paragraph box had zero vertical center offset.
+These are layout-box checks, not glyph-ink measurements or iOS/Android device
+parity. The helper and test are local output, not files published in this rules
+repository.
+
+**Proposed change:** Adopt a small visual-acceptance check for future embedded
+Mobile specimens: resolve the intended mobile theme/density independently of the
+desktop browser, finish bundled-font loading before the first specimen, verify
+representative label/icon layouts, and check source-file hashes. Keep host
+adaptation in the preview harness; do not compensate with per-component text
+translations, padding overrides, or new tokens.
+
+**Acceptance / needed decision:** A fresh desktop-hosted preview demonstrates
+the intended mobile dimensions and loaded fonts before its first specimen, with
+the representative regression cases passing and the original widget sources
+unchanged. Browser visual inspection and actual device checks retain separate
+evidence. Human adoption is needed before making this a shared workflow gate;
+the local mitigation above does not adopt a new global standard or establish
+production parity. No Figma library, product source, token definition, or shared
+instruction was changed by this finding.
