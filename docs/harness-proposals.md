@@ -242,6 +242,13 @@ preservation, local commits, unmanaged directories, offline failure, hook
 non-execution and rewritten remote history. Four pre-existing checkouts' HEADs,
 branches, status and 25 dirty-file hashes matched their pre-install inventory.
 The tool's SHA-256 at installation is `255464ffa267ebd42323199169b3d47475c9088662f8d3842dadad95676e9c53`.
+Local folder organization now has one human entry map at workspace `README.md`,
+linked from the local bootstrap. Seven legacy folders carry a Finder tag
+`Старая копия` and a comment directing new analysis to Sandbox. Their contents
+and paths were not moved/deleted: active chats still use legacy paths, and
+Mobile has a linked unfinished contact-settings worktree. Rechecked the original
+checkouts and 25 dirty-file hashes after labeling; all were preserved.
+
 This implements only local source refreshing and bootstrap guidance; HP-003's
 broader controlled rule-loading/write-enforcement proposal remains proposed.
 
