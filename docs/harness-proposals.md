@@ -169,6 +169,36 @@ to the clients/tool paths actually configured and tested.
 client instructions alone or a controlled writer is required for that scope.
 No loader, hook, gateway, or new tool permission is installed by this proposal.
 
+**Freshness evidence, 2026-10-29:** A live comparison of the local workspace
+against remote branch heads found that loading an existing checkout can still
+load obsolete context. Local `Rulla-design` at
+`a05c371c4f0648404725f1d0b635de53a7dbbb41` was 35 commits behind the then-current
+GitHub `main`, `436713e4587f72f68d217a7a809c1102f6dc308f`, and did not contain the
+chat-search pilot. The local Mobile checkout remained at
+[`21d2828`, 2026-05-29](https://git.aimadev.space/platform/Enqo.Mobile/-/commit/21d282885ab186f61298c66eb3414f62e12f5b9c),
+while GitLab `develop` was
+[`e11e38b`, 2026-10-29](https://git.aimadev.space/platform/Enqo.Mobile/-/commit/e11e38be2b51d252fcf07e60e4815bda2588cc18).
+Local Web remained at
+[`f1a4e9a`, 2026-05-28](https://git.aimadev.space/platform/Enqo.Platform.WebClient/-/commit/f1a4e9aee809f509aa0c29b465028dbc070a11d8),
+while GitLab `develop` was
+[`982ef3f`, 2026-10-20](https://git.aimadev.space/platform/Enqo.Platform.WebClient/-/commit/982ef3fbc00016874b20fe27cd0ad190406a7d7f).
+Mobile and Web have shallow history, so no exact behind count or conclusion
+about rewritten remote history is established. Local edits exist and must be
+preserved. Fetching history did not update working files. The implementation
+references in [the HP-011 pilot](../flows/mobile/chat-search.flow.yaml) are pinned
+to that May Mobile commit; their applicability to current code is not verified.
+
+**Proposed refinement:** In the existing [code access instructions](codebases.md#access),
+make the pre-task check compare the selected local revision with the live target
+branch, as well as checking local edits. Load current rules from the selected
+verified GitHub revision. For current-code work, use an up-to-date clean checkout
+or an isolated copy while preserving dirty work; do not reset, stash, switch, or
+merge another task's work automatically. If using an older revision intentionally,
+state that scope. Acceptance: the agent reports local and remote revisions before
+making current-code claims, and a stale or dirty checkout cannot silently supply
+current implementation evidence. This is a proposed clarification; no updater,
+new rule, working-file refresh, or pilot code remapping was implemented here.
+
 ## HP-004 — Resolve Mobile keyboard configuration
 
 **Status:** proposed. **Date:** 2026-10-12.
