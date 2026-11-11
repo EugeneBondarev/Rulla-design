@@ -316,7 +316,7 @@ descriptions require their own explicit edit scope. Adoption in main depends on
 merging the documentation PR. HP-005 is recorded below; its originating
 [icon-binding PR](https://github.com/EugeneBondarev/Rulla-design/pull/2) preserves the change history.
 
-**Proposed follow-up, 2026-11-11 — separate the source and its previews on the canvas.**
+**Follow-up, 2026-11-11 — separate the source and its previews on the canvas.**
 The user reports that authored component frames mix the source with examples.
 At inspected `main` (`2b7d856`), [placement](component-authoring.md#place-the-new-component)
 puts the source in `Slot` and [examples](component-authoring.md#examples) defines
@@ -334,9 +334,10 @@ variants, tokens, or source-template edits are implied.
 
 Acceptance: the canvas and Layers make the source and examples distinguishable
 without selection or explanation; the previews remain linked to the source.
-Use the existing visual and handoff check in `Verify and report`. This follow-up
-is a proposal only; it does not inherit HP-006's earlier approval and does not
-change the shared rules or Figma.
+Use the existing visual and handoff check in `Verify and report`. Evgeny approved
+the documentation change on 2026-11-11; see [decision provenance](decisions.md).
+The rule is in [component placement](component-authoring.md#place-the-new-component).
+Existing Figma assets were not changed.
 
 ## HP-005 — Verify icon colors after button state changes
 
@@ -385,6 +386,16 @@ masters remain unchanged. Final rendered buttons show close and stop correctly.
 paint after changing Type/State; a correct public Icon property alone is not
 acceptance evidence. Shared AppButton mapping repair still requires explicit
 scope. No shared-rule adoption is claimed by recording this evidence.
+
+**Follow-up, 2026-11-11:** The user reports lost or broken editable text when
+switching Figma states. No specific failing instance was supplied for this
+report. At main `9f19418`, the handoff guidance checks states and rendering but
+does not require changing content and switching controls on the same instance.
+The user requested the [property setup](component-authoring.md#keep-component-properties-stable-across-states)
+and [instance behavior check](component-authoring.md#check-instance-behavior);
+[decision provenance](decisions.md) records the scope. Acceptance is a round trip
+on a linked instance with the expected content and layout intact. This
+documentation change does not repair AppButton or establish a completed Figma test.
 
 **Additional Web evidence — 2026-10-15:** In the refreshed
 [Voice Input scenario](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=21944-32721),

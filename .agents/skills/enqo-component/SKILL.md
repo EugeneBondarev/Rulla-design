@@ -22,14 +22,18 @@ Resolve the shared repository root three directories above this file. Read
    approach and project code/version, then justify reuse, a standard solution,
    or the smallest custom addition. Resolve naming/destination and prerequisites.
 3. Apply only the authorized changes and the token-coverage procedure. For a new
-   component, follow component-authoring.md for the exact infrastructure source,
-   outer-copy detach, Slot/header structure, naming, and the
+   component, follow [placement](../../../docs/component-authoring.md#place-the-new-component)
+   for the infrastructure copy, Slot/header structure, and separation of source
+   and previews. Follow [naming](../../../docs/component-authoring.md#name-and-destination) and the
    [minimal description format](../../../docs/component-authoring.md#minimal-description).
    Apply its code-alignment and small-API rules, and mockup-content.md to visible
    content cases; preserve unaffected assets.
+   Build editable content and state controls using
+   [stable component properties](../../../docs/component-authoring.md#keep-component-properties-stable-across-states).
    When setting corner radii, apply [rounded corners](../../../docs/component-authoring.md#rounded-corners)
    and read back the actual smoothing value and preserved radius binding.
-4. Check changed properties/variants, bindings/modes, applicable states, usage, and
+4. Before handoff, [exercise a linked instance](../../../docs/component-authoring.md#check-instance-behavior).
+   Check changed properties/variants, bindings/modes, applicable states, usage, and
    rendered content cases. For a new component, return the presentation/Slot/header
    and component URLs, naming evidence, and description checks specified in
    component-authoring.md. Hand the checked local assets and observed publication

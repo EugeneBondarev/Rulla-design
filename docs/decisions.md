@@ -120,3 +120,12 @@ the product types shown in his Haptic Test screenshot, and arrow annotations of
 the exact feedback and moment. The procedure and inventory live in
 [Mobile haptic feedback](scaffolds.md#mobile-haptic-feedback); implementation evidence
 is linked from [code references](codebases.md#mobile-haptic-sources--2026-10-15).
+
+On 2026-11-11, Evgeny reported that the source component and examples were hard
+to distinguish, then approved the proposed structure in this conversation
+(“добавляй”). The rule lives in [component placement](component-authoring.md#place-the-new-component).
+
+On 2026-11-11, Evgeny requested stable editable content across Figma states and
+required agents to try the controls on an instance after authoring. The setup
+and checks live in [component properties](component-authoring.md#keep-component-properties-stable-across-states)
+and [instance behavior](component-authoring.md#check-instance-behavior).

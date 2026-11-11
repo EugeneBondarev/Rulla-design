@@ -63,6 +63,24 @@ property through a concrete requirement or verified reuse case. If verified code
 or library behavior cannot support the proposed design, report it before building
 instead of leaving the developer to invent an implementation.
 
+### Keep component properties stable across states
+
+Expose editable text through a Figma Text property. For the same content across
+variants, define the property once on the set and bind the corresponding text
+layer in each applicable variant to it. Use the main component for a standalone
+component. Keep distinct roles such as entered value, placeholder, and error
+message separate. If a nested component already owns the control, expose its
+existing property at the outer instance where it needs to be editable.
+See [Figma's component properties](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties).
+
+Keep matching layer names and equivalent nesting for the same override target.
+Preserve existing property definitions and bindings when updating a component;
+do not rename or replace them as a shortcut. State changes should keep unrelated
+instance content and settings. If a state intentionally hides content, verify
+that it reappears with its value intact; a reset needs explicit task evidence.
+Figma's [override preservation](https://help.figma.com/hc/en-us/articles/360039150733-Apply-changes-to-instances)
+depends on the actual change and matching layers. Confirm it on an instance.
+
 ## Rounded corners
 
 Whenever an authorized component build/edit sets a nonzero corner radius, set
@@ -159,6 +177,18 @@ preservation are the user-required workflow and must be checked on actual output
    and preview labels. Use verified existing typography/color/spacing bindings
    for visible text. Never write a native component description to a frame or
    instance. Report unsupported styling/layout instead of guessing values.
+7. Inside `Slot`, place the source first and its previews below it in separate
+   child frames. Each frame has a visible Russian subheading and the same name
+   in Layers:
+   - **Компонент** — the actual COMPONENT or COMPONENT_SET and its short caption.
+   - **Примеры использования** — labeled linked instances showing the
+     [examples](#examples) needed for the task. Omit the frame when there are no
+     examples. Demonstrate supported states and variants through instance
+     properties; the actual variants stay in the source set.
+
+   Keep these headings and preview instances outside the source component. Use
+   verified existing typography, color, and spacing bindings. Apply this layout
+   to an existing presentation only when editing that presentation is in scope.
 
 ## Minimal description
 
@@ -238,8 +268,10 @@ invented owner. Shared rules stay here; the final chat is not the only documenta
 Return actual presentation-frame, component/set, `Slot`, and header URLs; source
 keys; header headline; naming reference; description; and token-coverage gaps.
 Verify the component master is inside `Slot`, the header remains linked, and
-source infrastructure is unchanged. Re-read the native description from the
-actual component/set and compare it with inspected properties, slots, bindings,
+source infrastructure is unchanged. On the canvas and in Layers, verify that the
+source and any previews are easy to distinguish and the previews remain linked.
+Re-read the native description from the actual component/set and compare it with
+inspected properties, slots, bindings,
 and behavior. Check that captions/preview labels explain use rather than repeat
 measurements and that rule/source/preview links resolve. Verify what the available
 tool actually returns; visible board text or a link alone does not prove an agent
@@ -255,3 +287,36 @@ local creation is not publication. Return checked assets and exact links using t
 For an update, give the human a brief summary of changed behavior and any required
 instance migration. This complements the description; it grants no publication
 permission and does not require a separate release document.
+
+### Check instance behavior
+
+Before handoff, exercise a **fresh linked instance of the final component** in
+the authorized working area. For an update, also check a copy of a representative
+existing instance with its overrides intact. This adapts
+[Figma's pre-publication testing advice](https://help.figma.com/hc/en-us/articles/39747637290263-Components-collection-Tips-for-component-management)
+and [Storybook's interaction checks](https://storybook.js.org/docs/writing-tests/interaction-testing):
+set up the case, perform the action, and check the actual result.
+
+1. For each applicable control, set a realistic non-default value through the
+   public Properties controls. Note what should change and what should persist.
+   For text, use the relevant [content lengths](mockup-content.md#show-content-variation);
+   include empty content only when supported. Use the actual property names and
+   values from the source.
+2. On that same instance, change one state or property at a time and switch
+   back. Check each affected control and variant, including supported visibility,
+   icon swaps, slots, and sizing where applicable. Cover meaningful combinations
+   without a full matrix. For shared editable text, change it in the second state
+   too, if supported, and check it on return. Do not re-enter a lost value, reset
+   overrides, or recreate the instance to make a switch pass.
+3. Read back the changed control and retained values after each switch. Inspect
+   what actually renders: the right text/icon, intended visibility, expected
+   bindings, and layout without unexpected overlap, clipping, or jumps. Use the
+   existing visual completion check for materially different outcomes. A correct
+   property value or a static screenshot alone is insufficient.
+4. If a case fails, fix the source within scope and repeat the failing sequence
+   and affected neighboring cases. Report the tested instance, actual values,
+   transitions, and observed result. If a required case cannot be exercised or
+   fixed, report it as unverified or failed; do not hand it off as checked.
+
+This verifies Figma instance behavior; application runtime and accessibility
+still require their own evidence.
