@@ -387,6 +387,16 @@ paint after changing Type/State; a correct public Icon property alone is not
 acceptance evidence. Shared AppButton mapping repair still requires explicit
 scope. No shared-rule adoption is claimed by recording this evidence.
 
+**Follow-up, 2026-11-11:** The user reports lost or broken editable text when
+switching Figma states. No specific failing instance was supplied for this
+report. At main `9f19418`, the handoff guidance checks states and rendering but
+does not require changing content and switching controls on the same instance.
+The user requested the [property setup](component-authoring.md#keep-component-properties-stable-across-states)
+and [instance behavior check](component-authoring.md#check-instance-behavior);
+[decision provenance](decisions.md) records the scope. Acceptance is a round trip
+on a linked instance with the expected content and layout intact. This
+documentation change does not repair AppButton or establish a completed Figma test.
+
 **Additional Web evidence — 2026-10-15:** In the refreshed
 [Voice Input scenario](https://www.figma.com/design/ig93klQ0XqzeWI1Rm1fHnc?node-id=21944-32721),
 swapping the filled-state Send instance to the verified Primary/Default source

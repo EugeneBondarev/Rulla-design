@@ -28,9 +28,12 @@ Resolve the shared repository root three directories above this file. Read
    [minimal description format](../../../docs/component-authoring.md#minimal-description).
    Apply its code-alignment and small-API rules, and mockup-content.md to visible
    content cases; preserve unaffected assets.
+   Build editable content and state controls using
+   [stable component properties](../../../docs/component-authoring.md#keep-component-properties-stable-across-states).
    When setting corner radii, apply [rounded corners](../../../docs/component-authoring.md#rounded-corners)
    and read back the actual smoothing value and preserved radius binding.
-4. Check changed properties/variants, bindings/modes, applicable states, usage, and
+4. Before handoff, [exercise a linked instance](../../../docs/component-authoring.md#check-instance-behavior).
+   Check changed properties/variants, bindings/modes, applicable states, usage, and
    rendered content cases. For a new component, return the presentation/Slot/header
    and component URLs, naming evidence, and description checks specified in
    component-authoring.md. Hand the checked local assets and observed publication
