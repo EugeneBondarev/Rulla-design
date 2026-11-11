@@ -316,6 +316,28 @@ descriptions require their own explicit edit scope. Adoption in main depends on
 merging the documentation PR. HP-005 is recorded below; its originating
 [icon-binding PR](https://github.com/EugeneBondarev/Rulla-design/pull/2) preserves the change history.
 
+**Proposed follow-up, 2026-11-11 — separate the source and its previews on the canvas.**
+The user reports that authored component frames mix the source with examples.
+At inspected `main` (`2b7d856`), [placement](component-authoring.md#place-the-new-component)
+puts the source in `Slot` and [examples](component-authoring.md#examples) defines
+preview content, but neither requires a visible boundary between them.
+
+Add one placement step in `Place the new component`: inside the existing
+presentation `Slot`, use visible Russian headings and matching named layer
+containers: `Компонент` for the actual COMPONENT or COMPONENT_SET and its brief
+caption; `Примеры использования` for separately labeled linked previews, only
+when needed. Supported states or variants may be shown as linked examples;
+real variant definitions stay in the source set. Omit empty sections and keep
+verified existing text, color and spacing bindings. Apply the same layout to
+an existing presentation only within an authorized edit. No new masters,
+variants, tokens, or source-template edits are implied.
+
+Acceptance: the canvas and Layers make the source and examples distinguishable
+without selection or explanation; the previews remain linked to the source.
+Use the existing visual and handoff check in `Verify and report`. This follow-up
+is a proposal only; it does not inherit HP-006's earlier approval and does not
+change the shared rules or Figma.
+
 ## HP-005 — Verify icon colors after button state changes
 
 **Status:** proposed. **Date:** 2026-10-13.
