@@ -316,7 +316,7 @@ descriptions require their own explicit edit scope. Adoption in main depends on
 merging the documentation PR. HP-005 is recorded below; its originating
 [icon-binding PR](https://github.com/EugeneBondarev/Rulla-design/pull/2) preserves the change history.
 
-**Proposed follow-up, 2026-11-11 — separate the source and its previews on the canvas.**
+**Follow-up, 2026-11-11 — separate the source and its previews on the canvas.**
 The user reports that authored component frames mix the source with examples.
 At inspected `main` (`2b7d856`), [placement](component-authoring.md#place-the-new-component)
 puts the source in `Slot` and [examples](component-authoring.md#examples) defines
@@ -334,9 +334,10 @@ variants, tokens, or source-template edits are implied.
 
 Acceptance: the canvas and Layers make the source and examples distinguishable
 without selection or explanation; the previews remain linked to the source.
-Use the existing visual and handoff check in `Verify and report`. This follow-up
-is a proposal only; it does not inherit HP-006's earlier approval and does not
-change the shared rules or Figma.
+Use the existing visual and handoff check in `Verify and report`. Evgeny approved
+the documentation change on 2026-11-11; see [decision provenance](decisions.md).
+The rule is in [component placement](component-authoring.md#place-the-new-component).
+Existing Figma assets were not changed.
 
 ## HP-005 — Verify icon colors after button state changes
 

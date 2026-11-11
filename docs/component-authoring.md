@@ -159,6 +159,18 @@ preservation are the user-required workflow and must be checked on actual output
    and preview labels. Use verified existing typography/color/spacing bindings
    for visible text. Never write a native component description to a frame or
    instance. Report unsupported styling/layout instead of guessing values.
+7. Inside `Slot`, place the source first and its previews below it in separate
+   child frames. Each frame has a visible Russian subheading and the same name
+   in Layers:
+   - **Компонент** — the actual COMPONENT or COMPONENT_SET and its short caption.
+   - **Примеры использования** — labeled linked instances showing the
+     [examples](#examples) needed for the task. Omit the frame when there are no
+     examples. Demonstrate supported states and variants through instance
+     properties; the actual variants stay in the source set.
+
+   Keep these headings and preview instances outside the source component. Use
+   verified existing typography, color, and spacing bindings. Apply this layout
+   to an existing presentation only when editing that presentation is in scope.
 
 ## Minimal description
 
@@ -238,8 +250,10 @@ invented owner. Shared rules stay here; the final chat is not the only documenta
 Return actual presentation-frame, component/set, `Slot`, and header URLs; source
 keys; header headline; naming reference; description; and token-coverage gaps.
 Verify the component master is inside `Slot`, the header remains linked, and
-source infrastructure is unchanged. Re-read the native description from the
-actual component/set and compare it with inspected properties, slots, bindings,
+source infrastructure is unchanged. On the canvas and in Layers, verify that the
+source and any previews are easy to distinguish and the previews remain linked.
+Re-read the native description from the actual component/set and compare it with
+inspected properties, slots, bindings,
 and behavior. Check that captions/preview labels explain use rather than repeat
 measurements and that rule/source/preview links resolve. Verify what the available
 tool actually returns; visible board text or a link alone does not prove an agent

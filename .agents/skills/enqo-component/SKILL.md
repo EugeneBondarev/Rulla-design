@@ -22,8 +22,9 @@ Resolve the shared repository root three directories above this file. Read
    approach and project code/version, then justify reuse, a standard solution,
    or the smallest custom addition. Resolve naming/destination and prerequisites.
 3. Apply only the authorized changes and the token-coverage procedure. For a new
-   component, follow component-authoring.md for the exact infrastructure source,
-   outer-copy detach, Slot/header structure, naming, and the
+   component, follow [placement](../../../docs/component-authoring.md#place-the-new-component)
+   for the infrastructure copy, Slot/header structure, and separation of source
+   and previews. Follow [naming](../../../docs/component-authoring.md#name-and-destination) and the
    [minimal description format](../../../docs/component-authoring.md#minimal-description).
    Apply its code-alignment and small-API rules, and mockup-content.md to visible
    content cases; preserve unaffected assets.

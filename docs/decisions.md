@@ -120,3 +120,7 @@ the product types shown in his Haptic Test screenshot, and arrow annotations of
 the exact feedback and moment. The procedure and inventory live in
 [Mobile haptic feedback](scaffolds.md#mobile-haptic-feedback); implementation evidence
 is linked from [code references](codebases.md#mobile-haptic-sources--2026-10-15).
+
+On 2026-11-11, Evgeny reported that the source component and examples were hard
+to distinguish, then approved the proposed structure in this conversation
+(“добавляй”). The rule lives in [component placement](component-authoring.md#place-the-new-component).
